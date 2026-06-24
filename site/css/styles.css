@@ -163,8 +163,8 @@ img {
 .btn--outline {
   background: transparent;
   color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  padding: 13px 24px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  padding: 14px 28px;
   font-size: 16px;
 }
 
@@ -237,7 +237,7 @@ img {
 /* ── Hero ── */
 .hero {
   position: relative;
-  padding: 64px 24px 96px;
+  padding: 88px 24px 120px;
   text-align: center;
   overflow: hidden;
   background-color: #16265f;
@@ -409,7 +409,7 @@ img {
 
 /* ── Section shared ── */
 .section {
-  padding: 84px 24px 90px;
+  padding: 100px 24px 110px;
 }
 
 .section__container {
@@ -429,21 +429,21 @@ img {
 
 .section__eyebrow {
   color: #1f3f9e;
-  font-size: 30px;
-  margin: 0 0 4px;
+  font-size: 22px;
+  margin: 0 0 6px;
 }
 
 .section__eyebrow--yellow {
   color: #ffd11e;
-  font-size: 28px;
-  margin: 0 0 2px;
+  font-size: 22px;
+  margin: 0 0 4px;
 }
 
 .section__title {
   font-family: 'Heavitas', sans-serif;
   color: #18286e;
-  font-size: clamp(34px, 5.5vw, 60px);
-  line-height: 0.96;
+  font-size: clamp(44px, 6.5vw, 80px);
+  line-height: 0.94;
   margin: 0;
 }
 
@@ -453,8 +453,8 @@ img {
 }
 
 .section__title--large {
-  font-size: clamp(38px, 7vw, 82px);
-  line-height: 0.94;
+  font-size: clamp(52px, 8.5vw, 110px);
+  line-height: 0.92;
   text-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
 }
 
@@ -470,7 +470,7 @@ img {
 
 .section__header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 }
 
 .section__header--sm {
@@ -488,21 +488,11 @@ img {
 
 /* Paper texture background */
 .bg-paper {
-  background-color: #f4eedb;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.009 0.13' numOctaves='2' seed='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"),
-    repeating-linear-gradient(90deg, rgba(60, 40, 0, 0.022) 0 1px, transparent 1px 3px);
-  background-size: 220px, auto;
-  background-blend-mode: multiply, normal;
+  background: #f4eedb;
 }
 
 .bg-paper--yellow {
-  background-color: #ffd11e;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.009 0.13' numOctaves='2' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E"),
-    repeating-linear-gradient(90deg, rgba(120, 80, 0, 0.04) 0 1px, transparent 1px 3px);
-  background-size: 220px, auto;
-  background-blend-mode: multiply, normal;
+  background: #ffd11e;
 }
 
 .bg-blue-fabric {
@@ -712,7 +702,7 @@ img {
 
 .programme-card__header {
   position: relative;
-  height: 140px;
+  height: 200px;
   overflow: hidden;
   background: #16265f url('../assets/fabric-blue.png') center / cover;
   display: flex;
@@ -771,9 +761,10 @@ img {
 .programme-card__artist {
   font-family: 'Heavitas', sans-serif;
   color: #1f3f9e;
-  font-size: 24px;
-  line-height: 1;
+  font-size: clamp(32px, 4vw, 46px);
+  line-height: 0.95;
   letter-spacing: 0.01em;
+  margin: 4px 0 0;
 }
 
 .programme-card__support {
@@ -854,7 +845,7 @@ img {
 
 .bodega-card__photo {
   position: relative;
-  height: 210px;
+  height: 260px;
   background-size: cover;
   background-position: center;
 }
@@ -916,14 +907,14 @@ img {
 
 .bodega-card__name {
   font-family: 'Heavitas', sans-serif;
-  font-size: 30px;
+  font-size: 36px;
   margin: 0 0 4px;
-  line-height: 1;
+  line-height: 0.95;
 }
 
 .bodega-card__name--foot { color: #2f6b2c; }
 .bodega-card__name--rugby { color: #c4302b; }
-.bodega-card__name--ancien { color: #b6800f; font-size: 26px; }
+.bodega-card__name--ancien { color: #b6800f; font-size: 30px; }
 
 .bodega-card__desc {
   font-family: 'Archivo', sans-serif;
@@ -1032,15 +1023,11 @@ img {
   background: #ffd11e;
   color: #18286e;
   font-family: 'Archivo', sans-serif;
-  font-size: 30px;
-  font-weight: 900;
-  line-height: 1;
   cursor: pointer;
   box-shadow: 0 5px 0 #b88c00;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 4px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1072,7 +1059,7 @@ img {
 .info-card {
   background: #18286e;
   border-radius: 18px;
-  padding: 24px 20px;
+  padding: 32px 26px;
   transition: transform 0.25s ease;
 }
 
@@ -1083,17 +1070,17 @@ img {
 .info-card__label {
   font-family: 'Heavitas', sans-serif;
   color: #ffd11e;
-  font-size: 15px;
-  letter-spacing: 0.04em;
-  margin-bottom: 8px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
 }
 
 .info-card__title {
   font-family: 'Archivo', sans-serif;
   font-weight: 800;
   color: #fff;
-  font-size: 17px;
-  line-height: 1.3;
+  font-size: 20px;
+  line-height: 1.2;
 }
 
 .info-card__desc {
