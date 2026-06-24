@@ -85,11 +85,32 @@
     });
   }
 
+  function initFaq() {
+    var items = document.querySelectorAll('.faq__item');
+    items.forEach(function (item) {
+      var btn = item.querySelector('.faq__question');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var isOpen = item.classList.contains('is-open');
+        items.forEach(function (i) {
+          i.classList.remove('is-open');
+          var b = i.querySelector('.faq__question');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initCountdown();
     initGallery();
     initReveal();
     initNav();
+    initFaq();
 
     document.querySelectorAll('a[data-ig]').forEach(function (a) {
       a.href = IG_URL;
