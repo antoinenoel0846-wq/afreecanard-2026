@@ -85,6 +85,51 @@
     });
   }
 
+  function initScrollProgress() {
+    var bar = document.querySelector('.scroll-progress');
+    if (!bar) return;
+    function update() {
+      var total = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (total > 0 ? window.scrollY / total : 0) + ')';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
+  function initCardTilt() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    var cards = document.querySelectorAll('.programme-card');
+    cards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transition = 'transform 0.08s ease, box-shadow 0.2s ease';
+        card.style.transform =
+          'perspective(900px) rotateX(' + (-y * 9) + 'deg) rotateY(' + (x * 9) + 'deg) translateY(-10px)';
+        card.style.boxShadow =
+          (x > 0 ? (x * 12) + 'px' : '0px') + ' 24px 0 rgba(0,0,0,0.22), 0 10px 32px rgba(0,0,0,0.16)';
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1), box-shadow 0.5s ease';
+        card.style.transform = '';
+        card.style.boxShadow = '';
+      });
+    });
+  }
+
+  function initParallax() {
+    var el = document.querySelector('.ambiance');
+    if (!el) return;
+    function update() {
+      var rect = el.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+      var progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      el.style.backgroundPositionY = 'calc(30% + ' + ((progress - 0.5) * 70) + 'px)';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
   function initFaq() {
     var items = document.querySelectorAll('.faq__item');
     items.forEach(function (item) {
@@ -111,6 +156,9 @@
     initReveal();
     initNav();
     initFaq();
+    initScrollProgress();
+    initCardTilt();
+    initParallax();
 
     document.querySelectorAll('a[data-ig]').forEach(function (a) {
       a.href = IG_URL;
