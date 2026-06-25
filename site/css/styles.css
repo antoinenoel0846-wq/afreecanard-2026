@@ -975,6 +975,41 @@ section[id] {
   animation: acBob 4s ease-in-out infinite;
 }
 
+/* ── Intro compacte ── */
+.section--intro {
+  padding: clamp(52px, 6vw, 72px) 24px clamp(48px, 5.5vw, 68px);
+}
+.section--intro .intro__grid {
+  gap: 32px;
+}
+.section--intro .section__eyebrow {
+  font-size: 17px;
+  margin-bottom: 3px;
+}
+.section--intro .section__title {
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 0.96;
+}
+.section--intro .intro__text {
+  font-size: 16px;
+  line-height: 1.58;
+  margin-bottom: 10px;
+}
+.section--intro .intro__badges {
+  margin-top: 16px;
+  gap: 10px;
+}
+.section--intro .badge-org {
+  padding: 7px 12px 7px 7px;
+}
+.section--intro .badge-org__avatar {
+  width: 36px;
+  height: 36px;
+}
+.section--intro .intro__visual-img {
+  width: min(240px, 80%);
+}
+
 /* ── Ambiance ── */
 .ambiance {
   position: relative;
@@ -2486,6 +2521,118 @@ section[id] {
 }
 
 /* Placeholder À VENIR — shimmer + pulse */
+/* ── Lineup réel (remplace prog-coming quand l'artiste est connu) ── */
+.prog-lineup {
+  padding: 14px 0 14px 18px;
+  border-left: 3px solid rgba(255, 255, 255, 0.28);
+  margin-top: 10px;
+}
+.prog-lineup__label {
+  display: block;
+  font-family: 'Archivo', sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  margin-bottom: 5px;
+}
+.prog-lineup__artist {
+  display: block;
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(28px, 4.2vw, 42px);
+  color: #fff;
+  letter-spacing: 0.02em;
+  line-height: 0.96;
+}
+.prog-lineup__genre {
+  display: block;
+  font-family: 'Archivo', sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.48);
+  margin-top: 5px;
+  font-style: italic;
+}
+.prog-lineup__local {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffd11e;
+  background: rgba(255, 209, 30, 0.12);
+  border: 1px solid rgba(255, 209, 30, 0.32);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+
+/* ── Prog bodega (détail soirs par carte) ── */
+.bodega-prog {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+.bodega-prog__label {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 9px;
+  color: #9a8a6a;
+  margin: 0 0 7px;
+}
+.bodega-prog__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bodega-prog__list li {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+.bodega-prog__day {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  color: #b0a080;
+  min-width: 46px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.bodega-prog__act {
+  font-family: 'Archivo', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #3a3420;
+}
+.bodega-prog--foot .bodega-prog__act--star {
+  font-size: 15px;
+  font-weight: 800;
+  color: #2f6b2c;
+}
+.bodega-prog__badge {
+  font-family: 'Archivo', sans-serif;
+  font-size: 10px;
+  font-style: italic;
+  color: #2f6b2c;
+  opacity: 0.75;
+}
+.bodega-prog__secret {
+  font-family: 'Archivo', sans-serif;
+  font-size: 12.5px;
+  font-style: italic;
+  color: #9a8a6a;
+  line-height: 1.5;
+  margin: 0;
+}
+
 .prog-coming {
   display: flex;
   align-items: center;
