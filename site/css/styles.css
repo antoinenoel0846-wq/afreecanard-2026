@@ -2404,7 +2404,8 @@ section[id] {
 }
 
 /* ── Photo inline mobile (injectée par JS dans .prog-lineup) ── */
-.prog-lineup__mob-photo {
+.prog-lineup__mob-photo,
+.prog-highlight__mob-photo {
   display: none;
 }
 
@@ -2417,6 +2418,15 @@ section[id] {
     border-radius: 8px;
     margin-top: 12px;
     opacity: 0.88;
+  }
+  .prog-highlight__mob-photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-top: 10px;
+    opacity: 0.82;
   }
 }
 

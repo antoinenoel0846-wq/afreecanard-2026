@@ -423,16 +423,18 @@
       }
     });
 
-    /* ── MOBILE : photo inline sous l'artiste ── */
+    /* ── MOBILE : photo inline sous l'artiste / l'activité ── */
     if (!window.matchMedia('(hover: hover)').matches) {
       targets.forEach(function (el) {
-        if (!el.classList.contains('prog-lineup')) return;
+        var isLineup    = el.classList.contains('prog-lineup');
+        var isHighlight = el.classList.contains('prog-highlight--star');
+        if (!isLineup && !isHighlight) return;
         var src = el.getAttribute('data-photo');
         if (!src) return;
         var img = document.createElement('img');
         img.src = src;
         img.alt = '';
-        img.className = 'prog-lineup__mob-photo';
+        img.className = isLineup ? 'prog-lineup__mob-photo' : 'prog-highlight__mob-photo';
         img.loading = 'lazy';
         el.appendChild(img);
       });
