@@ -410,13 +410,7 @@
     var peekImg = peek ? peek.querySelector('.prog-peek__img') : null;
     if (!peek || !peekImg) return;
 
-    // Désactiver sur les appareils sans hover (tactile)
-    if (!window.matchMedia('(hover: hover)').matches) return;
-
     var targets  = document.querySelectorAll('[data-photo]');
-    var cursorX  = 0;
-    var cursorY  = 0;
-    var visible  = false;
     var preloads = {};
 
     // Pré-charger toutes les images d'un coup
@@ -428,6 +422,52 @@
         preloads[src] = true;
       }
     });
+
+    /* ── MOBILE : tap → bottom sheet ── */
+    if (!window.matchMedia('(hover: hover)').matches) {
+      var mobPeek = document.querySelector('.mob-peek');
+      var mobImg  = mobPeek ? mobPeek.querySelector('.mob-peek__img') : null;
+      if (!mobPeek || !mobImg) return;
+
+      var dismissTimer = null;
+      var peekOpen = false;
+
+      function openMobPeek(src) {
+        clearTimeout(dismissTimer);
+        mobImg.src = src;
+        mobPeek.style.pointerEvents = 'auto';
+        peekOpen = true;
+        gsap.to(mobPeek, { y: 0, duration: 0.38, ease: 'power3.out' });
+        dismissTimer = setTimeout(closeMobPeek, 2800);
+      }
+
+      function closeMobPeek() {
+        clearTimeout(dismissTimer);
+        peekOpen = false;
+        mobPeek.style.pointerEvents = 'none';
+        gsap.to(mobPeek, { y: '105%', duration: 0.28, ease: 'power2.in' });
+      }
+
+      targets.forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          var src = el.getAttribute('data-photo');
+          if (!src) return;
+          if (peekOpen && mobImg.src.endsWith(src.split('/').pop())) {
+            closeMobPeek();
+          } else {
+            openMobPeek(src);
+          }
+        });
+      });
+
+      mobPeek.addEventListener('click', closeMobPeek);
+      return;
+    }
+
+    /* ── DESKTOP : hover → peek curseur ── */
+    var cursorX  = 0;
+    var cursorY  = 0;
+    var visible  = false;
 
     document.addEventListener('mousemove', function (e) {
       cursorX = e.clientX;
