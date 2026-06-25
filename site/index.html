@@ -57,7 +57,7 @@
         "@id": "https://afreecanard.fr/#festival-2026",
         "name": "Afreecanard 2026",
         "alternateName": "Fête du Canard de Lacapelle-Marival 2026",
-        "description": "Trois nuits de bodegas et concerts jusqu'à 3h du matin au pied du château de Lacapelle-Marival. 10 € le vendredi, 2 € le jeudi et le samedi (verre Afreecanard inclus). Organisé par les bénévoles des amicales du foot (Élan Marivalois) et du rugby (Amicale Marivaldois) du village.",
+        "description": "Trois nuits de bodegas et concerts jusqu'à 3h du matin au pied du château de Lacapelle-Marival. 10 € le vendredi, 2 € le samedi et le dimanche (verre Afreecanard inclus). Organisé par les bénévoles des amicales du foot (Élan Marivalois) et du rugby (Amicale Marivaldois) du village.",
         "startDate": "2026-08-14",
         "endDate": "2026-08-16",
         "eventStatus": "https://schema.org/EventScheduled",
@@ -261,56 +261,91 @@
 
     <main id="main-content">
 
-    <!-- HERO -->
-    <section id="top" class="hero">
-      <span class="hero__note hero__note--1" aria-hidden="true">♪</span>
-      <span class="hero__note hero__note--2" aria-hidden="true">♫</span>
-      <span class="hero__note hero__note--3" aria-hidden="true">♩</span>
-      <span class="hero__note hero__note--4" aria-hidden="true">♬</span>
+    <!-- HERO SCROLL PIN -->
+    <div id="top" class="hero-pin">
+      <div class="hero-pin__stage">
 
-      <img src="assets/canard-guitare.png" alt="" class="hero__duck hero__duck--guitar" aria-hidden="true">
-      <img src="assets/canard-saxo.png" alt="" class="hero__duck hero__duck--saxo" aria-hidden="true">
-      <img src="assets/canard-micro.png" alt="" class="hero__duck hero__duck--micro" aria-hidden="true">
-
-      <div class="hero__content">
-        <h1 class="sr-only">Afreecanard 2026 — Bodegas et concerts à Lacapelle-Marival, 14 au 16 août</h1>
-        <p class="hero__tagline font-superboom">trois nuits de bodegas au pied du château</p>
-        <img src="assets/logo-jaune.png" alt="Afreecanard — Lacapelle-Marival" class="hero__logo">
-
-        <div class="hero__dates">
-          <span class="hero__dates-num font-heavitas">14 · 15 · 16</span>
-          <span class="hero__dates-month font-heavitas">AOÛT</span>
-        </div>
-        <p class="hero__location">Lacapelle-Marival · Le Lot</p>
-
-        <div class="hero__countdown" id="countdown">
-          <div class="countdown__box">
-            <div class="countdown__value" id="countdown-days">0</div>
-            <div class="countdown__label">jours</div>
-          </div>
-          <div class="countdown__box">
-            <div class="countdown__value" id="countdown-hours">00</div>
-            <div class="countdown__label">heures</div>
-          </div>
-          <div class="countdown__box">
-            <div class="countdown__value" id="countdown-minutes">00</div>
-            <div class="countdown__label">min</div>
-          </div>
-          <div class="countdown__box">
-            <div class="countdown__value" id="countdown-seconds">00</div>
-            <div class="countdown__label">sec</div>
-          </div>
+        <!-- Photo révélée derrière les rideaux -->
+        <div class="hero-pin__photo" aria-hidden="true">
+          <img src="assets/photos/p08.png" alt="" loading="eager" fetchpriority="high">
+          <div class="hero-pin__photo-overlay"></div>
         </div>
 
-        <div class="hero__actions">
-          <a href="https://www.instagram.com/afreecanard/" data-ig target="_blank" rel="noopener" class="btn btn--yellow btn--yellow-lg">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#18286e" stroke-width="2.4" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#18286e" stroke="none"/></svg>
-            Toute l'actu sur Instagram
-          </a>
-          <a href="#programme" class="btn btn--outline">Voir le programme</a>
+        <!-- Porte GAUCHE — moitié gauche du logo unique -->
+        <div class="hero-pin__door hero-pin__door--left" aria-hidden="true">
+          <img src="assets/logo-jaune.png" alt="" class="hero-pin__door-logo">
         </div>
+
+        <!-- Porte DROITE — moitié droite du logo unique -->
+        <div class="hero-pin__door hero-pin__door--right" aria-hidden="true">
+          <img src="assets/logo-jaune.png" alt="" class="hero-pin__door-logo">
+        </div>
+
+        <!-- Notes musicales décoratives -->
+        <span class="hero__note hero__note--1" aria-hidden="true">♪</span>
+        <span class="hero__note hero__note--2" aria-hidden="true">♫</span>
+        <span class="hero__note hero__note--3" aria-hidden="true">♩</span>
+        <span class="hero__note hero__note--4" aria-hidden="true">♬</span>
+
+        <!-- Canards décors -->
+        <div class="hero__duck-wrap hero__duck-wrap--guitar" aria-hidden="true">
+          <img src="assets/canard-guitare.png" alt="" class="hero__duck hero__duck--guitar">
+        </div>
+        <div class="hero__duck-wrap hero__duck-wrap--saxo" aria-hidden="true">
+          <img src="assets/canard-saxo.png" alt="" class="hero__duck hero__duck--saxo">
+        </div>
+        <div class="hero__duck-wrap hero__duck-wrap--micro" aria-hidden="true">
+          <img src="assets/canard-micro.png" alt="" class="hero__duck hero__duck--micro">
+        </div>
+
+        <!-- Contenu (SEO + utilisateur) — révélé en cascade par GSAP -->
+        <div class="hero-pin__content">
+          <h1 class="sr-only">Afreecanard 2026 — Bodegas et concerts à Lacapelle-Marival, 14 au 16 août</h1>
+          <p class="hero__tagline font-superboom hero-pin__item">trois nuits de bodegas au pied du château</p>
+          <img src="assets/logo-jaune.png" alt="Afreecanard — Lacapelle-Marival" class="hero__logo hero-pin__item">
+
+          <div class="hero__dates hero-pin__item">
+            <span class="hero__dates-num font-heavitas">14 · 15 · 16</span>
+            <span class="hero__dates-month font-heavitas">AOÛT</span>
+          </div>
+          <p class="hero__location hero-pin__item">Lacapelle-Marival · Le Lot</p>
+
+          <div class="hero__countdown hero-pin__item" id="countdown">
+            <div class="countdown__box">
+              <div class="countdown__value" id="countdown-days">0</div>
+              <div class="countdown__label">jours</div>
+            </div>
+            <div class="countdown__box">
+              <div class="countdown__value" id="countdown-hours">00</div>
+              <div class="countdown__label">heures</div>
+            </div>
+            <div class="countdown__box">
+              <div class="countdown__value" id="countdown-minutes">00</div>
+              <div class="countdown__label">min</div>
+            </div>
+            <div class="countdown__box">
+              <div class="countdown__value" id="countdown-seconds">00</div>
+              <div class="countdown__label">sec</div>
+            </div>
+          </div>
+
+          <div class="hero__actions hero-pin__item">
+            <a href="https://www.instagram.com/afreecanard/" data-ig target="_blank" rel="noopener" class="btn btn--yellow btn--yellow-lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#18286e" stroke-width="2.4" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#18286e" stroke="none"/></svg>
+              Toute l'actu sur Instagram
+            </a>
+            <a href="#programme" class="btn btn--outline">Voir le programme</a>
+          </div>
+        </div>
+
+        <!-- Indicateur scroll -->
+        <div class="hero-pin__scroll-hint" aria-hidden="true">
+          <span class="hero-pin__scroll-hint-line"></span>
+          <span class="hero-pin__scroll-hint-text font-narrow">SCROLL</span>
+        </div>
+
       </div>
-    </section>
+    </div>
 
     <!-- MARQUEE -->
     <div class="marquee" aria-hidden="true">
@@ -371,59 +406,265 @@
     </section>
 
     <!-- PROGRAMME -->
-    <section id="programme" class="section bg-blue-fabric">
-      <div class="section__container">
-        <div data-reveal="up" class="section__header">
-          <p class="section__eyebrow font-superboom" style="color:#ffd11e;">la programmation 2026</p>
-          <h2 class="section__title section__title--white font-heavitas">LE PROGRAMME</h2>
-          <p class="section__subtitle">vendredi · samedi · dimanche · bodegas jusqu'à 3h</p>
+    <section id="programme" class="prog-section">
+
+      <!-- Décors de fond flottants (aria-hidden) -->
+      <div class="prog-deco-bg" aria-hidden="true">
+        <span class="prog-note prog-note--1">♪</span>
+        <span class="prog-note prog-note--2">♫</span>
+        <span class="prog-note prog-note--3">♩</span>
+        <span class="prog-note prog-note--4">♬</span>
+        <span class="prog-note prog-note--5">♪</span>
+      </div>
+
+      <div class="prog-section__inner">
+
+        <!-- En-tête -->
+        <div class="prog-section__hd" data-reveal="up">
+          <p class="prog-section__eyebrow font-superboom">la programmation 2026</p>
+          <h2 class="prog-section__title font-heavitas">PROGRAMME</h2>
+          <p class="prog-section__sub">14 · 15 · 16 août — Lacapelle-Marival</p>
         </div>
 
-        <div class="programme__grid">
-          <article data-reveal="up" data-reveal-delay="0" class="programme-card programme-card--ven">
-            <div class="programme-card__header">
-              <span class="programme-card__day">VEN.</span>
-              <img src="assets/canard-saxo.png" alt="" class="programme-card__duck programme-card__duck--saxo">
-            </div>
-            <div class="programme-card__body">
-              <div class="programme-card__weekday">vendredi</div>
-              <div class="programme-card__date">14 AOÛT</div>
-              <div class="programme-card__artist">TNT</div>
-              <div class="programme-card__support">Le vendredi soir à Afreecanard, ça ne rigole pas — et c'est peu dire.</div>
-              <div class="programme-card__tag-wrap"><span class="tag tag--blue">À confirmer</span><span class="tag tag--yellow">⚓ Marinière</span></div>
-            </div>
-          </article>
-
-          <article data-reveal="up" data-reveal-delay="110" class="programme-card programme-card--sam">
-            <div class="programme-card__header programme-card__header--ven">
-              <span class="programme-card__day">SAM.</span>
-              <img src="assets/canard-guitare.png" alt="" class="programme-card__duck programme-card__duck--guitar">
-            </div>
-            <div class="programme-card__body">
-              <div class="programme-card__weekday">samedi</div>
-              <div class="programme-card__date">15 AOÛT</div>
-              <div class="programme-card__artist">MASSBEAT</div>
-              <div class="programme-card__support">Fiers représentants de Perpignan — ces Catalans savent faire danser. Ambiance festive garantie.</div>
-              <div class="programme-card__tag-wrap"><span class="tag tag--yellow">Live · DJ set</span><span class="tag tag--blue">⚽ Coupe du Monde</span></div>
-            </div>
-          </article>
-
-          <article data-reveal="up" data-reveal-delay="220" class="programme-card programme-card--dim">
-            <div class="programme-card__header programme-card__header--sam">
-              <span class="programme-card__day">DIM.</span>
-              <img src="assets/canard-micro.png" alt="" class="programme-card__duck programme-card__duck--micro">
-            </div>
-            <div class="programme-card__body">
-              <div class="programme-card__weekday">dimanche</div>
-              <div class="programme-card__date">16 AOÛT</div>
-              <div class="programme-card__artist">MATRONOME</div>
-              <div class="programme-card__support">Pour finir en beauté — la nuit du dimanche à Afreecanard, ça se mérite.</div>
-              <div class="programme-card__tag-wrap"><span class="tag tag--blue">À confirmer</span><span class="tag tag--yellow">🌿 Jungle Marivaloise</span></div>
-            </div>
-          </article>
+        <!-- Onglets -->
+        <div class="prog-tabs" role="tablist" aria-label="Choisir un jour" data-reveal="up" data-reveal-delay="100">
+          <button class="prog-tab prog-tab--active"
+                  role="tab" aria-selected="true" aria-controls="prog-panel-0" id="prog-tab-0"
+                  data-idx="0">
+            <span class="prog-tab__duck" aria-hidden="true">🦆</span>
+            <span class="prog-tab__day">Vendredi</span>
+            <span class="prog-tab__num">14</span>
+            <span class="prog-tab__mth">août</span>
+            <span class="prog-tab__badge">10&thinsp;€</span>
+          </button>
+          <button class="prog-tab"
+                  role="tab" aria-selected="false" aria-controls="prog-panel-1" id="prog-tab-1"
+                  data-idx="1">
+            <span class="prog-tab__duck" aria-hidden="true">🦆</span>
+            <span class="prog-tab__day">Samedi</span>
+            <span class="prog-tab__num">15</span>
+            <span class="prog-tab__mth">août</span>
+            <span class="prog-tab__badge">2&thinsp;€ <span aria-hidden="true">🥂</span></span>
+          </button>
+          <button class="prog-tab"
+                  role="tab" aria-selected="false" aria-controls="prog-panel-2" id="prog-tab-2"
+                  data-idx="2">
+            <span class="prog-tab__duck" aria-hidden="true">🦆</span>
+            <span class="prog-tab__day">Dimanche</span>
+            <span class="prog-tab__num">16</span>
+            <span class="prog-tab__mth">août</span>
+            <span class="prog-tab__badge">2&thinsp;€ <span aria-hidden="true">🥂</span></span>
+          </button>
         </div>
 
-        <p data-reveal="up" class="programme__note">Programme en cours d'annonce — plus de surprises à venir. Suis @afreecanard pour ne pas rater la suite. 🦆</p>
+        <!-- Panneaux -->
+        <div class="prog-panels" aria-live="polite">
+
+          <!-- Vendredi 14 -->
+          <div class="prog-panel prog-panel--active"
+               role="tabpanel" id="prog-panel-0" aria-labelledby="prog-tab-0">
+            <h3 class="sr-only">Vendredi 14 août</h3>
+            <div class="prog-blocks prog-blocks--solo" data-reveal="up">
+              <div class="prog-block prog-block--soir">
+                <div class="prog-block__head">
+                  <span class="prog-block__icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14 10C14 13.31 11.31 16 8 16C4.69 16 2 13.31 2 10C2 6.69 4.69 4 8 4C6.64 5.12 6 6.73 6 8.5C6 11.54 8.46 14 11.5 14C12.43 14 13.29 13.75 14 13.3C14 12 14 10 14 10Z" fill="#c8d8ff"/>
+                      <circle cx="15.5" cy="5.5" r="1"   fill="#c8d8ff" opacity="0.65"/>
+                      <circle cx="17"   cy="8"   r="0.7" fill="#c8d8ff" opacity="0.45"/>
+                    </svg>
+                  </span>
+                  <span class="prog-block__label">Soirée · concerts</span>
+                  <span class="prog-block__hours">→ 3h du matin</span>
+                </div>
+                <div class="prog-block__body">
+                  <p class="prog-block__desc">Concerts au pied du château médiéval de Lacapelle-Marival.</p>
+                  <div class="prog-coming" data-photo="assets/photos/p01.png">
+                    <span class="prog-coming__duck" aria-hidden="true">🦆</span>
+                    <div class="prog-coming__copy">
+                      <strong class="prog-coming__title">Line-up dévoilé bientôt</strong>
+                      <span class="prog-coming__sub">Restez les pattes prêtes&nbsp;— ça va cancaner fort.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="prog-prix">
+              <span class="prog-prix__eur">10&thinsp;€</span>
+              <span class="prog-prix__sep" aria-hidden="true"></span>
+              <span class="prog-prix__txt">l'entrée du vendredi soir</span>
+            </div>
+          </div>
+
+          <!-- Samedi 15 -->
+          <div class="prog-panel"
+               role="tabpanel" id="prog-panel-1" aria-labelledby="prog-tab-1" hidden>
+            <h3 class="sr-only">Samedi 15 août</h3>
+            <div class="prog-blocks prog-blocks--jour-heavy">
+              <div class="prog-block prog-block--jour">
+                <div class="prog-block__head">
+                  <span class="prog-block__icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="10" cy="10" r="4.5" fill="#ffd11e"/>
+                      <line x1="10" y1="1.5" x2="10" y2="3.5"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="10" y1="16.5" x2="10" y2="18.5" stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="1.5" y1="10" x2="3.5" y2="10"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="16.5" y1="10" x2="18.5" y2="10" stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="3.64" y1="3.64" x2="5.05" y2="5.05"     stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="14.95" y1="14.95" x2="16.36" y2="16.36" stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="16.36" y1="3.64" x2="14.95" y2="5.05"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="5.05" y1="14.95" x2="3.64" y2="16.36"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <span class="prog-block__label">Journée · animations</span>
+                  <span class="prog-block__hours">12h – 18h</span>
+                </div>
+                <div class="prog-block__body">
+                  <p class="prog-block__desc">Animations dans tout Lacapelle-Marival.</p>
+                  <div class="prog-highlight prog-highlight--star" data-photo="assets/photos/p11.png">
+                    <span class="prog-highlight__icon" aria-hidden="true">🎠</span>
+                    <div class="prog-highlight__copy">
+                      <strong class="prog-highlight__title">Défilé en char</strong>
+                      <span class="prog-highlight__sub">à midi, dans les rues du village</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="prog-block prog-block--soir">
+                <div class="prog-block__head">
+                  <span class="prog-block__icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14 10C14 13.31 11.31 16 8 16C4.69 16 2 13.31 2 10C2 6.69 4.69 4 8 4C6.64 5.12 6 6.73 6 8.5C6 11.54 8.46 14 11.5 14C12.43 14 13.29 13.75 14 13.3C14 12 14 10 14 10Z" fill="#c8d8ff"/>
+                      <circle cx="15.5" cy="5.5" r="1"   fill="#c8d8ff" opacity="0.65"/>
+                      <circle cx="17"   cy="8"   r="0.7" fill="#c8d8ff" opacity="0.45"/>
+                    </svg>
+                  </span>
+                  <span class="prog-block__label">Soirée · concerts</span>
+                  <span class="prog-block__hours">→ 3h du matin</span>
+                </div>
+                <div class="prog-block__body">
+                  <p class="prog-block__desc">Concerts au pied du château médiéval.</p>
+                  <div class="prog-coming" data-photo="assets/photos/p08.png">
+                    <span class="prog-coming__duck" aria-hidden="true">🦆</span>
+                    <div class="prog-coming__copy">
+                      <strong class="prog-coming__title">Line-up dévoilé bientôt</strong>
+                      <span class="prog-coming__sub">Restez les pattes prêtes&nbsp;— ça va cancaner fort.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="prog-prix">
+              <span class="prog-prix__eur">2&thinsp;€</span>
+              <span class="prog-prix__sep" aria-hidden="true"></span>
+              <span class="prog-prix__txt">entrée + un verre Afreecanard offert</span>
+            </div>
+          </div>
+
+          <!-- Dimanche 16 -->
+          <div class="prog-panel"
+               role="tabpanel" id="prog-panel-2" aria-labelledby="prog-tab-2" hidden>
+            <h3 class="sr-only">Dimanche 16 août</h3>
+            <div class="prog-blocks prog-blocks--jour-heavy">
+              <div class="prog-block prog-block--jour">
+                <div class="prog-block__head">
+                  <span class="prog-block__icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="10" cy="10" r="4.5" fill="#ffd11e"/>
+                      <line x1="10" y1="1.5" x2="10" y2="3.5"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="10" y1="16.5" x2="10" y2="18.5" stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="1.5" y1="10" x2="3.5" y2="10"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="16.5" y1="10" x2="18.5" y2="10" stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="3.64" y1="3.64" x2="5.05" y2="5.05"     stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="14.95" y1="14.95" x2="16.36" y2="16.36" stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="16.36" y1="3.64" x2="14.95" y2="5.05"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="5.05" y1="14.95" x2="3.64" y2="16.36"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <span class="prog-block__label">Journée · animations</span>
+                  <span class="prog-block__hours">12h – 18h</span>
+                </div>
+                <div class="prog-block__body">
+                  <p class="prog-block__desc">Animations dans tout Lacapelle-Marival.</p>
+                  <div class="prog-highlight prog-highlight--star" data-photo="assets/photos/p04.png">
+                    <span class="prog-highlight__icon" aria-hidden="true">🍽️</span>
+                    <div class="prog-highlight__copy">
+                      <strong class="prog-highlight__title">Repas sous la halle</strong>
+                      <span class="prog-highlight__sub">à midi, avec bandas et chant basque</span>
+                    </div>
+                  </div>
+                  <div class="prog-highlight prog-highlight--star" data-photo="assets/photos/p03.png">
+                    <span class="prog-highlight__icon" aria-hidden="true">🎺</span>
+                    <div class="prog-highlight__copy">
+                      <strong class="prog-highlight__title">Band'acapella</strong>
+                      <span class="prog-highlight__sub">chant basque — la tradition qui fait frissonner le Lot</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="prog-block prog-block--soir">
+                <div class="prog-block__head">
+                  <span class="prog-block__icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14 10C14 13.31 11.31 16 8 16C4.69 16 2 13.31 2 10C2 6.69 4.69 4 8 4C6.64 5.12 6 6.73 6 8.5C6 11.54 8.46 14 11.5 14C12.43 14 13.29 13.75 14 13.3C14 12 14 10 14 10Z" fill="#c8d8ff"/>
+                      <circle cx="15.5" cy="5.5" r="1"   fill="#c8d8ff" opacity="0.65"/>
+                      <circle cx="17"   cy="8"   r="0.7" fill="#c8d8ff" opacity="0.45"/>
+                    </svg>
+                  </span>
+                  <span class="prog-block__label">Soirée · concerts</span>
+                  <span class="prog-block__hours">→ 3h du matin</span>
+                </div>
+                <div class="prog-block__body">
+                  <p class="prog-block__desc">Concerts au pied du château médiéval.</p>
+                  <div class="prog-coming" data-photo="assets/photos/p02.png">
+                    <span class="prog-coming__duck" aria-hidden="true">🦆</span>
+                    <div class="prog-coming__copy">
+                      <strong class="prog-coming__title">Line-up dévoilé bientôt</strong>
+                      <span class="prog-coming__sub">Restez les pattes prêtes&nbsp;— ça va cancaner fort.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="prog-prix">
+              <span class="prog-prix__eur">2&thinsp;€</span>
+              <span class="prog-prix__sep" aria-hidden="true"></span>
+              <span class="prog-prix__txt">entrée + un verre Afreecanard offert</span>
+            </div>
+          </div>
+
+        </div><!-- /.prog-panels -->
+
+        <!-- Photo peek flottante (aria-hidden, suit le curseur) -->
+        <div class="prog-peek" aria-hidden="true">
+          <img class="prog-peek__img" src="" alt="">
+        </div>
+
+      </div><!-- /.prog-section__inner -->
+    </section>
+
+    <!-- RÉCAP VIDÉO 2024 -->
+    <section class="recap-section" data-reveal="up">
+      <div class="recap-section__inner">
+        <div class="recap-section__hd">
+          <p class="recap-section__eyebrow font-superboom">l'afreecanard 2024</p>
+          <h2 class="recap-section__title font-heavitas">L'AMBIANCE<br>EN VRAI</h2>
+          <p class="recap-section__sub">3 jours · 2 000 fêtards · 1 château · une folie collective</p>
+        </div>
+        <div class="recap-video" data-yt="Er5vteQwTLY">
+          <img class="recap-video__thumb"
+               src="https://img.youtube.com/vi/Er5vteQwTLY/maxresdefault.jpg"
+               alt="Récap Afreecanard 2024 — l'ambiance en vrai"
+               loading="lazy">
+          <div class="recap-video__overlay" aria-hidden="true"></div>
+          <button class="recap-video__play" aria-label="Lancer le récap Afreecanard 2024">
+            <span class="recap-video__play-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -696,6 +937,9 @@
     </footer>
 
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

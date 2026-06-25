@@ -408,7 +408,178 @@ section[id] {
   scroll-margin-top: 80px;
 }
 
-/* ── Hero ── */
+/* ── Hero Scroll Pin ── */
+.hero-pin {
+  /* wrapper pour ScrollTrigger */
+}
+
+.hero-pin__stage {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background: #0e1642;
+}
+
+/* Photo (derrière les rideaux) */
+.hero-pin__photo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-pin__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+}
+
+.hero-pin__photo-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Dégradé vertical : fort en haut (sous le sous-titre) et en bas
+       (sous les boutons), fenêtre centrale plus ouverte pour voir la scène */
+    linear-gradient(180deg,
+      rgba(0, 0, 0, 0.84) 0%,
+      rgba(0, 0, 0, 0.46) 28%,
+      rgba(0, 0, 0, 0.22) 48%,
+      rgba(0, 0, 0, 0.42) 72%,
+      rgba(0, 0, 0, 0.82) 100%),
+    /* Vignette latérale légère */
+    linear-gradient(90deg,
+      rgba(0, 0, 0, 0.28) 0%,
+      transparent 20%,
+      transparent 80%,
+      rgba(0, 0, 0, 0.28) 100%);
+}
+
+/* ── Portes — un seul logo coupé en deux ── */
+/*
+  Logo width W = clamp(300px, 70vw, 720px), W/2 = clamp(150px, 35vw, 360px).
+  Porte gauche (left:0, width:50%, overflow:hidden) :
+    logo positionné left = (50vw − W/2) → la porte clippe à 50vw → moitié gauche visible ✓
+  Porte droite (right:0, width:50%, overflow:hidden) :
+    logo positionné left = −W/2 (coords porte) = (50vw − W/2) en viewport → moitié droite visible ✓
+  Ensemble : [50vw−W/2, 50vw+W/2] = 1 logo centré.
+*/
+.hero-pin__door {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 3;
+  overflow: hidden;
+  background-color: #16265f;
+  background-image: radial-gradient(130% 110% at 50% -8%, rgba(74, 110, 230, 0.38) 0%, rgba(20, 32, 90, 0) 54%);
+  will-change: transform;
+}
+
+.hero-pin__door--left  { left: 0; }
+.hero-pin__door--right { right: 0; }
+
+/* Ligne lumineuse à la jointure */
+.hero-pin__door--left::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 209, 30, 0.55) 30%, rgba(255, 209, 30, 0.55) 70%, transparent 100%);
+}
+.hero-pin__door--right::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 209, 30, 0.55) 30%, rgba(255, 209, 30, 0.55) 70%, transparent 100%);
+}
+
+/* Logo commun aux deux portes — la porte (overflow:hidden) masque la moitié non voulue */
+.hero-pin__door-logo {
+  position: absolute;
+  top: 50%;
+  width: clamp(300px, 70vw, 720px);
+  max-width: none; /* override global img{max-width:100%} : le logo doit déborder de la porte */
+  height: auto;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.65));
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Porte gauche : logo positionné pour que son bord gauche = 50vw − W/2 */
+.hero-pin__door--left  .hero-pin__door-logo { left: calc(50vw - clamp(150px, 35vw, 360px)); }
+/* Porte droite : même bord gauche, mais en coords porte = (50vw − W/2) − 50vw = −W/2 */
+.hero-pin__door--right .hero-pin__door-logo { left: calc(-1 * clamp(150px, 35vw, 360px)); }
+
+/* Contenu (révélé en cascade) */
+.hero-pin__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* flex-start : le 1er item commence TOUJOURS au padding-top,
+     jamais au-dessus (justify-center débordait vers le haut quand
+     le contenu dépassait la hauteur disponible)                    */
+  justify-content: flex-start;
+  text-align: center;
+  padding: clamp(120px, 16vh, 150px) 28px clamp(88px, 11vh, 110px);
+}
+
+.hero-pin__content .btn,
+.hero-pin__content a { pointer-events: all; }
+
+/* Chaque item démarre invisible — GSAP révèle */
+.hero-pin__item {
+  opacity: 0;
+}
+
+/* Réduit les mouvements : afficher l'état final directement */
+@media (prefers-reduced-motion: reduce) {
+  .hero-pin__door    { display: none !important; }
+  .hero-pin__item    { opacity: 1 !important; transform: none !important; }
+  .hero__duck-wrap   { opacity: 1 !important; transform: none !important; }
+  .hero-pin__scroll-hint { opacity: 0 !important; }
+}
+
+/* Indicateur de scroll */
+.hero-pin__scroll-hint {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-pin__scroll-hint-line {
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(255, 209, 30, 0.7) 0%, rgba(255, 209, 30, 0) 100%);
+  animation: acScrollPulse 1.9s ease-in-out infinite;
+}
+
+.hero-pin__scroll-hint-text {
+  color: rgba(255, 209, 30, 0.55);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+}
+
+@keyframes acScrollPulse {
+  0%, 100% { transform: scaleY(1);   opacity: 1; }
+  50%       { transform: scaleY(0.4); opacity: 0.4; }
+}
+
+/* ── Hero (legacy CSS — gardé pour compatibilité .hero__* enfants) ── */
 .hero {
   position: relative;
   padding: 88px 24px 120px;
@@ -434,30 +605,33 @@ section[id] {
 .hero__note--3 { left: 64%; bottom: 150px; font-size: 34px; opacity: 0.45; animation-duration: 5.6s; animation-delay: 2.6s; }
 .hero__note--4 { left: 82%; bottom: 180px; font-size: 26px; opacity: 0.4; animation-duration: 6.8s; animation-delay: 0.8s; }
 
-.hero__duck {
+/* Duck wrappers — GSAP entrance targets */
+.hero__duck-wrap {
   position: absolute;
-  opacity: 0.96;
   pointer-events: none;
+}
+
+.hero__duck-wrap--guitar { left: -18px; top: 128px; }
+.hero__duck-wrap--saxo  { right: -10px; top: 96px; }
+.hero__duck-wrap--micro { right: 7%; bottom: -26px; }
+
+.hero__duck {
+  display: block;
+  opacity: 0.96;
   filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.4));
 }
 
 .hero__duck--guitar {
-  left: -18px;
-  top: 128px;
   width: 190px;
   animation: acFloatA 6s ease-in-out infinite;
 }
 
 .hero__duck--saxo {
-  right: -10px;
-  top: 96px;
   width: 170px;
   animation: acFloatB 7s ease-in-out infinite;
 }
 
 .hero__duck--micro {
-  right: 7%;
-  bottom: -26px;
   width: 140px;
   opacity: 0.94;
   animation: acFloatC 5.5s ease-in-out infinite;
@@ -468,7 +642,6 @@ section[id] {
   position: relative;
   max-width: 920px;
   margin: 0 auto;
-  animation: acRise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 .hero__tagline {
@@ -478,7 +651,7 @@ section[id] {
 }
 
 .hero__logo {
-  width: min(620px, 86vw);
+  width: min(360px, 54vw);
   margin: 4px auto 10px;
   display: block;
   filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.45));
@@ -1601,6 +1774,822 @@ section[id] {
   box-shadow: 0 22px 44px rgba(0, 0, 0, 0.55);
 }
 
+/* ══════════════════════════════════════════════════════════
+   PROGRAMME — section onglets jours
+   ══════════════════════════════════════════════════════════ */
+
+.prog-section {
+  position: relative;
+  background: #0c1840;
+  background-image:
+    radial-gradient(ellipse 65% 50% at 8%  40%, rgba(74, 110, 230, 0.22) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 45% at 92% 65%, rgba(255,150,  20, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 50% 92%, rgba(20,  40, 120, 0.45) 0%, transparent 60%);
+  padding: clamp(88px, 10vw, 120px) 0 clamp(72px, 9vw, 112px);
+  overflow: hidden;
+}
+
+/* Guirlande de fanions en haut de la section */
+.prog-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='44'%3E%3Cline x1='0' y1='6' x2='240' y2='6' stroke='rgba(255,255,255,0.22)' stroke-width='1.5'/%3E%3Ccircle cx='0' cy='6' r='3' fill='rgba(255,255,255,0.28)'/%3E%3Ccircle cx='80' cy='6' r='3' fill='rgba(255,255,255,0.28)'/%3E%3Ccircle cx='160' cy='6' r='3' fill='rgba(255,255,255,0.28)'/%3E%3Ccircle cx='240' cy='6' r='3' fill='rgba(255,255,255,0.28)'/%3E%3Cpolygon points='6,6 74,6 40,44' fill='%23ffd11e' opacity='0.68'/%3E%3Cpolygon points='86,6 154,6 120,44' fill='%23fff' opacity='0.32'/%3E%3Cpolygon points='166,6 234,6 200,44' fill='%23ff8c1a' opacity='0.62'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 240px 44px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Crénelage de château en bas de section */
+.prog-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='52'%3E%3Cpath d='M0 52L0 26 14 26 14 6 28 6 28 26 42 26 42 6 56 6 56 26 70 26 70 6 84 6 84 26 98 26 98 6 112 6 112 26 120 26 120 52Z' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 120px 52px;
+  background-position: center bottom;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.prog-section__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 48px);
+}
+
+/* ── Décors de fond flottants ── */
+.prog-deco-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.prog-note {
+  position: absolute;
+  color: rgba(255, 209, 30, 0.13);
+  user-select: none;
+  line-height: 1;
+  animation: prog-note-float 9s ease-in-out infinite;
+}
+.prog-note--1 { top: 18%; left: 4%;  font-size: 22px; animation-delay:  0s;   animation-duration:  9s; }
+.prog-note--2 { top: 42%; right: 5%; font-size: 16px; animation-delay: -3s;   animation-duration: 12s; }
+.prog-note--3 { top: 68%; left: 2%;  font-size: 14px; animation-delay: -5s;   animation-duration: 14s; }
+.prog-note--4 { top: 22%; right: 9%; font-size: 28px; animation-delay: -7s;   animation-duration:  8s; }
+.prog-note--5 { top: 78%; right: 3%; font-size: 18px; animation-delay: -1.5s; animation-duration: 11s; }
+
+@keyframes prog-note-float {
+  0%, 100% { transform: translateY(0px)    rotate(-6deg); opacity: 0.55; }
+  35%       { transform: translateY(-22px)  rotate( 6deg); opacity: 0.95; }
+  65%       { transform: translateY(-11px)  rotate(-3deg); opacity: 0.70; }
+}
+
+/* ── En-tête ── */
+.prog-section__hd {
+  text-align: center;
+  margin-bottom: clamp(40px, 5.5vw, 64px);
+}
+
+.prog-section__eyebrow {
+  display: block;
+  font-family: 'SuperBoom', sans-serif;
+  font-size: clamp(13px, 1.8vw, 17px);
+  color: #ffd11e;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.prog-section__title {
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(52px, 10vw, 100px);
+  line-height: 0.88;
+  color: #fff;
+  margin: 0 0 14px;
+  letter-spacing: 0.02em;
+}
+
+.prog-section__sub {
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(13px, 1.6vw, 16px);
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+/* Liseré décoratif sous le sous-titre */
+.prog-section__sub::after {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(255, 209, 30, 0.55), transparent);
+  margin: 16px auto 0;
+  border-radius: 1px;
+}
+
+/* ── Onglets ── */
+.prog-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 36px;
+  padding-top: 44px; /* espace pour le canard au-dessus */
+}
+
+.prog-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 20px 10px 16px;
+  border: 1.5px solid rgba(255, 209, 30, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-family: 'Archivo', sans-serif;
+  text-align: center;
+  transition:
+    background   0.25s ease,
+    border-color 0.25s ease,
+    color        0.25s ease,
+    transform    0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow   0.25s ease;
+  will-change: transform;
+  position: relative;
+}
+
+.prog-tab:focus-visible {
+  outline: 2px solid #ffd11e;
+  outline-offset: 3px;
+}
+
+.prog-tab:hover:not(.prog-tab--active) {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 209, 30, 0.45);
+  color: rgba(255, 255, 255, 0.88);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 209, 30, 0.1);
+}
+
+.prog-tab--active {
+  background: linear-gradient(160deg, #ffe14a 0%, #ffd11e 55%, #ffba00 100%);
+  border-color: #ffd11e;
+  color: #0d1b4a;
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 52px rgba(255, 209, 30, 0.44),
+    0 4px 18px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 225, 74, 0.5) inset;
+}
+
+/* Canard mascotte au-dessus du jour actif */
+.prog-tab__duck {
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  transform: translateX(-50%) scale(0) translateY(10px);
+  font-size: 24px;
+  opacity: 0;
+  transition:
+    opacity   0.28s ease,
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.6));
+  z-index: 3;
+  line-height: 1;
+}
+
+.prog-tab--active .prog-tab__duck {
+  opacity: 1;
+  transform: translateX(-50%) scale(1) translateY(0);
+  animation: prog-duck-bob 2.8s ease-in-out infinite 0.45s;
+}
+
+/* Petite flèche sous le canard */
+.prog-tab--active .prog-tab__duck::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top: 5px solid rgba(255, 209, 30, 0.65);
+}
+
+@keyframes prog-duck-bob {
+  0%,  100% { transform: translateX(-50%) translateY(0px)   rotate(-4deg) scale(1);    }
+  40%        { transform: translateX(-50%) translateY(-6px)  rotate( 4deg) scale(1.06); }
+  70%        { transform: translateX(-50%) translateY(-3px)  rotate(-2deg) scale(1.02); }
+}
+
+.prog-tab__day {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  opacity: 0.65;
+  line-height: 1;
+}
+
+.prog-tab--active .prog-tab__day {
+  opacity: 0.6;
+}
+
+.prog-tab__num {
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(36px, 6.5vw, 68px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  margin: 2px 0;
+}
+
+.prog-tab__mth {
+  font-size: 10px;
+  font-style: italic;
+  opacity: 0.55;
+  margin-bottom: 4px;
+}
+
+.prog-tab__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.14);
+  letter-spacing: 0.02em;
+  margin-top: 6px;
+}
+
+.prog-tab--active .prog-tab__badge {
+  background: rgba(13, 27, 74, 0.14);
+}
+
+/* ── Panneaux ── */
+.prog-panels {
+  position: relative;
+}
+
+.prog-panel[hidden] {
+  display: none;
+}
+
+/* Grille de blocs */
+.prog-blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.prog-blocks--solo {
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Bloc individuel */
+.prog-block {
+  border-radius: 0 8px 8px 0;
+  padding: 28px 26px 24px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Journée : éditorial, barre ambrée large, chaleur */
+.prog-block--jour {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 165, 40, 0.13) 0%,
+    rgba(255, 209, 30, 0.03) 100%
+  );
+  border-left: 6px solid #ffd11e;
+}
+
+/* Soirée : nuit profonde, barre bleue, halo lunaire */
+.prog-block--soir {
+  background:
+    radial-gradient(ellipse 70% 55% at 85% 18%, rgba(80, 100, 240, 0.22) 0%, transparent 65%),
+    rgba(10, 16, 68, 0.65);
+  border-left: 6px solid rgba(80, 110, 230, 0.45);
+}
+
+/* Solo soirée (Vendredi) : cinématique */
+.prog-blocks--solo .prog-block--soir {
+  padding: 32px 32px 28px;
+  background:
+    radial-gradient(ellipse 60% 70% at 22% 22%, rgba(80, 100, 240, 0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 35% at 80% 78%, rgba(120, 50, 220, 0.13) 0%, transparent 55%),
+    rgba(8, 12, 56, 0.88);
+}
+
+/* Grille asymétrique quand la journée a des moments forts */
+.prog-blocks--jour-heavy {
+  grid-template-columns: 3fr 2fr;
+}
+
+/* Étoiles discrètes dans les blocs soirée */
+.prog-block--soir::after {
+  content: '✦  ✦  ✦';
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 6px;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* En-tête de bloc */
+.prog-block__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Icône dans un cercle de couleur */
+.prog-block__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.prog-block__icon svg {
+  display: block;
+  overflow: visible;
+}
+
+.prog-block--jour .prog-block__icon {
+  background: rgba(255, 165, 40, 0.18);
+  border: 1.5px solid rgba(255, 165, 40, 0.38);
+}
+
+.prog-block--soir .prog-block__icon {
+  background: rgba(80, 110, 230, 0.2);
+  border: 1.5px solid rgba(90, 130, 240, 0.3);
+}
+
+.prog-block__label {
+  font-family: 'Archivo', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.85);
+  flex: 1;
+}
+
+.prog-block--jour .prog-block__label {
+  color: rgba(255, 190, 60, 0.9);
+}
+
+.prog-block__hours {
+  font-family: 'Archivo', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.42);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Description */
+.prog-block__desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.68);
+  margin: 0 0 14px;
+  line-height: 1.55;
+}
+
+/* Moment fort standard */
+.prog-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 13px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 8px;
+}
+
+.prog-highlight__icon {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.prog-highlight__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.prog-highlight__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.prog-highlight__sub {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ★ Moment fort — traitement éditorial grand format */
+.prog-highlight--star {
+  background: transparent;
+  border: none;
+  border-left: 3px solid #ffd11e;
+  border-radius: 0;
+  padding: 18px 0 18px 20px;
+  cursor: pointer;
+  transition: padding-left 0.25s ease, background 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.prog-highlight--star:hover {
+  padding-left: 28px;
+  background: rgba(255, 209, 30, 0.04);
+}
+
+/* Lueur ambrée sur le bord gauche au survol */
+.prog-highlight--star::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #ffd11e;
+  box-shadow: 0 0 14px rgba(255, 209, 30, 0.0);
+  transition: box-shadow 0.3s ease;
+}
+
+.prog-highlight--star:hover::before {
+  box-shadow: 0 0 18px rgba(255, 209, 30, 0.6);
+}
+
+.prog-highlight--star .prog-highlight__icon {
+  font-size: 30px;
+  align-self: center;
+}
+
+.prog-highlight--star .prog-highlight__title {
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(22px, 3.5vw, 32px);
+  color: #ffd11e;
+  letter-spacing: 0.03em;
+  line-height: 1.05;
+}
+
+.prog-highlight--star .prog-highlight__sub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 3px;
+  font-style: normal;
+}
+
+.prog-highlight--star .prog-highlight__copy::before {
+  content: '★ moment fort';
+  display: block;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 209, 30, 0.48);
+  margin-bottom: 6px;
+  font-family: 'Archivo', sans-serif;
+}
+
+/* Photo peek — image flottante au curseur */
+.prog-peek {
+  position: fixed;
+  width: 240px;
+  height: 300px;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.72), 0 0 0 1.5px rgba(255, 255, 255, 0.12);
+  will-change: transform;
+}
+
+.prog-peek__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Section récap vidéo ── */
+.recap-section {
+  background: #080e28;
+  padding: clamp(72px, 9vw, 112px) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.recap-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 60%, rgba(255, 100, 30, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 15% 30%, rgba(74, 110, 230, 0.12) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.recap-section__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 48px);
+}
+
+.recap-section__hd {
+  text-align: center;
+  margin-bottom: clamp(36px, 5vw, 52px);
+}
+
+.recap-section__eyebrow {
+  display: block;
+  font-family: 'SuperBoom', sans-serif;
+  font-size: clamp(12px, 1.6vw, 15px);
+  color: rgba(255, 180, 60, 0.85);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.recap-section__title {
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(42px, 8vw, 80px);
+  line-height: 0.9;
+  color: #fff;
+  margin: 0 0 10px;
+  letter-spacing: 0.02em;
+}
+
+.recap-section__sub {
+  font-size: clamp(13px, 1.6vw, 15px);
+  color: rgba(255, 255, 255, 0.45);
+  font-family: 'Archivo', sans-serif;
+}
+
+.recap-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #000;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.recap-video__thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.recap-video:hover .recap-video__thumb {
+  transform: scale(1.03);
+  opacity: 0.8;
+}
+
+.recap-video__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(8, 14, 40, 0.55) 0%,
+    rgba(8, 14, 40, 0.1) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.recap-video__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.recap-video__play-icon {
+  width: clamp(64px, 8vw, 96px);
+  height: clamp(64px, 8vw, 96px);
+  border-radius: 50%;
+  background: rgba(255, 209, 30, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 0 0 rgba(255, 209, 30, 0.5);
+}
+
+.recap-video:hover .recap-video__play-icon {
+  transform: scale(1.12);
+  background: #ffd11e;
+  box-shadow: 0 0 0 16px rgba(255, 209, 30, 0.18), 0 0 0 32px rgba(255, 209, 30, 0.08);
+}
+
+.recap-video__play-icon svg {
+  width: clamp(24px, 3vw, 36px);
+  height: clamp(24px, 3vw, 36px);
+  fill: #0d1b4a;
+  margin-left: 4px; /* optique play icon centering */
+}
+
+.recap-video__iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .recap-video {
+    border-radius: 8px;
+  }
+}
+
+/* Placeholder À VENIR — shimmer + pulse */
+.prog-coming {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1.5px dashed rgba(255, 209, 30, 0.32);
+  background: rgba(255, 209, 30, 0.04);
+  margin-top: 4px;
+  position: relative;
+  overflow: hidden;
+  animation: prog-coming-pulse 2.5s ease-in-out infinite;
+}
+
+/* Scan shimmer */
+.prog-coming::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 20%,
+    rgba(255, 209, 30, 0.07) 50%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: prog-shimmer 2.8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes prog-shimmer {
+  0%   { background-position:  200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes prog-coming-pulse {
+  0%, 100% { border-color: rgba(255, 209, 30, 0.28); }
+  50%       { border-color: rgba(255, 209, 30, 0.65); box-shadow: 0 0 14px rgba(255, 209, 30, 0.09) inset; }
+}
+
+.prog-coming__duck {
+  font-size: 26px;
+  line-height: 1;
+  flex-shrink: 0;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  animation: prog-waddle 2.8s ease-in-out infinite;
+}
+
+@keyframes prog-waddle {
+  0%,  100% { transform: rotate(-7deg) translateY(0px); }
+  25%        { transform: rotate( 7deg) translateY(-3px); }
+  50%        { transform: rotate(-4deg) translateY(0px); }
+  75%        { transform: rotate( 5deg) translateY(-2px); }
+}
+
+.prog-coming__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+.prog-coming__title {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffd11e;
+}
+
+.prog-coming__sub {
+  display: block;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+/* Prix — style ticket de caisse festif */
+.prog-prix {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 18px 24px 18px 28px;
+  border-radius: 14px;
+  background: rgba(255, 209, 30, 0.07);
+  border: 1px solid rgba(255, 209, 30, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rive gauche colorée façon ticket */
+.prog-prix::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(to bottom, #ffe14a, #ff9a1a, #ffd11e);
+  border-radius: 14px 0 0 14px;
+}
+
+.prog-prix__eur {
+  font-family: 'Heavitas', sans-serif;
+  font-size: 34px;
+  color: #ffd11e;
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 60px;
+}
+
+/* Tirets de séparation façon ticket perforé */
+.prog-prix__sep {
+  flex-shrink: 0;
+  width: 1px;
+  align-self: stretch;
+  margin: 0 16px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 209, 30, 0.3) 0,
+    rgba(255, 209, 30, 0.3) 5px,
+    transparent 5px,
+    transparent 10px
+  );
+}
+
+.prog-prix__txt {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.4;
+}
+
 /* ── Responsive ── */
 @media (max-width: 960px) {
   .intro__grid,
@@ -1652,6 +2641,96 @@ section[id] {
   .infos__grid {
     grid-template-columns: 1fr;
   }
+
+  /* ── Logo des portes mobile ──
+     W = clamp(340px, 90vw, 480px)
+     Split au centre VISUEL de l'artwork (1329/2481 = 53.57% du PNG, pas 50%)
+     → offset = W × 0.5357 = clamp(182px, 48vw, 257px)
+     Cela aligne la ligne de fente (50vw) exactement sur le milieu visuel du logo. */
+  .hero-pin__door-logo {
+    width: clamp(340px, 90vw, 480px);
+    top: 50%;
+  }
+  .hero-pin__door--left  .hero-pin__door-logo { left: calc(50vw - clamp(182px, 48vw, 257px)); }
+  .hero-pin__door--right .hero-pin__door-logo { left: calc(-1 * clamp(182px, 48vw, 257px)); }
+
+  /* ── Hero mobile : réduire le contenu pour tenir dans 100svh ── */
+  .hero-pin__content {
+    padding: clamp(108px, 14vh, 128px) 20px clamp(72px, 9vh, 88px);
+  }
+  .hero__tagline {
+    font-size: 26px;
+  }
+  .hero__logo {
+    width: min(480px, 72vw);
+    margin: 2px auto 6px;
+  }
+  .hero__dates {
+    margin: 10px 0 2px;
+  }
+  .hero__location {
+    margin-top: 0;
+  }
+  .hero__countdown {
+    margin: 14px 0 4px;
+    gap: 8px;
+  }
+  .countdown__box {
+    padding: 8px 4px;
+    min-width: 68px;
+  }
+  .countdown__value {
+    font-size: 28px;
+  }
+  .hero__actions {
+    margin-top: 14px;
+    gap: 10px;
+  }
+
+  /* Programme — mobile */
+  .prog-tabs {
+    gap: 8px;
+    padding-top: 38px;
+  }
+
+  .prog-tab {
+    padding: 14px 6px 12px;
+    border-radius: 14px;
+    gap: 2px;
+  }
+
+  .prog-tab__day  { font-size: 9px; }
+  .prog-tab__mth  { font-size: 9px; }
+
+  .prog-tab__badge {
+    font-size: 11px;
+    padding: 3px 7px;
+    margin-top: 4px;
+  }
+
+  .prog-blocks {
+    grid-template-columns: 1fr;
+  }
+
+  .prog-block {
+    padding: 16px 16px 14px;
+  }
+
+  .prog-prix {
+    padding: 14px 20px 14px 22px;
+  }
+
+  .prog-prix__eur {
+    font-size: 28px;
+    min-width: 48px;
+  }
+
+  .prog-prix__sep {
+    margin: 0 12px;
+  }
+
+  /* Masquer les notes flottantes sur mobile (perf) */
+  .prog-deco-bg { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

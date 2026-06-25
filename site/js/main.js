@@ -129,6 +129,144 @@
     }
   }
 
+  function initSmoothScroll() {
+    if (!window.Lenis || !window.gsap || !window.ScrollTrigger) return;
+
+    var lenis = new Lenis({
+      duration: 1.2,
+      easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smoothWheel: true,
+      smoothTouch: false,
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  function initHeroScroll() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    var pin   = document.querySelector('.hero-pin');
+    var doorL = document.querySelector('.hero-pin__door--left');
+    var doorR = document.querySelector('.hero-pin__door--right');
+    var items = document.querySelectorAll('.hero-pin__item');
+    var duckG = document.querySelector('.hero__duck-wrap--guitar');
+    var duckS = document.querySelector('.hero__duck-wrap--saxo');
+    var duckM = document.querySelector('.hero__duck-wrap--micro');
+    var hint  = document.querySelector('.hero-pin__scroll-hint');
+
+    if (!pin || !doorL) return;
+
+    /* Reduced motion → état final direct, pas d'animation */
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.set(doorL, { xPercent: -105 });
+      gsap.set(doorR, { xPercent:  105 });
+      gsap.set(items, { opacity: 1, y: 0 });
+      if (duckG) gsap.set(duckG, { opacity: 1 });
+      if (duckS) gsap.set(duckS, { opacity: 1 });
+      if (duckM) gsap.set(duckM, { opacity: 1 });
+      return;
+    }
+
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+    /* État initial des canards et de l'indicateur */
+    if (duckG) gsap.set(duckG, { opacity: 0, x: -55 });
+    if (duckS) gsap.set(duckS, { opacity: 0, x:  55 });
+    if (duckM) gsap.set(duckM, { opacity: 0 });
+
+    /* ── Timeline scrubbée ── */
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: pin,
+        start: 'top top',
+        end: isMobile ? '+=110%' : '+=200%',
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+      },
+    });
+
+    /* Phase 1 — Portes s'écartent (0 → 52 %) — logo-enfant suit la porte */
+    tl.to(doorL, { xPercent: -100, ease: 'power2.inOut', duration: 0.52 }, 0);
+    tl.to(doorR, { xPercent:  100, ease: 'power2.inOut', duration: 0.52 }, 0);
+
+    /* Indicateur scroll : apparaît au tout début, disparaît quand les rideaux s'ouvrent */
+    if (hint) {
+      tl.fromTo(hint, { opacity: 0 }, { opacity: 1, duration: 0.04 }, 0.01);
+      tl.to(hint,     { opacity: 0, duration: 0.05 }, 0.36);
+    }
+
+    /* Phase 2 — Contenu en cascade (42 → 98 %) */
+    var staggerStart = 0.42;
+    Array.prototype.forEach.call(items, function (el, i) {
+      tl.fromTo(el,
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, ease: 'power2.out', duration: 0.13 },
+        staggerStart + i * 0.09
+      );
+    });
+
+    /* Canards (desktop uniquement — mobile : pas de déco lourde) */
+    if (!isMobile) {
+      if (duckG) tl.fromTo(duckG, { opacity: 0, x: -55 }, { opacity: 1, x: 0, ease: 'power3.out', duration: 0.12 }, 0.48);
+      if (duckS) tl.fromTo(duckS, { opacity: 0, x:  55 }, { opacity: 1, x: 0, ease: 'power3.out', duration: 0.12 }, 0.50);
+      if (duckM) tl.fromTo(duckM, { opacity: 0 },         { opacity: 1, ease: 'power2.out', duration: 0.10 },        0.54);
+    }
+
+    /* Pause finale (scroll maintenu en bas avant libération) */
+    tl.to({}, {}, 1);
+  }
+
+  function initHeroEntrance() {
+    if (!window.gsap) return;
+    if (document.querySelector('.hero-pin')) return; /* scroll-pin prend le relais */
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var duckGuitar = document.querySelector('.hero__duck-wrap--guitar');
+    var duckSaxo   = document.querySelector('.hero__duck-wrap--saxo');
+    var duckMicro  = document.querySelector('.hero__duck-wrap--micro');
+    var tagline    = document.querySelector('.hero__tagline');
+    var logo       = document.querySelector('.hero__logo');
+    var dates      = document.querySelector('.hero__dates');
+    var location   = document.querySelector('.hero__location');
+    var countdown  = document.querySelectorAll('.countdown__box');
+    var ctaBtns    = document.querySelectorAll('.hero__actions .btn');
+
+    if (!duckGuitar || !logo) return;
+
+    // Set initial invisible states
+    gsap.set(duckGuitar, { x: -240, opacity: 0 });
+    gsap.set(duckSaxo,   { x:  240, opacity: 0 });
+    gsap.set(duckMicro,  { x:   90, y: 70, opacity: 0 });
+    gsap.set(tagline,    { opacity: 0, y: 22 });
+    gsap.set(logo,       { opacity: 0, scale: 0.85 });
+    gsap.set(dates,      { opacity: 0, y: 18 });
+    gsap.set(location,   { opacity: 0 });
+    gsap.set(countdown,  { opacity: 0, y: 20, scale: 0.88 });
+    gsap.set(ctaBtns,    { opacity: 0, y: 18 });
+
+    var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    tl
+      // Canards volent depuis les côtés
+      .to(duckGuitar, { x: 0, opacity: 1, duration: 1.05, ease: 'back.out(1.3)' }, 0)
+      .to(duckSaxo,   { x: 0, opacity: 1, duration: 1.05, ease: 'back.out(1.3)' }, 0.08)
+      .to(duckMicro,  { x: 0, y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, 0.16)
+      // Textes hero
+      .to(tagline,  { opacity: 1, y: 0, duration: 0.65 }, 0.22)
+      .to(logo,     { opacity: 1, scale: 1, duration: 1.05, ease: 'back.out(1.5)' }, 0.36)
+      .to(dates,    { opacity: 1, y: 0, duration: 0.6 }, 0.62)
+      .to(location, { opacity: 1, duration: 0.5 }, 0.75)
+      // Countdown avec spring staggeré
+      .to(countdown, { opacity: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.1, ease: 'back.out(2)' }, 0.88)
+      // CTA buttons
+      .to(ctaBtns, { opacity: 1, y: 0, duration: 0.5, stagger: 0.13, ease: 'back.out(1.7)' }, 1.28);
+  }
+
   function initScrollProgress() {
     var bar = document.querySelector('.scroll-progress');
     if (!bar) return;
@@ -174,6 +312,189 @@
     window.addEventListener('scroll', update, { passive: true });
   }
 
+  function initProgramme() {
+    var tabs   = Array.prototype.slice.call(document.querySelectorAll('.prog-tab'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.prog-panel'));
+    if (!tabs.length || !panels.length) return;
+
+    var current = 0;
+    var busy = false;
+    var noAnim = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function activate(newIdx) {
+      if (newIdx === current || busy) return;
+      busy = true;
+
+      var dir     = newIdx > current ? -1 : 1;
+      var leaving = panels[current];
+      var entering = panels[newIdx];
+
+      tabs[current].classList.remove('prog-tab--active');
+      tabs[current].setAttribute('aria-selected', 'false');
+      tabs[newIdx].classList.add('prog-tab--active');
+      tabs[newIdx].setAttribute('aria-selected', 'true');
+      current = newIdx;
+
+      if (!window.gsap || noAnim) {
+        leaving.hidden = true;
+        entering.hidden = false;
+        busy = false;
+        return;
+      }
+
+      // Duck bounce sur le nouvel onglet actif
+      var duck = tabs[newIdx].querySelector('.prog-tab__duck');
+      if (duck) {
+        gsap.fromTo(duck,
+          { scale: 0, y: 10 },
+          { scale: 1, y: 0, duration: 0.52, ease: 'back.out(2.2)' }
+        );
+      }
+
+      gsap.to(leaving, {
+        opacity: 0,
+        x: dir * 38,
+        scale: 0.97,
+        duration: 0.22,
+        ease: 'power3.in',
+        onComplete: function () {
+          leaving.hidden = true;
+          gsap.set(leaving, { x: 0, opacity: 1, scale: 1 });
+
+          entering.hidden = false;
+          gsap.fromTo(entering,
+            { opacity: 0, x: -dir * 38, scale: 0.97 },
+            { opacity: 1, x: 0, scale: 1, duration: 0.32, ease: 'power3.out',
+              onComplete: function () { busy = false; } }
+          );
+
+          var items = entering.querySelectorAll('.prog-block, .prog-prix');
+          gsap.fromTo(items,
+            { opacity: 0, y: 24, scale: 0.97 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.38, stagger: 0.07,
+              ease: 'back.out(1.3)', delay: 0.08 }
+          );
+        }
+      });
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        activate(parseInt(tab.getAttribute('data-idx'), 10));
+        tab.focus();
+      });
+
+      tab.addEventListener('keydown', function (e) {
+        var idx = parseInt(tab.getAttribute('data-idx'), 10);
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          var next = (idx + 1) % tabs.length;
+          tabs[next].focus();
+          activate(next);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          var prev = (idx - 1 + tabs.length) % tabs.length;
+          tabs[prev].focus();
+          activate(prev);
+        }
+      });
+    });
+  }
+
+  /* ──────────────────────────────────────────────────────
+     Photo peek — image qui suit le curseur au survol des
+     éléments [data-photo] dans la section programme
+  ────────────────────────────────────────────────────── */
+  function initProgPeek() {
+    var peek    = document.querySelector('.prog-peek');
+    var peekImg = peek ? peek.querySelector('.prog-peek__img') : null;
+    if (!peek || !peekImg) return;
+
+    // Désactiver sur les appareils sans hover (tactile)
+    if (!window.matchMedia('(hover: hover)').matches) return;
+
+    var targets  = document.querySelectorAll('[data-photo]');
+    var cursorX  = 0;
+    var cursorY  = 0;
+    var visible  = false;
+    var preloads = {};
+
+    // Pré-charger toutes les images d'un coup
+    targets.forEach(function (el) {
+      var src = el.getAttribute('data-photo');
+      if (src && !preloads[src]) {
+        var img = new Image();
+        img.src = src;
+        preloads[src] = true;
+      }
+    });
+
+    document.addEventListener('mousemove', function (e) {
+      cursorX = e.clientX;
+      cursorY = e.clientY;
+      if (visible) {
+        gsap.to(peek, {
+          x: cursorX + 28,
+          y: cursorY - 170,
+          duration: 0.18,
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
+      }
+    });
+
+    targets.forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        var src = el.getAttribute('data-photo');
+        if (!src) return;
+        visible = true;
+
+        // Rotation aléatoire légère façon Polaroid
+        var rot = (Math.random() * 8) - 4;
+
+        peekImg.src = src;
+        gsap.set(peek, { x: cursorX + 28, y: cursorY - 170 });
+        gsap.fromTo(peek,
+          { opacity: 0, scale: 0.82, rotation: rot - 6 },
+          { opacity: 1, scale: 1, rotation: rot, duration: 0.38, ease: 'power3.out' }
+        );
+      });
+
+      el.addEventListener('mouseleave', function () {
+        visible = false;
+        gsap.to(peek, {
+          opacity: 0,
+          scale: 0.86,
+          duration: 0.22,
+          ease: 'power2.in'
+        });
+      });
+    });
+  }
+
+  /* ──────────────────────────────────────────────────────
+     Récap vidéo YouTube — embed au clic sur le play
+  ────────────────────────────────────────────────────── */
+  function initRecapVideo() {
+    var container = document.querySelector('.recap-video');
+    if (!container) return;
+    var ytId = container.getAttribute('data-yt');
+    if (!ytId) return;
+
+    container.addEventListener('click', function () {
+      var iframe = document.createElement('iframe');
+      iframe.className    = 'recap-video__iframe';
+      iframe.src          = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1&rel=0&modestbranding=1';
+      iframe.allow        = 'autoplay; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.title        = 'Récap Afreecanard 2024';
+
+      // Remplacer le contenu par l'iframe
+      container.innerHTML = '';
+      container.appendChild(iframe);
+    }, { once: true });
+  }
+
   function initFaq() {
     var items = document.querySelectorAll('.faq__item');
     items.forEach(function (item) {
@@ -195,10 +516,16 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    initSmoothScroll();
+    initHeroScroll();
+    initHeroEntrance();
     initCountdown();
     initGallery();
     initReveal();
     initNav();
+    initProgramme();
+    initProgPeek();
+    initRecapVideo();
     initFaq();
     initScrollProgress();
     initCardTilt();
