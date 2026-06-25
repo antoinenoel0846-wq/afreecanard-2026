@@ -2031,18 +2031,22 @@ section[id] {
 /* Canard mascotte au-dessus du jour actif */
 .prog-tab__duck {
   position: absolute;
-  top: -38px;
+  top: -52px;
   left: 50%;
   transform: translateX(-50%) scale(0) translateY(10px);
-  font-size: 24px;
   opacity: 0;
   transition:
     opacity   0.28s ease,
     transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
   pointer-events: none;
-  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
   z-index: 3;
-  line-height: 1;
+  line-height: 0;
+}
+.prog-tab__duck-img {
+  width: 52px;
+  height: auto;
+  display: block;
 }
 
 .prog-tab--active .prog-tab__duck {
