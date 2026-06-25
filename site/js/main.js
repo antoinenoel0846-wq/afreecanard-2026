@@ -515,6 +515,126 @@
     });
   }
 
+  function initBodegasTilt() {
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.bodega-card'));
+    if (!cards.length || typeof gsap === 'undefined') return;
+
+    // 1. Char split on names (desktop only — skip on touch for performance)
+    if (!reducedMotion) {
+      cards.forEach(function (card) {
+        var nameEl = card.querySelector('.bodega-card__name');
+        if (!nameEl) return;
+        var text = nameEl.textContent;
+        nameEl.textContent = '';
+        text.split('').forEach(function (ch) {
+          var s = document.createElement('span');
+          s.className = 'bod-char';
+          s.style.display = 'inline-block';
+          s.textContent = ch === ' ' ? ' ' : ch;
+          nameEl.appendChild(s);
+        });
+        gsap.set(nameEl.querySelectorAll('.bod-char'), { opacity: 0, y: 16 });
+      });
+    }
+
+    // 2. Set initial hidden state for scroll entrance
+    if (!reducedMotion) {
+      cards.forEach(function (card) {
+        gsap.set(card, { opacity: 0, y: 46 });
+        var blason = card.querySelector('.bodega-card__blason');
+        if (blason) gsap.set(blason, { opacity: 0, scale: 0, rotation: -18 });
+        gsap.set(card.querySelectorAll('.bodega-tag'), { opacity: 0, scale: 0.72 });
+      });
+    }
+
+    // 3. Scroll entrance via ScrollTrigger stagger
+    cards.forEach(function (card, i) {
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top 86%',
+        once: true,
+        onEnter: function () {
+          var d = i * 0.13;
+          gsap.to(card, { opacity: 1, y: 0, duration: 0.72, ease: 'power3.out', delay: d });
+
+          if (!reducedMotion) {
+            // Chars cascade
+            var chars = card.querySelectorAll('.bod-char');
+            if (chars.length) {
+              gsap.to(chars, { opacity: 1, y: 0, duration: 0.42, stagger: 0.027, ease: 'power3.out', delay: d + 0.22 });
+            }
+            // Blason pop
+            var blason = card.querySelector('.bodega-card__blason');
+            if (blason) {
+              gsap.to(blason, { opacity: 1, scale: 1, rotation: 0, duration: 0.60, ease: 'back.out(2.4)', delay: d + 0.3 });
+            }
+            // Tags pop-in
+            var tags = card.querySelectorAll('.bodega-tag');
+            if (tags.length) {
+              gsap.to(tags, { opacity: 1, scale: 1, duration: 0.32, stagger: 0.06, ease: 'back.out(1.8)', delay: d + 0.48 });
+            }
+          }
+        }
+      });
+    });
+
+    if (reducedMotion || !canHover) return;
+
+    // 4. 3D Tilt + glow (desktop hover only)
+    var GLOW = {
+      foot:   { on: '0 28px 80px rgba(47,107,44,0.48), 0 0 0 3px rgba(47,107,44,0.55)',
+                off: '0 14px 0 rgba(47,107,44,0.22)' },
+      rugby:  { on: '0 28px 80px rgba(196,48,43,0.48), 0 0 0 3px rgba(196,48,43,0.55)',
+                off: '0 14px 0 rgba(196,48,43,0.22)' },
+      ancien: { on: '0 28px 80px rgba(217,154,28,0.48), 0 0 0 3px rgba(217,154,28,0.55)',
+                off: '0 14px 0 rgba(217,154,28,0.22)' }
+    };
+
+    cards.forEach(function (card) {
+      var type = card.classList.contains('bodega-card--foot') ? 'foot'
+               : card.classList.contains('bodega-card--rugby') ? 'rugby' : 'ancien';
+      var glow = GLOW[type];
+      var blason = card.querySelector('.bodega-card__blason');
+
+      card.addEventListener('mouseenter', function () {
+        card.style.willChange = 'transform';
+        gsap.to(card, { y: -8, boxShadow: glow.on, duration: 0.3, ease: 'power2.out' });
+      });
+
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var dx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+        var dy = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+        gsap.to(card, {
+          rotationX: -dy * 9, rotationY: dx * 9, transformPerspective: 900,
+          duration: 0.38, ease: 'power2.out', overwrite: 'auto'
+        });
+        if (blason) {
+          gsap.to(blason, { x: dx * 14, y: dy * 8, duration: 0.5, ease: 'power2.out', overwrite: 'auto' });
+        }
+      });
+
+      card.addEventListener('mouseleave', function () {
+        gsap.to(card, {
+          rotationX: 0, rotationY: 0, y: 0, boxShadow: glow.off,
+          duration: 0.65, ease: 'elastic.out(1, 0.75)', overwrite: 'auto',
+          onComplete: function () { card.style.willChange = ''; }
+        });
+        if (blason) {
+          gsap.to(blason, { x: 0, y: 0, duration: 0.65, ease: 'elastic.out(1, 0.75)', overwrite: 'auto' });
+        }
+      });
+
+      // Tag micro-hover
+      card.querySelectorAll('.bodega-tag').forEach(function (tag) {
+        tag.addEventListener('mouseenter', function () { gsap.to(tag, { y: -3, duration: 0.17, ease: 'power2.out' }); });
+        tag.addEventListener('mouseleave', function () { gsap.to(tag, { y: 0, duration: 0.2, ease: 'power2.out' }); });
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initSmoothScroll();
     initHeroScroll();
@@ -530,6 +650,7 @@
     initScrollProgress();
     initCardTilt();
     initParallax();
+    initBodegasTilt();
 
     document.querySelectorAll('a[data-ig]').forEach(function (a) {
       a.href = IG_URL;

@@ -1168,11 +1168,7 @@ section[id] {
   background: #fff;
   border-radius: 22px;
   overflow: hidden;
-  transition: transform 0.25s ease;
-}
-
-.bodega-card:hover {
-  transform: translateY(-7px);
+  transform-origin: center center;
 }
 
 .bodega-card--foot {
@@ -1291,6 +1287,40 @@ section[id] {
 .bodega-tag--foot { color: #2f6b2c; background: #e7f1e3; }
 .bodega-tag--rugby { color: #c4302b; background: #fbe6e4; }
 .bodega-tag--ancien { color: #b6800f; background: #fbeecb; }
+
+/* Blasons (mascotte overlays) */
+.bodega-card__blason {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.6));
+}
+.bodega-card__blason--duck {
+  position: relative;
+  bottom: auto;
+  right: auto;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,0.45));
+}
+
+/* prefers-reduced-motion : CSS hover simple en fallback */
+@media (prefers-reduced-motion: reduce) {
+  .bodega-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .bodega-card--foot:hover  { transform: translateY(-5px); }
+  .bodega-card--rugby:hover { transform: translateY(-5px); }
+  .bodega-card--ancien:hover { transform: translateY(-5px); }
+}
+
+/* Touch : retour tactile au tap */
+@media (hover: none) {
+  .bodega-card:active {
+    transform: scale(0.97);
+    transition: transform 0.12s ease;
+  }
+}
 
 /* ── Galerie ── */
 .galerie__header {
