@@ -2403,47 +2403,20 @@ section[id] {
   display: block;
 }
 
-/* ── Photo peek mobile — bottom sheet au tap ── */
-.mob-peek {
-  display: none; /* caché sur desktop */
+/* ── Photo inline mobile (injectée par JS dans .prog-lineup) ── */
+.prog-lineup__mob-photo {
+  display: none;
 }
 
-@media (hover: none), (pointer: coarse) {
-  .mob-peek {
+@media (max-width: 768px) {
+  .prog-lineup__mob-photo {
     display: block;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 52vw;
-    max-height: 300px;
-    z-index: 8000;
-    border-radius: 14px 14px 0 0;
-    overflow: hidden;
-    box-shadow: 0 -6px 40px rgba(0, 0, 0, 0.6);
-    transform: translateY(105%);
-    pointer-events: none;
-    will-change: transform;
-  }
-  .mob-peek__img {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
-    display: block;
-  }
-  .mob-peek__bar {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 36px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.45);
-    border-radius: 99px;
-  }
-  /* Indicateur visuel sur les éléments tappables */
-  [data-photo] {
-    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 12px;
+    opacity: 0.88;
   }
 }
 

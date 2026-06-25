@@ -423,44 +423,19 @@
       }
     });
 
-    /* ── MOBILE : tap → bottom sheet ── */
+    /* ── MOBILE : photo inline sous l'artiste ── */
     if (!window.matchMedia('(hover: hover)').matches) {
-      var mobPeek = document.querySelector('.mob-peek');
-      var mobImg  = mobPeek ? mobPeek.querySelector('.mob-peek__img') : null;
-      if (!mobPeek || !mobImg) return;
-
-      var dismissTimer = null;
-      var peekOpen = false;
-
-      function openMobPeek(src) {
-        clearTimeout(dismissTimer);
-        mobImg.src = src;
-        mobPeek.style.pointerEvents = 'auto';
-        peekOpen = true;
-        gsap.to(mobPeek, { y: 0, duration: 0.38, ease: 'power3.out' });
-        dismissTimer = setTimeout(closeMobPeek, 2800);
-      }
-
-      function closeMobPeek() {
-        clearTimeout(dismissTimer);
-        peekOpen = false;
-        mobPeek.style.pointerEvents = 'none';
-        gsap.to(mobPeek, { y: '105%', duration: 0.28, ease: 'power2.in' });
-      }
-
       targets.forEach(function (el) {
-        el.addEventListener('click', function (e) {
-          var src = el.getAttribute('data-photo');
-          if (!src) return;
-          if (peekOpen && mobImg.src.endsWith(src.split('/').pop())) {
-            closeMobPeek();
-          } else {
-            openMobPeek(src);
-          }
-        });
+        if (!el.classList.contains('prog-lineup')) return;
+        var src = el.getAttribute('data-photo');
+        if (!src) return;
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = '';
+        img.className = 'prog-lineup__mob-photo';
+        img.loading = 'lazy';
+        el.appendChild(img);
       });
-
-      mobPeek.addEventListener('click', closeMobPeek);
       return;
     }
 
