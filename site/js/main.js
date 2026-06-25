@@ -436,7 +436,11 @@
         img.alt = '';
         img.className = isLineup ? 'prog-lineup__mob-photo' : 'prog-highlight__mob-photo';
         img.loading = 'lazy';
-        el.appendChild(img);
+        if (isLineup) {
+          el.appendChild(img);
+        } else {
+          el.after(img); /* après le bloc highlight, pas dedans (flex-row) */
+        }
       });
       return;
     }
