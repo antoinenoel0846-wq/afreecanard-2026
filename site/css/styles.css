@@ -2521,108 +2521,132 @@ section[id] {
 }
 
 /* Placeholder À VENIR — shimmer + pulse */
-/* ── Lineup réel (remplace prog-coming quand l'artiste est connu) ── */
+/* ── Lineup réel (tête d'affiche concert) ── */
 .prog-lineup {
-  padding: 14px 0 14px 18px;
-  border-left: 3px solid rgba(255, 255, 255, 0.28);
-  margin-top: 10px;
+  color: #fff; /* force l'héritage blanc sur tous les enfants */
+  padding: 16px 0 16px 20px;
+  border-left: 3px solid rgba(255, 255, 255, 0.22);
+  margin-top: 12px;
+  position: relative;
 }
 .prog-lineup__label {
   display: block;
   font-family: 'Archivo', sans-serif;
   font-size: 8px;
   font-weight: 800;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.38);
-  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 6px;
 }
 .prog-lineup__artist {
   display: block;
   font-family: 'Heavitas', sans-serif;
-  font-size: clamp(28px, 4.2vw, 42px);
+  font-size: clamp(30px, 4.5vw, 46px);
   color: #fff;
   letter-spacing: 0.02em;
-  line-height: 0.96;
+  line-height: 0.94;
 }
 .prog-lineup__genre {
   display: block;
   font-family: 'Archivo', sans-serif;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.48);
-  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.46);
+  margin-top: 6px;
   font-style: italic;
+  letter-spacing: 0.02em;
 }
 .prog-lineup__local {
-  display: inline-block;
-  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
   font-family: 'Archivo Narrow', sans-serif;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #ffd11e;
-  background: rgba(255, 209, 30, 0.12);
-  border: 1px solid rgba(255, 209, 30, 0.32);
+  background: rgba(255, 209, 30, 0.1);
+  border: 1px solid rgba(255, 209, 30, 0.3);
   border-radius: 999px;
-  padding: 3px 10px;
+  padding: 4px 12px;
 }
 
-/* ── Prog bodega (détail soirs par carte) ── */
+/* ── Prog bodega (grille soirs par carte) ── */
 .bodega-prog {
-  margin-top: 14px;
-  padding-top: 12px;
+  margin-top: 16px;
+  padding-top: 14px;
   border-top: 1px solid rgba(0, 0, 0, 0.07);
 }
 .bodega-prog__label {
   font-family: 'Archivo Narrow', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   font-size: 9px;
   color: #9a8a6a;
-  margin: 0 0 7px;
+  margin: 0 0 8px;
 }
-.bodega-prog__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.bodega-prog__row {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
 }
-.bodega-prog__list li {
-  display: flex;
-  align-items: baseline;
-  gap: 7px;
+.bodega-prog__row + .bodega-prog__row {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.bodega-prog__row--star {
+  padding: 8px 0;
+  background: rgba(47, 107, 44, 0.05);
+  border-radius: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 2px -6px;
 }
 .bodega-prog__day {
   font-family: 'Archivo Narrow', sans-serif;
   font-weight: 700;
   font-size: 10px;
   color: #b0a080;
-  min-width: 46px;
-  flex-shrink: 0;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+.bodega-prog__row--star .bodega-prog__day {
+  color: #2f6b2c;
 }
 .bodega-prog__act {
   font-family: 'Archivo', sans-serif;
   font-size: 13px;
   font-weight: 500;
-  color: #3a3420;
+  color: #4a3f28;
 }
-.bodega-prog--foot .bodega-prog__act--star {
+.bodega-prog__act--star {
+  display: block;
   font-size: 15px;
   font-weight: 800;
   color: #2f6b2c;
+  line-height: 1.1;
+}
+.bodega-prog__artist-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 .bodega-prog__badge {
-  font-family: 'Archivo', sans-serif;
-  font-size: 10px;
-  font-style: italic;
-  color: #2f6b2c;
-  opacity: 0.75;
+  display: inline-block;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #2f6b2c;
+  border-radius: 999px;
+  padding: 2px 8px;
 }
 .bodega-prog__secret {
   font-family: 'Archivo', sans-serif;
