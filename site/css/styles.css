@@ -1936,6 +1936,14 @@ section[id] {
   text-transform: uppercase;
   margin: 0 0 10px;
 }
+.prog-year {
+  font-size: clamp(26px, 4vw, 38px);
+  color: #fff;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
 
 .prog-section__title {
   font-family: 'Heavitas', sans-serif;
@@ -2061,16 +2069,16 @@ section[id] {
 }
 
 .prog-tab__day {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  opacity: 0.65;
+  opacity: 0.82;
   line-height: 1;
 }
 
 .prog-tab--active .prog-tab__day {
-  opacity: 0.6;
+  opacity: 0.72;
 }
 
 .prog-tab__num {
@@ -2082,9 +2090,9 @@ section[id] {
 }
 
 .prog-tab__mth {
-  font-size: 10px;
+  font-size: 28px;
   font-style: italic;
-  opacity: 0.55;
+  opacity: 0.72;
   margin-bottom: 4px;
 }
 
@@ -2353,6 +2361,23 @@ section[id] {
   color: rgba(255, 209, 30, 0.48);
   margin-bottom: 6px;
   font-family: 'Archivo', sans-serif;
+}
+
+.prog-block__aftershow {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: 'Archivo', sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.42);
+  line-height: 1.5;
+}
+
+/* Dans la grille jour-heavy (3fr 2fr), la colonne soirée est étroite —
+   on réduit le plafond de la typo artiste pour que MATRONOME ne soit pas coupé */
+.prog-blocks--jour-heavy .prog-block--soir .prog-lineup__artist {
+  font-size: clamp(24px, 3.2vw, 36px);
 }
 
 /* Photo peek — image flottante au curseur */

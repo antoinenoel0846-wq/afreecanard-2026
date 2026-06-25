@@ -133,7 +133,7 @@
     if (!window.Lenis || !window.gsap || !window.ScrollTrigger) return;
 
     var lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.9,
       easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
       smoothWheel: true,
       smoothTouch: false,
@@ -183,9 +183,9 @@
       scrollTrigger: {
         trigger: pin,
         start: 'top top',
-        end: isMobile ? '+=110%' : '+=200%',
+        end: isMobile ? '+=65%' : '+=95%',
         pin: true,
-        scrub: 1,
+        scrub: 0.6,
         anticipatePin: 1,
       },
     });
@@ -217,8 +217,8 @@
       if (duckM) tl.fromTo(duckM, { opacity: 0 },         { opacity: 1, ease: 'power2.out', duration: 0.10 },        0.54);
     }
 
-    /* Pause finale (scroll maintenu en bas avant libération) */
-    tl.to({}, {}, 1);
+    /* Pause courte avant libération */
+    tl.to({}, { duration: 0.1 }, 0.95);
   }
 
   function initHeroEntrance() {

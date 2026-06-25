@@ -1,3 +1,15 @@
+# macOS
 .DS_Store
+**/.DS_Store
+
+# Node
+node_modules/
+
+# Dossiers locaux non nécessaires sur GitHub
+inspiration-instagram/
+project/
+skills-lock.json
+
+# Claude Code local config
 .claude/skills/
-project/uploads/
+.claude/plugins/
