@@ -2777,6 +2777,93 @@ section[id] {
   margin: 0;
 }
 
+/* ── Bodega menu (À manger) ── */
+.bodega-menu {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+.bodega-menu__title {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 9px;
+  color: #9a8a6a;
+  margin: 0 0 10px;
+}
+.bodega-menu__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.bodega-menu__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 0;
+}
+.bodega-menu__item + .bodega-menu__item {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.bodega-menu__dish {
+  font-family: 'Archivo', sans-serif;
+  font-size: 13px;
+  color: #3a3420;
+  line-height: 1.35;
+  flex: 1;
+}
+.bodega-menu__price {
+  font-family: 'Heavitas', sans-serif;
+  font-size: 15px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+.bodega-menu__price-note {
+  display: block;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  font-style: normal;
+  text-align: right;
+  color: rgba(58, 52, 32, 0.5);
+  margin-top: 1px;
+}
+.bodega-menu--foot .bodega-menu__price { color: #2f6b2c; }
+.bodega-menu--rugby .bodega-menu__price { color: #c4302b; }
+.bodega-menu--ancien .bodega-menu__price { color: #b6800f; }
+
+.bodega-menu__coming {
+  background: #fdf5e0;
+  border: 1px dashed rgba(182, 128, 15, 0.3);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 64px;
+  justify-content: center;
+}
+.bodega-menu__coming-text {
+  font-family: 'Heavitas', sans-serif;
+  font-size: 14px;
+  color: #b6800f;
+  margin: 0;
+  line-height: 1.2;
+}
+.bodega-menu__coming-sub {
+  font-family: 'Archivo', sans-serif;
+  font-size: 12px;
+  color: rgba(182, 128, 15, 0.65);
+  font-style: italic;
+  margin: 0;
+  line-height: 1.4;
+}
+
 .prog-coming {
   display: flex;
   align-items: center;
