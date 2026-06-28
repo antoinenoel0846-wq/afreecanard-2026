@@ -41,7 +41,8 @@ img {
 
 .page {
   background: #16265f;
-  overflow-x: hidden;
+  /* clip au lieu de hidden : empêche le scroll horizontal sans bloquer position:sticky */
+  overflow-x: clip;
 }
 
 /* ── Animations ── */
