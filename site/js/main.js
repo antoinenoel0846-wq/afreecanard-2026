@@ -185,14 +185,11 @@
         trigger: pin,
         start: 'top top',
         end: isMobile ? '+=65%' : '+=95%',
-        pin: true,
         scrub: true,
-        anticipatePin: 1,
-        onLeave: function (self) {
+        onLeave: function () {
           if (heroPlayed) return;
           heroPlayed = true;
           pin.classList.add('hero--locked');
-          self.disable();
         },
       },
     });

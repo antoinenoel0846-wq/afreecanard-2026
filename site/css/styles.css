@@ -408,13 +408,21 @@ section[id] {
   scroll-margin-top: 80px;
 }
 
-/* ── Hero Scroll Pin ── */
+/* ── Hero Scroll — sticky natif, pas de pin GSAP ── */
 .hero-pin {
-  /* wrapper pour ScrollTrigger */
+  /* Conteneur : hauteur = stage (100svh) + plage d'animation (95svh) */
+  height: 195svh;
+}
+
+@media (max-width: 768px) {
+  .hero-pin {
+    height: 165svh;
+  }
 }
 
 .hero-pin__stage {
-  position: relative;
+  position: sticky;
+  top: 0;
   width: 100%;
   height: 100svh;
   overflow: hidden;
