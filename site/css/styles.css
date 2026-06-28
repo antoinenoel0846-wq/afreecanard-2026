@@ -2104,9 +2104,9 @@ section[id] {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 99px;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
   background: rgba(0, 0, 0, 0.14);
   letter-spacing: 0.02em;
@@ -2960,8 +2960,8 @@ section[id] {
   .prog-tab__mth  { font-size: 9px; }
 
   .prog-tab__badge {
-    font-size: 11px;
-    padding: 3px 7px;
+    font-size: 13px;
+    padding: 3px 9px;
     margin-top: 4px;
   }
 
