@@ -191,12 +191,24 @@
         onLeave: function (self) {
           if (heroPlayed) return;
           heroPlayed = true;
-          /* Classe CSS avec !important — écrase tout ce que le scrub GSAP
-             pourrait encore essayer d'écrire en style inline */
-          pin.classList.add('hero--locked');
-          /* Désactive le trigger : pin ne se réengage plus.
-             Le spacer reste en place → aucun saut de scroll. */
-          self.disable();
+          /* Attend que le scrub (lag 0.6 s) finisse de rattraper
+             avant de verrouiller → zéro snap. */
+          var st = self;
+          function waitForScrub() {
+            if (tl.progress() >= 0.999) {
+              pin.classList.add('hero--locked');
+              st.disable();
+              gsap.ticker.remove(waitForScrub);
+            }
+          }
+          gsap.ticker.add(waitForScrub);
+        },
+        onEnterBack: function (self) {
+          /* Cas limite : user remonte avant que le scrub finisse */
+          if (heroPlayed && !pin.classList.contains('hero--locked')) {
+            pin.classList.add('hero--locked');
+            self.disable();
+          }
         },
       },
     });

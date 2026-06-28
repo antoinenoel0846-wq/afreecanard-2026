@@ -555,7 +555,7 @@ section[id] {
   transform: translateX( 100%) !important;
   transition: transform 0.65s ease-out;
 }
-.hero--locked .hero-pin__item        { opacity: 1 !important; transform: none !important; }
+.hero--locked .hero-pin__item        { opacity: 1 !important; transform: none !important; transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
 .hero--locked .hero-pin__scroll-hint { opacity: 0 !important; }
 @media (min-width: 769px) {
   .hero--locked .hero__duck-wrap { opacity: 1 !important; transform: none !important; }
