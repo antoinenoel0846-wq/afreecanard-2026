@@ -1480,11 +1480,20 @@ section[id] {
 }
 
 .info-card__label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   font-family: 'Heavitas', sans-serif;
   color: #ffd11e;
   font-size: 13px;
   letter-spacing: 0.08em;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+}
+
+.info-card__icon {
+  flex-shrink: 0;
+  display: block;
+  opacity: 0.9;
 }
 
 .info-card__title {
@@ -1499,8 +1508,83 @@ section[id] {
   font-family: 'Archivo', sans-serif;
   color: #cdd9ff;
   font-size: 14px;
-  margin-top: 4px;
-  line-height: 1.5;
+  margin-top: 8px;
+  line-height: 1.55;
+}
+
+/* Tarif rows (card ENTRÉE) */
+.info-card__tarifs {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-tarif {
+  display: flex;
+  flex-direction: column;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.info-tarif:first-child {
+  padding-top: 2px;
+}
+
+.info-tarif:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.info-tarif__day {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(205, 217, 255, 0.5);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.info-tarif__detail {
+  font-family: 'Archivo', sans-serif;
+  font-size: 13px;
+  color: #cdd9ff;
+  line-height: 1.3;
+}
+
+.info-tarif__detail strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Perks (verre offert, enfants) */
+.info-card__perks {
+  margin-top: 13px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-perk {
+  font-family: 'Archivo', sans-serif;
+  font-size: 11.5px;
+  color: rgba(255, 209, 30, 0.7);
+  line-height: 1.3;
+  padding-left: 12px;
+  position: relative;
+}
+
+.info-perk::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: rgba(255, 209, 30, 0.45);
+  font-size: 14px;
+  line-height: 1;
+  top: 1px;
 }
 
 /* ── Footer ── */
