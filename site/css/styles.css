@@ -545,9 +545,16 @@ section[id] {
   .hero-pin__scroll-hint { opacity: 0 !important; }
 }
 
-/* État final verrouillé après play-once — !important écrase le scrub GSAP */
-.hero--locked .hero-pin__door--left  { transform: translateX(-100%) !important; }
-.hero--locked .hero-pin__door--right { transform: translateX( 100%) !important; }
+/* État final verrouillé après play-once — !important écrase le scrub GSAP.
+   transition sur les portes : absorbe le lag restant du scrub (0.6 s) sans snap. */
+.hero--locked .hero-pin__door--left  {
+  transform: translateX(-100%) !important;
+  transition: transform 0.65s ease-out;
+}
+.hero--locked .hero-pin__door--right {
+  transform: translateX( 100%) !important;
+  transition: transform 0.65s ease-out;
+}
 .hero--locked .hero-pin__item        { opacity: 1 !important; transform: none !important; }
 .hero--locked .hero-pin__scroll-hint { opacity: 0 !important; }
 @media (min-width: 769px) {

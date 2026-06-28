@@ -227,9 +227,6 @@
       if (duckS) tl.fromTo(duckS, { opacity: 0, x:  55 }, { opacity: 1, x: 0, ease: 'power3.out', duration: 0.12 }, 0.50);
       if (duckM) tl.fromTo(duckM, { opacity: 0 },         { opacity: 1, ease: 'power2.out', duration: 0.10 },        0.54);
     }
-
-    /* Pause courte avant libération */
-    tl.to({}, { duration: 0.1 }, 0.95);
   }
 
   function initHeroEntrance() {
