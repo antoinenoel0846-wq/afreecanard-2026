@@ -186,29 +186,13 @@
         start: 'top top',
         end: isMobile ? '+=65%' : '+=95%',
         pin: true,
-        scrub: 0.6,
+        scrub: true,
         anticipatePin: 1,
         onLeave: function (self) {
           if (heroPlayed) return;
           heroPlayed = true;
-          /* Attend que le scrub (lag 0.6 s) finisse de rattraper
-             avant de verrouiller → zéro snap. */
-          var st = self;
-          function waitForScrub() {
-            if (tl.progress() >= 0.999) {
-              pin.classList.add('hero--locked');
-              st.disable();
-              gsap.ticker.remove(waitForScrub);
-            }
-          }
-          gsap.ticker.add(waitForScrub);
-        },
-        onEnterBack: function (self) {
-          /* Cas limite : user remonte avant que le scrub finisse */
-          if (heroPlayed && !pin.classList.contains('hero--locked')) {
-            pin.classList.add('hero--locked');
-            self.disable();
-          }
+          pin.classList.add('hero--locked');
+          self.disable();
         },
       },
     });
