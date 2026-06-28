@@ -776,6 +776,43 @@
     });
   }
 
+  function initIntroFill() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+    var el = document.querySelector('.js-text-fill');
+    if (!el) return;
+
+    var rawText = el.textContent.trim();
+
+    /* prefers-reduced-motion : texte affiché en version allumée sans animation */
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    /* On assombrit d'abord le conteneur pour éviter le flash avant le split */
+    gsap.set(el, { color: 'rgba(255,255,255,0.18)' });
+
+    /* Découpage en mots — vrai texte HTML, SEO intact */
+    function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+    el.innerHTML = rawText.split(/\s+/).filter(Boolean).map(function (w) {
+      return '<span class="intro-word">' + esc(w) + '</span>';
+    }).join(' ');
+
+    var words = el.querySelectorAll('.intro-word');
+    gsap.set(words, { color: 'rgba(255,255,255,0.18)' });
+
+    /* Timeline scrubée mot par mot */
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 78%',
+        end: 'bottom 20%',
+        scrub: 0.8,
+      }
+    });
+
+    Array.prototype.forEach.call(words, function (w, i) {
+      tl.to(w, { color: '#ffffff', ease: 'none', duration: 0.4 }, i * 0.18);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initSmoothScroll();
     initHeroScroll();
@@ -783,6 +820,7 @@
     initCountdown();
     initGallery();
     initReveal();
+    initIntroFill();
     initNav();
     initProgramme();
     initProgPeek();

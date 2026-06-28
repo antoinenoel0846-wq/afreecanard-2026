@@ -897,6 +897,11 @@ section[id] {
   color: #1f3f9e;
 }
 
+/* Surcharge fond sombre (section--intro sur bg-blue-dark) */
+.section--intro .intro__title-accent {
+  color: #ffd11e;
+}
+
 .intro__text {
   font-family: 'Archivo', sans-serif;
   color: #3a3420;
@@ -1010,15 +1015,18 @@ section[id] {
 .section--intro .section__eyebrow {
   font-size: 17px;
   margin-bottom: 3px;
+  color: #ffd11e;
 }
 .section--intro .section__title {
   font-size: clamp(30px, 4vw, 52px);
   line-height: 0.96;
+  color: #ffffff;
 }
 .section--intro .intro__text {
-  font-size: 16px;
-  line-height: 1.58;
-  margin-bottom: 10px;
+  font-size: clamp(16px, 1.35vw, 19px);
+  line-height: 1.7;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.85); /* fallback si JS désactivé */
 }
 .section--intro .intro__badges {
   margin-top: 16px;
@@ -1026,6 +1034,7 @@ section[id] {
 }
 .section--intro .badge-org {
   padding: 7px 12px 7px 7px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
 }
 .section--intro .badge-org__avatar {
   width: 36px;
@@ -1033,6 +1042,18 @@ section[id] {
 }
 .section--intro .intro__visual-img {
   width: min(240px, 80%);
+}
+
+/* ── Effet text-fill au scroll — mots ── */
+.intro-word {
+  display: inline;
+  color: rgba(255, 255, 255, 0.18);
+  will-change: color;
+}
+
+/* Réduit les mouvements : texte allumé directement */
+@media (prefers-reduced-motion: reduce) {
+  .intro-word { color: #ffffff !important; }
 }
 
 /* ── Ambiance ── */
