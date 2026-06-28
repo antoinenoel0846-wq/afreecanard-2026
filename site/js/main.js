@@ -446,9 +446,21 @@
     }
 
     /* ── DESKTOP : hover → peek curseur ── */
-    var cursorX  = 0;
-    var cursorY  = 0;
-    var visible  = false;
+    var cursorX = 0;
+    var cursorY = 0;
+    var visible = false;
+
+    function hidePeek() {
+      if (!visible) return;
+      visible = false;
+      gsap.to(peek, {
+        opacity: 0,
+        scale: 0.86,
+        duration: 0.22,
+        ease: 'power2.in',
+        overwrite: 'auto'
+      });
+    }
 
     document.addEventListener('mousemove', function (e) {
       cursorX = e.clientX;
@@ -464,32 +476,31 @@
       }
     });
 
+    // Bug fix 1 : switching de tab sans mouseleave → force hide
+    document.querySelectorAll('.prog-tab').forEach(function (tab) {
+      tab.addEventListener('click', hidePeek);
+    });
+
+    // Bug fix 2 : curseur qui quitte la fenêtre
+    document.addEventListener('mouseleave', hidePeek);
+
     targets.forEach(function (el) {
       el.addEventListener('mouseenter', function () {
         var src = el.getAttribute('data-photo');
         if (!src) return;
         visible = true;
 
-        // Rotation aléatoire légère façon Polaroid
         var rot = (Math.random() * 8) - 4;
-
         peekImg.src = src;
         gsap.set(peek, { x: cursorX + 28, y: cursorY - 170 });
+        // Bug fix 3 : overwrite évite la race condition entre show et hide rapides
         gsap.fromTo(peek,
           { opacity: 0, scale: 0.82, rotation: rot - 6 },
-          { opacity: 1, scale: 1, rotation: rot, duration: 0.38, ease: 'power3.out' }
+          { opacity: 1, scale: 1, rotation: rot, duration: 0.38, ease: 'power3.out', overwrite: 'auto' }
         );
       });
 
-      el.addEventListener('mouseleave', function () {
-        visible = false;
-        gsap.to(peek, {
-          opacity: 0,
-          scale: 0.86,
-          duration: 0.22,
-          ease: 'power2.in'
-        });
-      });
+      el.addEventListener('mouseleave', hidePeek);
     });
   }
 
