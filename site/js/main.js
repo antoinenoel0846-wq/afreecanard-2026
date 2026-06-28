@@ -667,6 +667,114 @@
     });
   }
 
+  function initInfosAnim() {
+    if (typeof gsap === 'undefined' || !window.ScrollTrigger) return;
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.info-card'));
+    if (!cards.length) return;
+
+    // ── 1. Prep SVG stroke draw-on (dasharray = full length, offset = full length) ──
+    cards.forEach(function (card) {
+      card.querySelectorAll('.info-card__icon path, .info-card__icon line, .info-card__icon circle, .info-card__icon rect').forEach(function (el) {
+        var len = el.getTotalLength ? Math.ceil(el.getTotalLength()) : 40;
+        el.style.strokeDasharray = len;
+        el.style.strokeDashoffset = len;
+      });
+    });
+
+    // ── Reduced motion: instant reveal, draw icons ──
+    if (reducedMotion) {
+      cards.forEach(function (card) {
+        card.querySelectorAll('.info-card__icon path, .info-card__icon line, .info-card__icon circle, .info-card__icon rect').forEach(function (el) {
+          el.style.strokeDashoffset = 0;
+        });
+      });
+      return;
+    }
+
+    // ── 2. Set initial hidden states ──
+    cards.forEach(function (card) {
+      gsap.set(card, { opacity: 0, y: 48, scale: 0.94 });
+      var title = card.querySelector('.info-card__title');
+      var body  = card.querySelector('.info-card__tarifs') || card.querySelector('.info-card__desc');
+      var perks = Array.prototype.slice.call(card.querySelectorAll('.info-perk'));
+      if (title) gsap.set(title, { opacity: 0, y: 12 });
+      if (body)  gsap.set(body,  { opacity: 0, y: 10 });
+      if (perks.length) gsap.set(perks, { opacity: 0, x: -10 });
+    });
+
+    // ── 3. ScrollTrigger entrance — staggered cascade ──
+    ScrollTrigger.create({
+      trigger: '.infos__grid',
+      start: 'top 80%',
+      once: true,
+      onEnter: function () {
+        cards.forEach(function (card, i) {
+          var d = i * 0.11;
+
+          // Card body rises
+          gsap.to(card, { opacity: 1, y: 0, scale: 1, duration: 0.72, ease: 'power3.out', delay: d });
+
+          // SVG draw-on
+          var paths = Array.prototype.slice.call(card.querySelectorAll('.info-card__icon path, .info-card__icon line, .info-card__icon circle, .info-card__icon rect'));
+          paths.forEach(function (el, pi) {
+            gsap.to(el, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.inOut', delay: d + 0.1 + pi * 0.07 });
+          });
+
+          // Title
+          var title = card.querySelector('.info-card__title');
+          if (title) gsap.to(title, { opacity: 1, y: 0, duration: 0.48, ease: 'power2.out', delay: d + 0.24 });
+
+          // Body (desc or tarifs)
+          var body = card.querySelector('.info-card__tarifs') || card.querySelector('.info-card__desc');
+          if (body) gsap.to(body, { opacity: 1, y: 0, duration: 0.42, ease: 'power2.out', delay: d + 0.36 });
+
+          // Perks slide in from left (ENTRÉE card only)
+          var perks = Array.prototype.slice.call(card.querySelectorAll('.info-perk'));
+          if (perks.length) {
+            gsap.to(perks, { opacity: 1, x: 0, duration: 0.34, stagger: 0.09, ease: 'power2.out', delay: d + 0.52 });
+          }
+        });
+      }
+    });
+
+    if (!canHover) return;
+
+    // ── 4. Hover: 3D tilt + yellow glow ring ──
+    cards.forEach(function (card) {
+      card.addEventListener('mouseenter', function () {
+        card.style.willChange = 'transform';
+        gsap.to(card, {
+          y: -9,
+          boxShadow: '0 24px 56px rgba(16,26,70,0.38), 0 0 0 2.5px rgba(255,209,30,0.55)',
+          duration: 0.28, ease: 'power2.out'
+        });
+        gsap.to(card.querySelector('.info-card__icon'), { opacity: 1, duration: 0.18 });
+      });
+
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var dx = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
+        var dy = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
+        gsap.to(card, {
+          rotationX: -dy * 7, rotationY: dx * 7,
+          transformPerspective: 900,
+          duration: 0.32, ease: 'power2.out', overwrite: 'auto'
+        });
+      });
+
+      card.addEventListener('mouseleave', function () {
+        gsap.to(card, {
+          rotationX: 0, rotationY: 0, y: 0,
+          boxShadow: 'none',
+          duration: 0.7, ease: 'elastic.out(1, 0.72)', overwrite: 'auto',
+          onComplete: function () { card.style.willChange = ''; }
+        });
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initSmoothScroll();
     initHeroScroll();
@@ -683,6 +791,7 @@
     initCardTilt();
     initParallax();
     initBodegasTilt();
+    initInfosAnim();
 
     document.querySelectorAll('a[data-ig]').forEach(function (a) {
       a.href = IG_URL;
