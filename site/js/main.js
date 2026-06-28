@@ -174,19 +174,6 @@
     var isMobile = window.matchMedia('(max-width: 768px)').matches;
     var heroPlayed = false;
 
-    /* Force l'état final ouvert sur tous les éléments */
-    function lockHeroOpen() {
-      gsap.set(doorL, { xPercent: -100 });
-      gsap.set(doorR, { xPercent:  100 });
-      gsap.set(Array.prototype.slice.call(items), { opacity: 1, y: 0 });
-      if (!isMobile) {
-        if (duckG) gsap.set(duckG, { opacity: 1, x: 0 });
-        if (duckS) gsap.set(duckS, { opacity: 1, x: 0 });
-        if (duckM) gsap.set(duckM, { opacity: 1 });
-      }
-      if (hint) gsap.set(hint, { opacity: 0 });
-    }
-
     /* État initial des canards et de l'indicateur */
     if (duckG) gsap.set(duckG, { opacity: 0, x: -55 });
     if (duckS) gsap.set(duckS, { opacity: 0, x:  55 });
@@ -204,10 +191,10 @@
         onLeave: function (self) {
           if (heroPlayed) return;
           heroPlayed = true;
-          /* Absorbe le lag du scrub (0.6 s) — force l'état final */
-          tl.progress(1, false);
-          lockHeroOpen();
-          /* Désactive le trigger : pin ne se réengage plus, scrub figé.
+          /* Classe CSS avec !important — écrase tout ce que le scrub GSAP
+             pourrait encore essayer d'écrire en style inline */
+          pin.classList.add('hero--locked');
+          /* Désactive le trigger : pin ne se réengage plus.
              Le spacer reste en place → aucun saut de scroll. */
           self.disable();
         },
