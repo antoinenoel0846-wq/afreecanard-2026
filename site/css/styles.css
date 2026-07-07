@@ -1057,20 +1057,18 @@ section[id] {
 }
 
 /* ── Section Manifeste — texte plein écran, fill au scroll ── */
-
 .section-manifeste {
-  height: 100vh;
   background-color: #16265f;
   background-image:
     linear-gradient(rgba(13, 20, 56, 0.38), rgba(13, 20, 56, 0.56)),
     url('../assets/fabric-blue.png');
   background-size: cover, cover;
   background-position: center, center;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 clamp(28px, 7vw, 130px);
-  overflow: hidden;
+  padding: clamp(80px, 12vh, 140px) clamp(28px, 7vw, 130px);
 }
 
 .manifeste__inner {
@@ -1109,9 +1107,12 @@ section[id] {
 }
 
 @media (max-width: 540px) {
+  .section-manifeste {
+    padding: 80px 24px;
+  }
   .manifeste__text {
-    font-size: clamp(18px, 5.5vw, 26px);
-    line-height: 1.24;
+    font-size: clamp(22px, 6.8vw, 34px);
+    line-height: 1.22;
   }
   .manifeste__text.is-split {
     -webkit-text-stroke-width: 1px;

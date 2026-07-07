@@ -800,16 +800,14 @@
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.section-manifeste',
-        start: 'top top',
-        end: '+=130%',
-        pin: true,
-        scrub: 0.4,
-        anticipatePin: 1,
+        start: 'top 75%',
+        end: 'bottom 25%',
+        scrub: 1.4,
       }
     });
 
     Array.prototype.forEach.call(words, function (w, i) {
-      tl.to(w, { color: '#ffd11e', ease: 'none', duration: 0.6 }, i * 0.28);
+      tl.to(w, { color: '#ffd11e', ease: 'none', duration: 0.4 }, i * 0.2);
     });
   }
 
