@@ -1058,20 +1058,7 @@ section[id] {
 
 /* ── Section Manifeste — texte plein écran, fill au scroll ── */
 
-/* Wrapper qui donne la plage de scroll (même pattern que .hero-pin) */
-.manifeste-pin {
-  height: 190vh;
-}
-
-@media (max-width: 768px) {
-  .manifeste-pin {
-    height: 170vh;
-  }
-}
-
 .section-manifeste {
-  position: sticky;
-  top: 0;
   height: 100vh;
   background-color: #16265f;
   background-image:

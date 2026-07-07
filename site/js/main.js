@@ -799,10 +799,12 @@
 
     var tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '.manifeste-pin',
+        trigger: '.section-manifeste',
         start: 'top top',
-        end: 'bottom bottom',
+        end: '+=130%',
+        pin: true,
         scrub: 0.4,
+        anticipatePin: 1,
       }
     });
 
