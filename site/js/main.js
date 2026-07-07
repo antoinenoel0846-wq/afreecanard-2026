@@ -799,15 +799,15 @@
 
     var tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '.section-manifeste',
-        start: 'top 75%',
-        end: 'bottom 25%',
-        scrub: 1.4,
+        trigger: '.manifeste-pin',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.4,
       }
     });
 
     Array.prototype.forEach.call(words, function (w, i) {
-      tl.to(w, { color: '#ffd11e', ease: 'none', duration: 0.4 }, i * 0.2);
+      tl.to(w, { color: '#ffd11e', ease: 'none', duration: 0.6 }, i * 0.28);
     });
   }
 
