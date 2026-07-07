@@ -3046,6 +3046,41 @@ section[id] {
   line-height: 1.4;
 }
 
+/* CTA "Voir la carte complète" inside bodega cards */
+.bodega-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 18px;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 2px solid;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.bodega-card--foot .bodega-card__cta {
+  color: #2f6b2c;
+  border-color: #2f6b2c;
+  background: transparent;
+}
+.bodega-card--rugby .bodega-card__cta {
+  color: #c4302b;
+  border-color: #c4302b;
+  background: transparent;
+}
+.bodega-card--foot .bodega-card__cta:hover {
+  background: #e7f1e3;
+  transform: translateY(-1px);
+}
+.bodega-card--rugby .bodega-card__cta:hover {
+  background: #fbe6e4;
+  transform: translateY(-1px);
+}
+
 .prog-coming {
   display: flex;
   align-items: center;

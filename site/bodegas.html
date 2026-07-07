@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Les Bodegas — Afreecanard 2026 · Cartes et menus</title>
+  <meta name="description" content="Ô'Barcana, La Cantina, Les Amigrateurs : les trois bodegas de l'Afreecanard 2026. Cartes boissons et repas, ambiances et horaires. 14-15-16 août à Lacapelle-Marival.">
+  <link rel="canonical" href="https://afreecanard.fr/bodegas.html">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://afreecanard.fr/bodegas.html">
+  <meta property="og:title" content="Les Bodegas — Afreecanard 2026">
+  <meta property="og:description" content="Trois bodegas, trois ambiances. Découvrez les cartes boissons et repas de l'Afreecanard 2026 à Lacapelle-Marival.">
+  <meta property="og:image" content="https://afreecanard.fr/assets/photos/p07.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&family=Archivo+Narrow:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/bodegas.css">
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="page">
+
+    <!-- NAV -->
+    <header class="header" id="header">
+      <nav class="nav">
+        <a href="index.html" class="nav__logo">
+          <img src="assets/logo-jaune.png" alt="Afreecanard — retour à l'accueil">
+        </a>
+        <div class="nav__links" id="nav-links">
+          <a href="index.html#programme" class="nav__link">Programme</a>
+          <a href="bodegas.html" class="nav__link is-active">Bodegas</a>
+          <a href="index.html#galerie" class="nav__link">Galerie</a>
+          <a href="index.html#infos" class="nav__link">Infos</a>
+          <a href="index.html#faq" class="nav__link">FAQ</a>
+          <a href="#" data-ig target="_blank" rel="noopener" class="btn btn--yellow btn--nav">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#18286e" stroke-width="2.4" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#18286e" stroke="none"/></svg>
+            Suivre
+          </a>
+        </div>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span class="nav__burger" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- OVERLAY MOBILE -->
+    <div class="nav__overlay" id="nav-overlay" aria-hidden="true">
+      <div class="nav__overlay-content">
+        <nav class="nav__overlay-nav" aria-label="Menu principal">
+          <a href="index.html#programme" class="nav__overlay-link">Programme</a>
+          <a href="bodegas.html" class="nav__overlay-link">Bodegas</a>
+          <a href="index.html#galerie" class="nav__overlay-link">Galerie</a>
+          <a href="index.html#infos" class="nav__overlay-link">Infos</a>
+          <a href="index.html#faq" class="nav__overlay-link">FAQ</a>
+        </nav>
+        <div class="nav__overlay-bottom">
+          <a href="#" data-ig target="_blank" rel="noopener" class="btn btn--yellow nav__overlay-ig">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#18286e" stroke-width="2.4" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#18286e" stroke="none"/></svg>
+            @afreecanard
+          </a>
+          <p class="nav__overlay-date font-heavitas">14 · 15 · 16 AOÛT · LACAPELLE-MARIVAL</p>
+        </div>
+      </div>
+    </div>
+
+    <main id="main-content">
+
+      <!-- HERO -->
+      <section class="bod-hero" aria-label="Les bodegas de l'Afreecanard">
+        <a href="index.html" class="bod-hero__back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Retour à l'accueil
+        </a>
+        <p class="bod-hero__eyebrow">les temples du canard</p>
+        <h1 class="bod-hero__title font-heavitas">LES<br>BODEGAS</h1>
+        <p class="bod-hero__sub font-narrow">14 · 15 · 16 août · Lacapelle-Marival</p>
+        <div class="bod-hero__wave" aria-hidden="true">
+          <svg viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 C240,56 480,0 720,28 C960,56 1200,8 1440,40 L1440,56 L0,56 Z" fill="#f4eedb"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- SUBNAV STICKY -->
+      <nav class="bod-subnav" aria-label="Naviguer entre les bodegas">
+        <a href="#obarcana" class="bod-subnav__link bod-subnav__link--foot">
+          <span>Ô'Barcana</span>
+        </a>
+        <a href="#cantina" class="bod-subnav__link bod-subnav__link--rugby">
+          <span>La Cantina</span>
+        </a>
+        <a href="#amigrateurs" class="bod-subnav__link bod-subnav__link--ancien">
+          <span>Les Amigrateurs</span>
+        </a>
+      </nav>
+
+      <!-- ═══════════════════════════════════════
+           Ô'BARCANA — Bodega du Foot
+           ═══════════════════════════════════════ -->
+      <section id="obarcana" class="bod-section bod-section--foot">
+
+        <div class="bod-section__head bod-section__head--foot">
+          <div class="bod-section__head-photo" aria-hidden="true"></div>
+          <div class="bod-section__head-content" data-reveal="up">
+            <span class="bod-section__badge">Bodega du Foot</span>
+            <h2 class="bod-section__name font-heavitas">Ô'BARCANA</h2>
+            <p class="bod-section__org font-narrow">Élan Marivalois · sous l'œil du sanglier</p>
+            <p class="bod-section__desc">Le QG des footeux, là où ça chante et où ça danse même quand ça devrait s'arrêter. Trois soirs, une ambiance.</p>
+          </div>
+        </div>
+
+        <div class="bod-menu-wrap">
+          <div class="bod-menu-grid">
+
+            <!-- BOISSONS -->
+            <div class="bod-menu-col">
+              <h3 class="bod-menu-col__title">Boissons</h3>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Bière blonde</span>
+                <span class="bod-item__price">2,50&thinsp;€</span>
+              </div>
+              <div class="bod-item bod-item--pichet">
+                <span class="bod-item__name">Pichet bière blonde</span>
+                <span class="bod-item__price">12&thinsp;€</span>
+              </div>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Bleu</span>
+                <span class="bod-item__price">3&thinsp;€</span>
+              </div>
+              <div class="bod-item bod-item--pichet">
+                <span class="bod-item__name">Pichet de bleu</span>
+                <span class="bod-item__price">15&thinsp;€</span>
+              </div>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Bière Red (fruits rouges)</span>
+                <span class="bod-item__price">3&thinsp;€</span>
+              </div>
+              <div class="bod-item bod-item--pichet">
+                <span class="bod-item__name">Pichet Red</span>
+                <span class="bod-item__price">15&thinsp;€</span>
+              </div>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Get</span>
+                <span class="bod-item__price">3&thinsp;€</span>
+              </div>
+              <div class="bod-item bod-item--pichet">
+                <span class="bod-item__name">Pichet Get</span>
+                <span class="bod-item__price">18&thinsp;€</span>
+              </div>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Soft</span>
+                <span class="bod-item__price">2&thinsp;€</span>
+              </div>
+
+              <div class="bod-cat-divider"></div>
+              <span class="bod-cat-label">Vins</span>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Vin rouge</span>
+                <span class="bod-item__price">10&thinsp;€</span>
+              </div>
+              <div class="bod-item">
+                <span class="bod-item__name">Vin blanc</span>
+                <span class="bod-item__price">10&thinsp;€</span>
+              </div>
+            </div>
+
+            <!-- REPAS -->
+            <div class="bod-menu-col">
+              <h3 class="bod-menu-col__title">Repas</h3>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Burger de canard + patates sarladaises</span>
+                <span class="bod-item__price">10&thinsp;€</span>
+              </div>
+              <div class="bod-item">
+                <span class="bod-item__name">Confit de canard + patates sarladaises + cabécou</span>
+                <span class="bod-item__price">10&thinsp;€</span>
+              </div>
+              <div class="bod-item">
+                <span class="bod-item__name">Sandwich de canard</span>
+                <span class="bod-item__price">5&thinsp;€</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           LA CANTINA — Bodega du Rugby
+           ═══════════════════════════════════════ -->
+      <section id="cantina" class="bod-section bod-section--rugby" style="background:#fff8f5;">
+
+        <div class="bod-section__head bod-section__head--rugby">
+          <div class="bod-section__head-photo" aria-hidden="true"></div>
+          <div class="bod-section__head-content" data-reveal="up">
+            <span class="bod-section__badge">Bodega du Rugby</span>
+            <h2 class="bod-section__name font-heavitas">LA CANTINA</h2>
+            <p class="bod-section__org font-narrow">Amicale Marivaldois · sous le signe du taureau</p>
+            <p class="bod-section__desc">La maison du XV marivaldois, où la troisième mi-temps ne finit jamais. Hot ducks, sangria et chants — l'esprit sud-ouest à l'état pur.</p>
+          </div>
+        </div>
+
+        <div class="bod-menu-wrap">
+          <div class="bod-menu-grid">
+
+            <!-- BOISSONS -->
+            <div class="bod-menu-col">
+              <h3 class="bod-menu-col__title">Boissons</h3>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Bière</span>
+                <span class="bod-item__price">2,50&thinsp;€</span>
+              </div>
+              <div class="bod-item bod-item--pichet">
+                <span class="bod-item__name">Pichet bière</span>
+                <span class="bod-item__price">12&thinsp;€</span>
+              </div>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Despé</span>
+                <span class="bod-item__price">3&thinsp;€</span>
+              </div>
+              <div class="bod-item bod-item--pichet">
+                <span class="bod-item__name">Pichet Despé</span>
+                <span class="bod-item__price">15&thinsp;€</span>
+              </div>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Get</span>
+                <span class="bod-item__price">3&thinsp;€</span>
+              </div>
+              <div class="bod-item bod-item--pichet">
+                <span class="bod-item__name">Pichet Get</span>
+                <span class="bod-item__price">15&thinsp;€</span>
+              </div>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Soft</span>
+                <span class="bod-item__price">2&thinsp;€</span>
+              </div>
+
+              <div class="bod-cat-divider"></div>
+              <span class="bod-cat-label">Vins</span>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Vin rouge</span>
+                <span class="bod-item__price">10&thinsp;€</span>
+              </div>
+              <div class="bod-item">
+                <span class="bod-item__name">Vin blanc</span>
+                <span class="bod-item__price">10&thinsp;€</span>
+              </div>
+            </div>
+
+            <!-- REPAS -->
+            <div class="bod-menu-col">
+              <h3 class="bod-menu-col__title">Repas</h3>
+
+              <div class="bod-item">
+                <span class="bod-item__name">Magret de canard, frites maison</span>
+                <span class="bod-item__price">10&thinsp;€</span>
+              </div>
+              <div class="bod-item">
+                <span class="bod-item__name">Hot ducks, sauce coin-coin, frites maison</span>
+                <span class="bod-item__price">10&thinsp;€</span>
+              </div>
+              <div class="bod-item">
+                <span class="bod-item__name">Saucisse de canard, frites maison</span>
+                <span class="bod-item__price">8&thinsp;€</span>
+              </div>
+              <div class="bod-item">
+                <span class="bod-item__name">Cœur de canard, frites maison</span>
+                <span class="bod-item__price">8&thinsp;€</span>
+              </div>
+              <div class="bod-item">
+                <span class="bod-item__name">Frites seules</span>
+                <span class="bod-item__price">4&thinsp;€</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           LES AMIGRATEURS — Bodega des Anciens
+           ═══════════════════════════════════════ -->
+      <section id="amigrateurs" class="bod-section bod-section--ancien">
+
+        <div class="bod-section__head bod-section__head--ancien">
+          <div class="bod-section__head-photo" aria-hidden="true"></div>
+          <div class="bod-section__head-content" data-reveal="up">
+            <span class="bod-section__badge">Bodega des Anciens</span>
+            <h2 class="bod-section__name font-heavitas">LES<br>AMIGRATEURS</h2>
+            <p class="bod-section__org font-narrow">Foot × Rugby · Les sages qui font la fête</p>
+            <p class="bod-section__desc">Le mélange des deux clubs, ceux qui ont tout vu et qui reviennent quand même. Foot et rugby côte à côte, trois soirs de suite.</p>
+          </div>
+        </div>
+
+        <div class="bod-coming-card" data-reveal="up">
+          <img src="assets/canard-lunettes.png" alt="" class="bod-coming-card__duck" aria-hidden="true">
+          <h3 class="bod-coming-card__title font-heavitas">Carte à venir</h3>
+          <p class="bod-coming-card__sub">Les anciens préparent leur coup en cuisine. Revenez bientôt — ou suivez <strong>@afreecanard</strong> pour ne rien rater.</p>
+        </div>
+
+      </section>
+
+      <!-- RETOUR ACCUEIL -->
+      <div class="bod-return">
+        <p class="bod-return__text">Tu sais où tu vas ce soir.</p>
+        <a href="index.html" class="btn btn--yellow btn--yellow-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#18286e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Retour à l'accueil
+        </a>
+        <a href="index.html#programme" class="btn btn--outline">Voir le programme</a>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <img src="assets/canard-batterie.png" alt="" class="footer__duck" aria-hidden="true">
+      <div class="footer__grid">
+        <div>
+          <img src="assets/logo-jaune.png" alt="Afreecanard" class="footer__logo">
+          <p class="footer__about">Trois nuits de bodegas et de concerts à Lacapelle-Marival (Lot), organisées chaque année par les bénévoles des amicales du foot et du rugby. L'esprit d'une vraie fête populaire, rien d'autre.</p>
+        </div>
+        <div>
+          <div class="footer__heading">NAVIGUER</div>
+          <a href="index.html#programme" class="footer__link">Programme</a>
+          <a href="bodegas.html" class="footer__link">Les bodegas</a>
+          <a href="index.html#galerie" class="footer__link">Galerie</a>
+          <a href="index.html#infos" class="footer__link">Infos pratiques</a>
+          <a href="index.html#faq" class="footer__link">FAQ</a>
+        </div>
+        <div>
+          <div class="footer__heading">SUIVRE</div>
+          <a href="#" data-ig target="_blank" rel="noopener" class="btn btn--yellow footer__ig">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16265f" stroke-width="2.4" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#16265f" stroke="none"/></svg>
+            @afreecanard
+          </a>
+          <p class="footer__social">@elan_marivalois<br>Amicale rugby marivaldois</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copy">© Afreecanard · Lacapelle-Marival</span>
+        <span class="footer__copy">Fait au village, avec le sourire 🦆</span>
+      </div>
+    </footer>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/bodegas.js"></script>
+</body>
+</html>
