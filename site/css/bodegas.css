@@ -564,34 +564,43 @@
 
 /* ── Night foot (thème) ── */
 .bod-night__foot {
-  padding: 12px 18px 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  padding: 14px 18px 18px;
+  border-top: none;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px;
   flex-shrink: 0;
+}
+
+/* Footer coloré par section — le thème devient aussi visible que le header */
+.bod-section--foot  .bod-night__foot { background: #2f6b2c; }
+.bod-section--rugby .bod-night__foot { background: #c4302b; }
+
+/* Headliner : footer légèrement plus sombre pour le contraste avec le glow */
+.bod-section--foot .bod-night--headliner .bod-night__foot {
+  background: #245220;
 }
 
 .bod-night__theme-label {
   font-family: 'Archivo Narrow', sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 8px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #c0aa80;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .bod-night__theme-name {
   font-family: 'Archivo', sans-serif;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #4a3f28;
-  line-height: 1.3;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
 }
 .bod-night__theme-name--tbd {
   font-style: italic;
   font-weight: 400;
-  color: #b0a080;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 /* ── Responsive ── */
