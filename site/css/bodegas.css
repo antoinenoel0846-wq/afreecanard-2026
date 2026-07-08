@@ -373,129 +373,222 @@
   }
 }
 
-/* ── Soirées : DJ + thème par nuit ── */
-.bod-soirees {
+/* ── Section head watermark (numéro fantôme) ── */
+.bod-section__head::after {
+  content: attr(data-num);
+  position: absolute;
+  right: -12px;
+  bottom: -28px;
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(110px, 16vw, 172px);
+  color: rgba(255, 255, 255, 0.055);
+  pointer-events: none;
+  z-index: 1;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── Nuits : cards DJ + thème ── */
+.bod-nights {
   max-width: 1100px;
   margin: 0 auto;
-  padding: clamp(24px, 3.5vw, 40px) clamp(12px, 4vw, 48px) 0;
+  padding: clamp(28px, 4vw, 52px) clamp(12px, 4vw, 48px) 0;
 }
-.bod-soirees__label {
+
+.bod-nights__eyebrow {
   font-family: 'Archivo Narrow', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 9px;
   color: #9a8a6a;
-  margin: 0 0 12px;
-  display: block;
-}
-.bod-soirees__table {
-  background: #ffffff;
-  border-radius: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-}
-.bod-soiree-row {
-  display: grid;
-  grid-template-columns: 68px 1fr auto;
+  margin: 0 0 16px;
+  display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 14px 20px;
+  gap: 12px;
 }
-.bod-soiree-row + .bod-soiree-row {
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+.bod-nights__eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.07);
 }
-.bod-soiree-row--star {
-  background: rgba(47, 107, 44, 0.06);
+
+.bod-nights__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  align-items: stretch;
 }
-.bod-section--rugby .bod-soiree-row--star {
-  background: rgba(196, 48, 43, 0.05);
-}
-.bod-soiree__date {
-  font-family: 'Archivo Narrow', sans-serif;
-  font-weight: 700;
-  font-size: 10.5px;
-  color: #b0a080;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  line-height: 1.2;
-  flex-shrink: 0;
-}
-.bod-soiree-row--star .bod-soiree__date {
-  color: #2f6b2c;
-}
-.bod-section--rugby .bod-soiree-row--star .bod-soiree__date {
-  color: #c4302b;
-}
-.bod-soiree__dj-wrap {
+
+/* ── Night card ── */
+.bod-night {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  min-width: 0;
 }
-.bod-soiree__dj {
-  font-family: 'Archivo', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: #4a3f28;
-  font-style: normal;
+
+.bod-night[data-reveal].is-visible {
+  transition: opacity 0.5s ease,
+              transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
 }
-.bod-soiree__dj--star {
+@media (hover: hover) {
+  .bod-night.is-visible:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.11);
+  }
+}
+
+/* ── Headliner : glow pulsé ── */
+.bod-section--foot .bod-night--headliner {
+  border-color: rgba(47, 107, 44, 0.28);
+}
+@keyframes bod-headliner-glow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(47, 107, 44, 0.08), 0 4px 24px rgba(47, 107, 44, 0.12); }
+  50%       { box-shadow: 0 0 0 1px rgba(47, 107, 44, 0.18), 0 8px 36px rgba(47, 107, 44, 0.24); }
+}
+.bod-section--foot .bod-night--headliner.is-visible {
+  animation: bod-headliner-glow 3.5s ease-in-out infinite;
+}
+@media (hover: hover) {
+  .bod-section--foot .bod-night--headliner.is-visible:hover {
+    animation: none;
+    transform: translateY(-5px) !important;
+    box-shadow: 0 0 0 1px rgba(47, 107, 44, 0.22), 0 22px 56px rgba(47, 107, 44, 0.22);
+  }
+}
+
+/* ── Night head (bande colorée) ── */
+.bod-night__head {
+  position: relative;
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.bod-section--foot  .bod-night__head { background: #2f6b2c; }
+.bod-section--rugby .bod-night__head { background: #c4302b; }
+.bod-section--foot  .bod-night--headliner .bod-night__head {
+  background: linear-gradient(138deg, #245220 0%, #3a8035 100%);
+}
+
+.bod-night__num {
   font-family: 'Heavitas', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.3);
+  line-height: 1;
+}
+
+.bod-night__date {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.bod-night__badge {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  background: #ffd11e;
+  color: #1a3818;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 800;
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+/* ── Night body (artiste) ── */
+.bod-night__body {
+  flex: 1;
+  padding: 20px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.bod-night__artist {
+  font-family: 'Archivo', sans-serif;
   font-size: 18px;
+  font-weight: 600;
+  color: #3a3020;
+  font-style: normal;
+  line-height: 1.2;
+}
+
+.bod-night__artist--xl {
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(34px, 4.2vw, 48px);
   font-weight: 400;
   color: #2f6b2c;
-  letter-spacing: 0.01em;
-  line-height: 1.1;
+  line-height: 0.88;
+  letter-spacing: -0.01em;
 }
-.bod-soiree__dj--tbd {
-  font-size: 12.5px;
+
+.bod-night__artist--tbd {
+  font-family: 'Archivo', sans-serif;
+  font-size: 13px;
   font-style: italic;
   color: #b0a080;
   font-weight: 400;
+  line-height: 1.5;
 }
-.bod-soiree__badge {
-  display: inline-block;
-  font-family: 'Archivo Narrow', sans-serif;
-  font-size: 8.5px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #ffffff;
-  background: #2f6b2c;
-  border-radius: 999px;
-  padding: 2px 9px;
-  align-self: flex-start;
-}
-.bod-soiree__subbadge {
+
+.bod-night__artist-sub {
   font-family: 'Archivo', sans-serif;
-  font-size: 11.5px;
-  color: #6a8f67;
+  font-size: 12px;
+  color: #7a9877;
+  font-style: italic;
+  margin-top: 2px;
 }
-.bod-soiree__theme-wrap {
+
+/* ── Night foot (thème) ── */
+.bod-night__foot {
+  padding: 12px 18px 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
-  text-align: right;
+  gap: 3px;
   flex-shrink: 0;
 }
-.bod-soiree__theme-label {
+
+.bod-night__theme-label {
   font-family: 'Archivo Narrow', sans-serif;
-  font-size: 8.5px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 8px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #c0aa80;
 }
-.bod-soiree__theme-name {
+
+.bod-night__theme-name {
   font-family: 'Archivo', sans-serif;
   font-size: 12.5px;
   font-weight: 600;
   color: #4a3f28;
+  line-height: 1.3;
 }
-.bod-soiree__theme-name--tbd {
+.bod-night__theme-name--tbd {
   font-style: italic;
   font-weight: 400;
   color: #b0a080;
@@ -522,19 +615,20 @@
   }
 }
 
-@media (max-width: 600px) {
-  .bod-soiree-row {
-    grid-template-columns: 52px 1fr;
-    grid-template-rows: auto auto;
-    gap: 6px 8px;
-    padding: 10px 14px;
+@media (max-width: 640px) {
+  .bod-nights__grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
-  .bod-soiree__theme-wrap {
-    grid-column: 2;
-    align-items: flex-start;
-    text-align: left;
-    margin-top: 2px;
+  .bod-night--headliner {
+    order: -1;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bod-night[data-reveal].is-visible { transition: none !important; }
+  .bod-night.is-visible:hover { transform: none !important; }
+  .bod-section--foot .bod-night--headliner.is-visible { animation: none !important; }
 }
 
 @media (max-width: 400px) {
