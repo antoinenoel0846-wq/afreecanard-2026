@@ -566,9 +566,10 @@
 .bod-night__foot {
   padding: 14px 18px 18px;
   border-top: none;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  column-gap: 12px;
+  row-gap: 4px;
   flex-shrink: 0;
 }
 
@@ -581,7 +582,24 @@
   background: #245220;
 }
 
+/* Pictogramme thème */
+.bod-night__theme-picto {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  width: 36px;
+  height: 36px;
+  color: rgba(255, 255, 255, 0.82);
+  align-self: center;
+  flex-shrink: 0;
+}
+.bod-night__theme-picto--tbd {
+  opacity: 0.55;
+}
+
 .bod-night__theme-label {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
   font-family: 'Archivo Narrow', sans-serif;
   font-weight: 800;
   font-size: 8px;
@@ -591,6 +609,9 @@
 }
 
 .bod-night__theme-name {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
   font-family: 'Archivo', sans-serif;
   font-size: 15px;
   font-weight: 700;
