@@ -210,14 +210,14 @@ img {
 }
 
 .nav__logo img {
-  height: 48px;
+  height: 72px;
   width: auto;
   display: block;
   transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header.is-scrolled .nav__logo img {
-  height: 34px;
+  height: 51px;
 }
 
 .nav__links {
