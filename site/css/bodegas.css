@@ -416,212 +416,154 @@
   background: rgba(0, 0, 0, 0.07);
 }
 
-.bod-nights__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-  align-items: stretch;
-}
-
-/* ── Night card ── */
-.bod-night {
-  position: relative;
+/* ── Setlist nuits (style programme concert) ── */
+.bod-nights__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   background: #ffffff;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
   border: 1.5px solid rgba(0, 0, 0, 0.07);
-  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.04);
 }
 
-.bod-night[data-reveal].is-visible {
-  transition: opacity 0.5s ease,
-              transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.3s ease,
-              border-color 0.3s ease;
-}
-@media (hover: hover) {
-  .bod-night.is-visible:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.11);
-  }
-}
-
-/* ── Headliner : glow pulsé ── */
-.bod-section--foot .bod-night--headliner {
-  border-color: rgba(47, 107, 44, 0.28);
-}
-@keyframes bod-headliner-glow {
-  0%, 100% { box-shadow: 0 0 0 1px rgba(47, 107, 44, 0.08), 0 4px 24px rgba(47, 107, 44, 0.12); }
-  50%       { box-shadow: 0 0 0 1px rgba(47, 107, 44, 0.18), 0 8px 36px rgba(47, 107, 44, 0.24); }
-}
-.bod-section--foot .bod-night--headliner.is-visible {
-  animation: bod-headliner-glow 3.5s ease-in-out infinite;
-}
-@media (hover: hover) {
-  .bod-section--foot .bod-night--headliner.is-visible:hover {
-    animation: none;
-    transform: translateY(-5px) !important;
-    box-shadow: 0 0 0 1px rgba(47, 107, 44, 0.22), 0 22px 56px rgba(47, 107, 44, 0.22);
-  }
-}
-
-/* ── Night head (bande colorée) ── */
-.bod-night__head {
+.bod-night-row {
+  display: grid;
+  grid-template-columns: 28px 110px 1fr auto;
+  align-items: center;
+  column-gap: 20px;
+  padding: 18px 24px;
   position: relative;
-  padding: 18px 18px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  flex-shrink: 0;
 }
-.bod-section--foot  .bod-night__head { background: #2f6b2c; }
-.bod-section--rugby .bod-night__head { background: #c4302b; }
-.bod-section--foot  .bod-night--headliner .bod-night__head {
-  background: linear-gradient(138deg, #245220 0%, #3a8035 100%);
+.bod-night-row + .bod-night-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.bod-night__num {
+/* Headliner : bordure latérale colorée + teinte */
+.bod-section--foot  .bod-night-row--headliner { background: rgba(47, 107, 44, 0.05); border-left: 3px solid #2f6b2c; padding-left: 21px; }
+.bod-section--rugby .bod-night-row--headliner { background: rgba(196, 48, 43, 0.05); border-left: 3px solid #c4302b; padding-left: 21px; }
+
+/* Reveal par rangée */
+.bod-night-row[data-reveal].is-visible {
+  transition: opacity 0.45s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Numéro */
+.bod-night-row__num {
   font-family: 'Heavitas', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.3);
-  line-height: 1;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.14);
+  user-select: none;
 }
 
-.bod-night__date {
+/* Date */
+.bod-night-row__date {
   font-family: 'Archivo Narrow', sans-serif;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 11.5px;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: #ffffff;
-  line-height: 1;
-}
-
-.bod-night__badge {
-  position: absolute;
-  top: 13px;
-  right: 13px;
-  background: #ffd11e;
-  color: #1a3818;
-  font-family: 'Archivo Narrow', sans-serif;
-  font-weight: 800;
-  font-size: 7px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 999px;
+  color: #a0906c;
   white-space: nowrap;
-  line-height: 1.4;
 }
+.bod-section--foot  .bod-night-row--headliner .bod-night-row__date { color: #2f6b2c; }
+.bod-section--rugby .bod-night-row--headliner .bod-night-row__date { color: #c4302b; }
 
-/* ── Night body (artiste) ── */
-.bod-night__body {
-  flex: 1;
-  padding: 20px 18px 16px;
+/* Zone artiste */
+.bod-night-row__mid {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+  min-width: 0;
 }
 
-.bod-night__artist {
+.bod-night-row__artist {
   font-family: 'Archivo', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: #3a3020;
   font-style: normal;
   line-height: 1.2;
 }
 
-.bod-night__artist--xl {
+.bod-night-row__artist--xl {
   font-family: 'Heavitas', sans-serif;
-  font-size: clamp(34px, 4.2vw, 48px);
+  font-size: clamp(22px, 2.6vw, 30px);
   font-weight: 400;
   color: #2f6b2c;
-  line-height: 0.88;
   letter-spacing: -0.01em;
+  line-height: 1;
 }
 
-.bod-night__artist--tbd {
+.bod-night-row__artist--tbd {
   font-family: 'Archivo', sans-serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-style: italic;
   color: #b0a080;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-.bod-night__artist-sub {
+.bod-night-row__badge {
+  display: inline-block;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: #ffd11e;
+  color: #1a3818;
+  padding: 3px 9px;
+  border-radius: 999px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.bod-night-row__sub {
+  width: 100%;
   font-family: 'Archivo', sans-serif;
   font-size: 12px;
   color: #7a9877;
   font-style: italic;
-  margin-top: 2px;
 }
 
-/* ── Night foot (thème) ── */
-.bod-night__foot {
-  padding: 14px 18px 18px;
-  border-top: none;
-  display: grid;
-  grid-template-columns: 38px 1fr;
-  column-gap: 12px;
-  row-gap: 4px;
+/* Thème : pill colorée avec icône */
+.bod-night-row__theme {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
   flex-shrink: 0;
 }
+.bod-section--foot  .bod-night-row__theme { background: rgba(47, 107, 44, 0.1); }
+.bod-section--rugby .bod-night-row__theme { background: rgba(196, 48, 43, 0.08); }
+.bod-section--foot  .bod-night-row--headliner .bod-night-row__theme { background: rgba(47, 107, 44, 0.16); }
 
-/* Footer coloré par section — le thème devient aussi visible que le header */
-.bod-section--foot  .bod-night__foot { background: #2f6b2c; }
-.bod-section--rugby .bod-night__foot { background: #c4302b; }
-
-/* Headliner : footer légèrement plus sombre pour le contraste avec le glow */
-.bod-section--foot .bod-night--headliner .bod-night__foot {
-  background: #245220;
-}
-
-/* Pictogramme thème */
-.bod-night__theme-picto {
-  grid-column: 1;
-  grid-row: 1 / 3;
-  width: 36px;
-  height: 36px;
-  color: rgba(255, 255, 255, 0.82);
-  align-self: center;
+.bod-night-row__theme svg {
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
 }
-.bod-night__theme-picto--tbd {
-  opacity: 0.55;
-}
+.bod-section--foot  .bod-night-row__theme svg { color: #2f6b2c; }
+.bod-section--rugby .bod-night-row__theme svg { color: #c4302b; }
 
-.bod-night__theme-label {
-  grid-column: 2;
-  grid-row: 1;
-  align-self: end;
-  font-family: 'Archivo Narrow', sans-serif;
-  font-weight: 800;
-  font-size: 8px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.bod-night__theme-name {
-  grid-column: 2;
-  grid-row: 2;
-  align-self: start;
+.bod-night-row__theme-name {
   font-family: 'Archivo', sans-serif;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
-  color: #ffffff;
-  line-height: 1.25;
+  line-height: 1;
 }
-.bod-night__theme-name--tbd {
+.bod-section--foot  .bod-night-row__theme-name { color: #2f6b2c; }
+.bod-section--rugby .bod-night-row__theme-name { color: #c4302b; }
+.bod-night-row__theme-name--tbd {
   font-style: italic;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.55);
+  color: #b0a080;
 }
 
 /* ── Responsive ── */
@@ -646,19 +588,27 @@
 }
 
 @media (max-width: 640px) {
-  .bod-nights__grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .bod-night-row {
+    grid-template-columns: 22px 1fr;
+    grid-template-rows: auto auto auto;
+    row-gap: 6px;
+    column-gap: 10px;
+    padding: 14px 16px;
   }
-  .bod-night--headliner {
-    order: -1;
+  .bod-section--foot  .bod-night-row--headliner,
+  .bod-section--rugby .bod-night-row--headliner { padding-left: 13px; }
+  .bod-night-row__num  { grid-column: 1; grid-row: 1; align-self: start; margin-top: 3px; }
+  .bod-night-row__date { grid-column: 2; grid-row: 1; }
+  .bod-night-row__mid  { grid-column: 2; grid-row: 2; }
+  .bod-night-row__theme {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: start;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bod-night[data-reveal].is-visible { transition: none !important; }
-  .bod-night.is-visible:hover { transform: none !important; }
-  .bod-section--foot .bod-night--headliner.is-visible { animation: none !important; }
+  .bod-night-row[data-reveal].is-visible { transition: none !important; }
 }
 
 @media (max-width: 400px) {
