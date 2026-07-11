@@ -3117,14 +3117,8 @@ section[id] {
   border-color: #c4302b;
   background: transparent;
 }
-.bodega-card--foot .bodega-card__cta:hover {
-  background: #e7f1e3;
-  transform: translateY(-1px);
-}
-.bodega-card--rugby .bodega-card__cta:hover {
-  background: #fbe6e4;
-  transform: translateY(-1px);
-}
+.bodega-card--foot .bodega-card__cta:hover { background: #e7f1e3; }
+.bodega-card--rugby .bodega-card__cta:hover { background: #fbe6e4; }
 
 .prog-coming {
   display: flex;
