@@ -1302,37 +1302,30 @@ section[id] {
 
 /* ── Bodegas ── */
 .bodegas__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-top: 44px;
 }
 
 .bodega-card {
   background: #fff;
-  border-radius: 22px;
+  border-radius: 18px;
   overflow: hidden;
-  transform-origin: center center;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
 }
 
-.bodega-card--foot {
-  border: 3px solid #2f6b2c;
-  box-shadow: 0 14px 0 rgba(47, 107, 44, 0.22);
-}
+.bodega-card--foot   { border: 2px solid rgba(47, 107, 44, 0.45); }
+.bodega-card--rugby  { border: 2px solid rgba(196, 48, 43, 0.45); }
+.bodega-card--ancien { border: 2px solid rgba(217, 154, 28, 0.45); }
 
-.bodega-card--rugby {
-  border: 3px solid #c4302b;
-  box-shadow: 0 14px 0 rgba(196, 48, 43, 0.22);
-}
-
-.bodega-card--ancien {
-  border: 3px solid #d99a1c;
-  box-shadow: 0 14px 0 rgba(217, 154, 28, 0.22);
-}
-
+/* Photo : panneau gauche de largeur fixe */
 .bodega-card__photo {
   position: relative;
-  height: 260px;
+  width: clamp(200px, 24vw, 280px);
+  flex-shrink: 0;
   background-size: cover;
   background-position: center;
 }
@@ -1360,7 +1353,7 @@ section[id] {
 .bodega-card__photo-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(20, 30, 70, 0) 40%, rgba(20, 30, 70, 0.55) 100%);
+  background: linear-gradient(90deg, rgba(20, 30, 70, 0) 50%, rgba(20, 30, 70, 0.12) 100%);
 }
 
 .bodega-card__label {
@@ -1377,45 +1370,63 @@ section[id] {
   padding: 5px 12px;
 }
 
-.bodega-card__label--foot { background: #2f6b2c; }
-.bodega-card__label--rugby { background: #c4302b; }
+.bodega-card__label--foot   { background: #2f6b2c; }
+.bodega-card__label--rugby  { background: #c4302b; }
 .bodega-card__label--ancien { color: #18286e; background: #ffd11e; }
 
 .bodega-card__duck {
   position: relative;
-  width: 150px;
+  width: 130px;
   filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.45));
   animation: acBob 4.5s ease-in-out infinite;
 }
 
+/* Corps : 2 colonnes — identité | programme */
 .bodega-card__body {
-  padding: 20px 22px 22px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(180px, 38%) 1fr;
+  min-width: 0;
+}
+
+.bodega-card__identity {
+  padding: 22px 24px 22px 26px;
+  border-right: 1px solid rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+}
+
+.bodega-card__info {
+  padding: 18px 24px 20px 22px;
+  display: flex;
+  flex-direction: column;
 }
 
 .bodega-card__name {
   font-family: 'Heavitas', sans-serif;
-  font-size: 36px;
-  margin: 0 0 4px;
-  line-height: 0.95;
+  font-size: clamp(24px, 2.8vw, 34px);
+  margin: 0;
+  line-height: 0.92;
 }
 
-.bodega-card__name--foot { color: #2f6b2c; }
-.bodega-card__name--rugby { color: #c4302b; }
-.bodega-card__name--ancien { color: #b6800f; font-size: 30px; }
+.bodega-card__name--foot   { color: #2f6b2c; }
+.bodega-card__name--rugby  { color: #c4302b; }
+.bodega-card__name--ancien { color: #b6800f; font-size: clamp(20px, 2.4vw, 28px); }
 
 .bodega-card__desc {
   font-family: 'Archivo', sans-serif;
   color: #3a3420;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.6;
-  margin: 8px 0 0;
+  margin: 10px 0 0;
 }
 
 .bodega-card__tags {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: auto;
+  padding-top: 16px;
 }
 
 .bodega-tag {
@@ -1425,14 +1436,14 @@ section[id] {
   letter-spacing: 0.06em;
   font-size: 11px;
   border-radius: 999px;
-  padding: 5px 11px;
+  padding: 4px 11px;
 }
 
-.bodega-tag--foot { color: #2f6b2c; background: #e7f1e3; }
-.bodega-tag--rugby { color: #c4302b; background: #fbe6e4; }
+.bodega-tag--foot   { color: #2f6b2c; background: #e7f1e3; }
+.bodega-tag--rugby  { color: #c4302b; background: #fbe6e4; }
 .bodega-tag--ancien { color: #b6800f; background: #fbeecb; }
 
-/* Blasons (mascotte overlays) */
+/* Blasons */
 .bodega-card__blason {
   position: absolute;
   bottom: 16px;
@@ -1448,22 +1459,41 @@ section[id] {
   filter: drop-shadow(0 10px 14px rgba(0,0,0,0.45));
 }
 
-/* prefers-reduced-motion : CSS hover simple en fallback */
-@media (prefers-reduced-motion: reduce) {
-  .bodega-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .bodega-card--foot:hover  { transform: translateY(-5px); }
-  .bodega-card--rugby:hover { transform: translateY(-5px); }
-  .bodega-card--ancien:hover { transform: translateY(-5px); }
+/* Annule top-margin sur le premier enfant de .bodega-card__info */
+.bodega-card__info > *:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
-/* Touch : retour tactile au tap */
-@media (hover: none) {
-  .bodega-card:active {
-    transform: scale(0.97);
-    transition: transform 0.12s ease;
+/* Mobile : retour carte verticale */
+@media (max-width: 760px) {
+  .bodega-card {
+    flex-direction: column;
   }
+  .bodega-card__photo {
+    width: 100%;
+    height: 200px;
+  }
+  .bodega-card__body {
+    grid-template-columns: 1fr;
+  }
+  .bodega-card__identity {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    padding: 18px 18px 16px;
+  }
+  .bodega-card__info {
+    padding: 14px 18px 18px;
+  }
+  .bodega-card__tags {
+    margin-top: 12px;
+    padding-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bodega-card__duck { animation: none; }
 }
 
 /* ── Galerie ── */
@@ -1959,55 +1989,19 @@ section[id] {
   text-shadow: 0 0 30px rgba(255, 209, 30, 0.6);
 }
 
-/* Bodega photo zoom via ::before */
+/* Bodega photo panel */
 .bodega-card__photo {
   overflow: hidden;
-}
-
-.bodega-card__photo--foot::before,
-.bodega-card__photo--rugby::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: 0;
-}
-
-.bodega-card__photo--foot::before {
-  background-image: url('../assets/photos/p06.png');
-  background-position: center 38%;
-}
-
-.bodega-card__photo--rugby::before {
-  background-image: url('../assets/photos/p05.png');
-  background-position: center 32%;
-}
-
-.bodega-card:hover .bodega-card__photo--foot::before,
-.bodega-card:hover .bodega-card__photo--rugby::before {
-  transform: scale(1.09);
-}
-
-.bodega-card__photo--foot,
-.bodega-card__photo--rugby {
-  background-image: none;
 }
 
 .bodega-card__photo-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(20, 30, 70, 0) 40%, rgba(20, 30, 70, 0.55) 100%);
 }
 
 .bodega-card__label {
   z-index: 2;
-}
-
-.bodega-card--ancien:hover .bodega-card__photo--ancien {
-  transition: filter 0.45s ease;
-  filter: brightness(1.1);
 }
 
 /* Galerie slide */
@@ -3310,8 +3304,7 @@ section[id] {
     gap: 32px;
   }
 
-  .programme__grid,
-  .bodegas__grid {
+  .programme__grid {
     grid-template-columns: 1fr;
   }
 
