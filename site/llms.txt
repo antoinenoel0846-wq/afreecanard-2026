@@ -1,23 +1,21 @@
 # Afreecanard
 
-> Fête annuelle du canard de Lacapelle-Marival (Lot, Occitanie, France). Trois nuits de bodegas et de concerts jusqu'à 3h du matin au pied du château médiéval. Édition 2026 : 14, 15 et 16 août.
+> Fête annuelle du canard de Lacapelle-Marival (Lot, Occitanie, France). Trois nuits de bodegas et de concerts jusqu'à 3h du matin à la Prairie du Château. Édition 2026 : 14, 15 et 16 août.
 
 ## Informations essentielles
 
 - **Nom** : Afreecanard (ou « Fête du Canard de Lacapelle-Marival »)
 - **Dates 2026** : Vendredi 14, samedi 15 et dimanche 16 août 2026
-- **Lieu** : Lacapelle-Marival, au pied du château — Lot (46), Occitanie, France
-- **Entrée** : 10 € le vendredi soir, 2 € le samedi et le dimanche. Un verre Afreecanard offert à l'entrée chaque soir.
+- **Lieu** : Prairie du Château, Lacapelle-Marival — Lot (46120), Occitanie, France
+- **Entrée** : Libre avant 20h. Dès 20h : 5 € le vendredi, 10 € le samedi. Dimanche gratuit dès 19h. Un verre Afreecanard offert à l'entrée chaque soir payant. Enfants jusqu'à 12 ans : gratuits.
 - **Horaires** : Bodegas et concerts jusqu'à 3h du matin.
 - **Instagram** : [@afreecanard](https://www.instagram.com/afreecanard/)
 
 ## Programme 2026
 
-- **Vendredi 14 août** : TNT — Thème soirée : Marinière
-- **Samedi 15 août** : Massbeat (live + DJ set) — Thème soirée : Coupe du Monde de foot 2026
-- **Dimanche 16 août** : Matronome — Thème soirée : Jungle Marivaloise
-
-Programme complet en cours d'annonce sur @afreecanard.
+- **Vendredi 14 août** : Concert TNT (dès 20h · 5 €)
+- **Samedi 15 août** : Concert LES MASSBEAT (dès 20h · 10 €) · LA CLIQUE · Tournoi de pétanque
+- **Dimanche 16 août** : Concert MATRONOME (dès 19h · gratuit) · LA BAND'ACAPELLA · Défilé
 
 ## Les 3 Bodegas
 
@@ -26,6 +24,8 @@ Afreecanard propose trois bodegas (bars festifs) ouvertes jusqu'à 3h du matin :
 1. **Ô'Barcana** — Bodega du Foot, tenue par l'Élan Marivalois. Ambiance survoltée, chants de stade.
 2. **La Cantina De Paquito** — Bodega du Rugby, tenue par l'Amicale Marivaldois. Sangria, esprit sud-ouest.
 3. **Les Amigrateurs** — Bodega des Anciens (Foot × Rugby réunis). Les sages et les meilleures histoires du village.
+
+Boissons et repas (spécialités à base de canard) servis toute la soirée par les bénévoles.
 
 ## Organisateurs
 
@@ -37,10 +37,10 @@ Afreecanard est organisé entièrement par des bénévoles de deux amicales spor
 ## Foire aux questions
 
 **Où se déroule Afreecanard ?**
-À Lacapelle-Marival (46120), dans le Lot, Occitanie, au pied du château médiéval.
+À la Prairie du Château, Lacapelle-Marival (46120), dans le Lot, Occitanie.
 
 **Combien coûte l'entrée à Afreecanard ?**
-L'entrée est à 10 € le vendredi soir et 2 € le samedi et le dimanche. Un verre Afreecanard est offert à l'entrée chaque soir. La buvette et les repas sont à prix doux, servis par les bénévoles.
+Entrée libre avant 20h. Dès 20h : 5 € le vendredi (TNT), 10 € le samedi (LES MASSBEAT). Le dimanche est gratuit dès 19h. Enfants jusqu'à 12 ans : gratuits. Un verre Afreecanard est offert à l'entrée chaque soir payant.
 
 **Jusqu'à quelle heure ça dure ?**
 Les bodegas et concerts durent jusqu'à 3h du matin chaque soir.
@@ -49,8 +49,9 @@ Les bodegas et concerts durent jusqu'à 3h du matin chaque soir.
 Une bodega est un bar festif animé. Afreecanard en propose trois, chacune tenue par une section des amicales sportives du village.
 
 **Qui peut venir ?**
-Afreecanard est ouvert à tous. Des milliers de fêtards se retrouvent chaque année au pied du château.
+Afreecanard est ouvert à tous. Des milliers de fêtards se retrouvent chaque année à la Prairie du Château.
 
 ## Pages
 
 - [Site officiel](https://afreecanard.fr/) — Programme, bodegas, galerie photo, infos pratiques
+- [Les Bodegas](https://afreecanard.fr/bodegas.html) — Cartes boissons et repas des 3 bodegas
