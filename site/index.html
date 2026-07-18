@@ -33,6 +33,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&family=Archivo+Narrow:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preload" as="image" href="assets/photos/p08.webp"
+        imagesrcset="assets/photos/p08-700.webp 700w, assets/photos/p08.webp 1400w"
+        imagesizes="100vw" type="image/webp">
+  <link rel="preload" as="font" href="fonts/Heavitas.woff2" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
 
   <!-- ── Schema.org JSON-LD ── -->
@@ -251,7 +257,7 @@
     <header class="header" id="header">
       <nav class="nav">
         <a href="#top" class="nav__logo">
-          <img src="assets/logo-jaune.png" alt="Afreecanard">
+          <img src="assets/logo-jaune.webp" alt="Afreecanard">
         </a>
         <div class="nav__links" id="nav-links">
           <a href="#programme" class="nav__link">Programme</a>
@@ -302,18 +308,23 @@
 
         <!-- Photo révélée derrière les rideaux -->
         <div class="hero-pin__photo" aria-hidden="true">
-          <img src="assets/photos/p08.png" alt="" loading="eager" fetchpriority="high">
+          <picture>
+          <source type="image/webp"
+            srcset="assets/photos/p08-700.webp 700w, assets/photos/p08.webp 1400w"
+            sizes="100vw">
+          <img src="assets/photos/p08.webp" alt="" loading="eager" fetchpriority="high">
+        </picture>
           <div class="hero-pin__photo-overlay"></div>
         </div>
 
         <!-- Porte GAUCHE — moitié gauche du logo unique -->
         <div class="hero-pin__door hero-pin__door--left" aria-hidden="true">
-          <img src="assets/logo-jaune.png" alt="" class="hero-pin__door-logo">
+          <img src="assets/logo-jaune.webp" alt="" class="hero-pin__door-logo">
         </div>
 
         <!-- Porte DROITE — moitié droite du logo unique -->
         <div class="hero-pin__door hero-pin__door--right" aria-hidden="true">
-          <img src="assets/logo-jaune.png" alt="" class="hero-pin__door-logo">
+          <img src="assets/logo-jaune.webp" alt="" class="hero-pin__door-logo">
         </div>
 
         <!-- Notes musicales décoratives -->
@@ -324,20 +335,20 @@
 
         <!-- Canards décors -->
         <div class="hero__duck-wrap hero__duck-wrap--guitar" aria-hidden="true">
-          <img src="assets/canard-guitare.png" alt="" class="hero__duck hero__duck--guitar">
+          <img src="assets/canard-guitare.webp" alt="" class="hero__duck hero__duck--guitar">
         </div>
         <div class="hero__duck-wrap hero__duck-wrap--saxo" aria-hidden="true">
-          <img src="assets/canard-saxo.png" alt="" class="hero__duck hero__duck--saxo">
+          <img src="assets/canard-saxo.webp" alt="" class="hero__duck hero__duck--saxo">
         </div>
         <div class="hero__duck-wrap hero__duck-wrap--micro" aria-hidden="true">
-          <img src="assets/canard-micro.png" alt="" class="hero__duck hero__duck--micro">
+          <img src="assets/canard-micro.webp" alt="" class="hero__duck hero__duck--micro">
         </div>
 
         <!-- Contenu (SEO + utilisateur) — révélé en cascade par GSAP -->
         <div class="hero-pin__content">
           <h1 class="sr-only">Afreecanard 2026 — Bodegas et concerts à Lacapelle-Marival, 14 au 16 août</h1>
           <p class="hero__tagline font-superboom hero-pin__item">trois nuits de bodegas au pied du château</p>
-          <img src="assets/logo-jaune.png" alt="Afreecanard — Lacapelle-Marival" class="hero__logo hero-pin__item">
+          <img src="assets/logo-jaune.webp" alt="Afreecanard — Lacapelle-Marival" class="hero__logo hero-pin__item">
 
           <div class="hero__dates hero-pin__item">
             <span class="hero__dates-num font-heavitas">14 · 15 · 16</span>
@@ -407,7 +418,7 @@
           <button class="prog-tab prog-tab--active"
                   role="tab" aria-selected="true" aria-controls="prog-panel-0" id="prog-tab-0"
                   data-idx="0">
-            <span class="prog-tab__duck" aria-hidden="true"><img src="assets/canard-micro.png" alt="" class="prog-tab__duck-img"></span>
+            <span class="prog-tab__duck" aria-hidden="true"><img loading="lazy" src="assets/canard-micro.webp" alt="" class="prog-tab__duck-img"></span>
             <span class="prog-tab__day">Vendredi</span>
             <span class="prog-tab__num">14</span>
             <span class="prog-tab__mth">août</span>
@@ -416,7 +427,7 @@
           <button class="prog-tab"
                   role="tab" aria-selected="false" aria-controls="prog-panel-1" id="prog-tab-1"
                   data-idx="1">
-            <span class="prog-tab__duck" aria-hidden="true"><img src="assets/canard-micro.png" alt="" class="prog-tab__duck-img"></span>
+            <span class="prog-tab__duck" aria-hidden="true"><img loading="lazy" src="assets/canard-micro.webp" alt="" class="prog-tab__duck-img"></span>
             <span class="prog-tab__day">Samedi</span>
             <span class="prog-tab__num">15</span>
             <span class="prog-tab__mth">août</span>
@@ -425,7 +436,7 @@
           <button class="prog-tab"
                   role="tab" aria-selected="false" aria-controls="prog-panel-2" id="prog-tab-2"
                   data-idx="2">
-            <span class="prog-tab__duck" aria-hidden="true"><img src="assets/canard-micro.png" alt="" class="prog-tab__duck-img"></span>
+            <span class="prog-tab__duck" aria-hidden="true"><img loading="lazy" src="assets/canard-micro.webp" alt="" class="prog-tab__duck-img"></span>
             <span class="prog-tab__day">Dimanche</span>
             <span class="prog-tab__num">16</span>
             <span class="prog-tab__mth">août</span>
@@ -455,7 +466,7 @@
                 </div>
                 <div class="prog-block__body">
                   <p class="prog-block__desc">Concert à la Prairie du Château — Lacapelle-Marival.</p>
-                  <div class="prog-lineup" data-photo="assets/photos/p01.png">
+                  <div class="prog-lineup" data-photo="assets/photos/p01.webp">
                     <span class="prog-lineup__label">Concert du soir</span>
                     <strong class="prog-lineup__artist">TNT</strong>
                     <span class="prog-lineup__genre">Variété · Pop-rock · Ultra festif</span>
@@ -509,14 +520,14 @@
                 </div>
                 <div class="prog-block__body">
                   <p class="prog-block__desc">Sous la halle et dans Lacapelle-Marival.</p>
-                  <div class="prog-highlight prog-highlight--star" data-photo="assets/photos/tete-a-clique.png">
+                  <div class="prog-highlight prog-highlight--star" data-photo="assets/photos/tete-a-clique.webp">
                     <span class="prog-highlight__icon" aria-hidden="true">🎺</span>
                     <div class="prog-highlight__copy">
                       <strong class="prog-highlight__title">LA CLIQUE</strong>
                       <span class="prog-highlight__sub">sous la halle, à midi · restauration sur place</span>
                     </div>
                   </div>
-                  <div class="prog-highlight" data-photo="assets/photos/petanque-marivaloise.png">
+                  <div class="prog-highlight" data-photo="assets/photos/petanque-marivaloise.webp">
                     <span class="prog-highlight__icon" aria-hidden="true">🎳</span>
                     <div class="prog-highlight__copy">
                       <strong class="prog-highlight__title">Concours de pétanque</strong>
@@ -539,7 +550,7 @@
                 </div>
                 <div class="prog-block__body">
                   <p class="prog-block__desc">Concert à la Prairie du Château.</p>
-                  <div class="prog-lineup" data-photo="assets/photos/massbeat.png">
+                  <div class="prog-lineup" data-photo="assets/photos/massbeat.webp">
                     <span class="prog-lineup__label">Concert du soir</span>
                     <strong class="prog-lineup__artist">MASSBEAT</strong>
                   </div>
@@ -593,14 +604,14 @@
                 </div>
                 <div class="prog-block__body">
                   <p class="prog-block__desc">Sous la halle et dans Lacapelle-Marival.</p>
-                  <div class="prog-highlight prog-highlight--star" data-photo="assets/photos/la-bandacapella.png">
+                  <div class="prog-highlight prog-highlight--star" data-photo="assets/photos/la-bandacapella.webp">
                     <span class="prog-highlight__icon" aria-hidden="true">🎺</span>
                     <div class="prog-highlight__copy">
                       <strong class="prog-highlight__title">LA BAND'ACAPELLA</strong>
                       <span class="prog-highlight__sub">sous la halle, à midi · restauration sur place</span>
                     </div>
                   </div>
-                  <div class="prog-highlight" data-photo="assets/photos/defile-en-char-2.png">
+                  <div class="prog-highlight" data-photo="assets/photos/defile-en-char-2.webp">
                     <span class="prog-highlight__icon" aria-hidden="true">🥁</span>
                     <div class="prog-highlight__copy">
                       <strong class="prog-highlight__title">Défilé dans Lacapelle</strong>
@@ -623,7 +634,7 @@
                 </div>
                 <div class="prog-block__body">
                   <p class="prog-block__desc">Concert à la Prairie du Château.</p>
-                  <div class="prog-lineup" data-photo="assets/photos/p02.png">
+                  <div class="prog-lineup" data-photo="assets/photos/p02.webp">
                     <span class="prog-lineup__label">Concert du soir</span>
                     <strong class="prog-lineup__artist">MATRONOME</strong>
                     <span class="prog-lineup__local">Groupe du Lot · de chez nous</span>
@@ -866,7 +877,7 @@
           <article class="bodega-card bodega-card--ancien">
             <div class="bodega-card__photo bodega-card__photo--ancien">
               <div class="bodega-card__blason bodega-card__blason--duck" aria-hidden="true">
-                <img src="assets/canard-lunettes.png" alt="" class="bodega-card__duck">
+                <img loading="lazy" src="assets/canard-lunettes.webp" alt="" class="bodega-card__duck">
               </div>
               <span class="bodega-card__label bodega-card__label--ancien">Bodega des Anciens</span>
             </div>
@@ -897,7 +908,7 @@
     <!-- AMBIANCE -->
     <section class="ambiance">
       <div class="ambiance__walker" aria-hidden="true">
-        <img src="assets/canard-lunettes.png" alt="">
+        <img src="assets/canard-lunettes.webp" alt="">
       </div>
       <div data-reveal="up" class="ambiance__content">
         <p class="section__eyebrow font-superboom" style="color:#ffd11e;font-size:32px;margin:0 0 6px;">l'ambiance, la vraie</p>
@@ -921,16 +932,16 @@
 
         <div data-reveal="up" class="galerie__wrapper">
           <div id="ac-gallery-track" class="galerie__track">
-            <div class="galerie__slide"><img src="assets/photos/p11.png" alt="Animations et ambiance à l'Afreecanard — Prairie du Château, Lacapelle-Marival"></div>
-            <div class="galerie__slide"><img src="assets/photos/p09.png" alt="Fêtards à l'Afreecanard — ambiance festive, Lacapelle-Marival"></div>
-            <div class="galerie__slide"><img src="assets/photos/p08.png" alt="Concert Afreecanard — Prairie du Château, Lacapelle-Marival"></div>
-            <div class="galerie__slide"><img src="assets/photos/p04.png" alt="Défilé et animations — Afreecanard, Lacapelle-Marival"></div>
-            <div class="galerie__slide"><img src="assets/photos/p10.png" alt="Ambiance bodega Afreecanard — Lacapelle-Marival, Lot"></div>
-            <div class="galerie__slide"><img src="assets/photos/p03.png" alt="LA BAND'ACAPELLA en concert — Afreecanard, Lacapelle-Marival"></div>
-            <div class="galerie__slide"><img src="assets/photos/p01.png" alt="Concert TNT — Afreecanard, Prairie du Château, Lacapelle-Marival"></div>
-            <div class="galerie__slide"><img src="assets/photos/p02.png" alt="Concert MATRONOME — Afreecanard, Lacapelle-Marival"></div>
-            <div class="galerie__slide"><img src="assets/photos/p12.png" alt="Bodega Afreecanard — Prairie du Château, Lacapelle-Marival"></div>
-            <div class="galerie__slide"><img src="assets/photos/p07.png" alt="Afreecanard 2026 — ambiance Prairie du Château, Lacapelle-Marival"></div>
+            <div class="galerie__slide"><img loading="lazy" src="assets/photos/p11.webp" alt="Animations et ambiance à l'Afreecanard — Prairie du Château, Lacapelle-Marival"></div>
+            <div class="galerie__slide"><img loading="lazy" src="assets/photos/p09.webp" alt="Fêtards à l'Afreecanard — ambiance festive, Lacapelle-Marival"></div>
+            <div class="galerie__slide"><img loading="lazy" src="assets/photos/p08.webp" alt="Concert Afreecanard — Prairie du Château, Lacapelle-Marival"></div>
+            <div class="galerie__slide"><img loading="lazy" src="assets/photos/p04.webp" alt="Défilé et animations — Afreecanard, Lacapelle-Marival"></div>
+            <div class="galerie__slide"><img loading="lazy" src="assets/photos/p10.webp" alt="Ambiance bodega Afreecanard — Lacapelle-Marival, Lot"></div>
+            <div class="galerie__slide"><img loading="lazy" src="assets/photos/p03.webp" alt="LA BAND'ACAPELLA en concert — Afreecanard, Lacapelle-Marival"></div>
+            <div class="galerie__slide"><img loading="lazy" src="assets/photos/p01.webp" alt="Concert TNT — Afreecanard, Prairie du Château, Lacapelle-Marival"></div>
+            <div class="galerie__slide"><img loading="lazy" src="assets/photos/p02.webp" alt="Concert MATRONOME — Afreecanard, Lacapelle-Marival"></div>
+            <div class="galerie__slide"><img loading="lazy" src="assets/photos/p12.webp" alt="Bodega Afreecanard — Prairie du Château, Lacapelle-Marival"></div>
+            <div class="galerie__slide"><img loading="lazy" src="assets/photos/p07.webp" alt="Afreecanard 2026 — ambiance Prairie du Château, Lacapelle-Marival"></div>
           </div>
           <button id="gal-prev" class="galerie__nav galerie__nav--prev" aria-label="Précédent">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
@@ -1194,10 +1205,10 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <img src="assets/canard-batterie.png" alt="" class="footer__duck" aria-hidden="true">
+      <img loading="lazy" src="assets/canard-batterie.webp" alt="" class="footer__duck" aria-hidden="true">
       <div class="footer__grid">
         <div>
-          <img src="assets/logo-jaune.png" alt="Afreecanard" class="footer__logo">
+          <img loading="lazy" src="assets/logo-jaune.webp" alt="Afreecanard" class="footer__logo">
           <p class="footer__about">Trois nuits de bodegas et de concerts à Lacapelle-Marival (Lot), organisées chaque année par les bénévoles des amicales du foot et du rugby. L'esprit d'une vraie fête populaire, rien d'autre.</p>
         </div>
         <div>
@@ -1226,9 +1237,9 @@
     </footer>
 
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="js/main.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="js/main.js"></script>
 </body>
 </html>

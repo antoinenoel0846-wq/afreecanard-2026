@@ -1,13 +1,15 @@
 @font-face {
   font-family: 'Heavitas';
-  src: url('../fonts/Heavitas.ttf') format('truetype');
+  src: url('../fonts/Heavitas.woff2') format('woff2'),
+       url('../fonts/Heavitas.ttf') format('truetype');
   font-weight: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'SuperBoom';
-  src: url('../fonts/SuperBoom.otf') format('opentype');
+  src: url('../fonts/SuperBoom.woff2') format('woff2'),
+       url('../fonts/SuperBoom.otf') format('opentype');
   font-weight: normal;
   font-display: swap;
 }
@@ -310,7 +312,7 @@ img {
   position: fixed;
   inset: 0;
   z-index: 95;
-  background: #0e1642 url('../assets/fabric-blue.png') center / cover;
+  background: #0e1642 url('../assets/fabric-blue.webp') center / cover;
   clip-path: circle(0% at calc(100% - 33px) 37px);
   transition: clip-path 0.75s cubic-bezier(0.76, 0, 0.24, 1);
   pointer-events: none;
@@ -613,7 +615,7 @@ section[id] {
   background-color: #16265f;
   background-image:
     radial-gradient(120% 95% at 50% -12%, rgba(74, 110, 230, 0.42) 0%, rgba(20, 32, 90, 0) 56%),
-    url('../assets/fabric-blue.png');
+    url('../assets/fabric-blue.webp');
   background-size: auto, cover;
   background-position: center top, center;
 }
@@ -871,7 +873,7 @@ section[id] {
   background-color: #1c2d82;
   background-image:
     linear-gradient(rgba(16, 24, 66, 0.22), rgba(16, 24, 66, 0.34)),
-    url('../assets/fabric-blue.png');
+    url('../assets/fabric-blue.webp');
   background-size: cover, cover;
   background-position: center, center;
 }
@@ -880,7 +882,7 @@ section[id] {
   background-color: #16265f;
   background-image:
     linear-gradient(rgba(13, 20, 56, 0.42), rgba(13, 20, 56, 0.64)),
-    url('../assets/fabric-blue.png');
+    url('../assets/fabric-blue.webp');
   background-size: cover, cover;
   background-position: center, center bottom;
 }
@@ -1061,7 +1063,7 @@ section[id] {
   background-color: #16265f;
   background-image:
     linear-gradient(rgba(13, 20, 56, 0.38), rgba(13, 20, 56, 0.56)),
-    url('../assets/fabric-blue.png');
+    url('../assets/fabric-blue.webp');
   background-size: cover, cover;
   background-position: center, center;
   min-height: 100vh;
@@ -1131,7 +1133,7 @@ section[id] {
   overflow: hidden;
   background-image:
     linear-gradient(rgba(16, 26, 70, 0.62), rgba(16, 26, 70, 0.72)),
-    url('../assets/photos/p07.png');
+    url('../assets/photos/p07.webp');
   background-size: cover;
   background-position: center 30%;
   background-attachment: fixed;
@@ -1195,7 +1197,7 @@ section[id] {
   position: relative;
   height: 200px;
   overflow: hidden;
-  background: #16265f url('../assets/fabric-blue.png') center / cover;
+  background: #16265f url('../assets/fabric-blue.webp') center / cover;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -1331,19 +1333,19 @@ section[id] {
 }
 
 .bodega-card__photo--foot {
-  background-image: url('../assets/photos/p06.png');
+  background-image: url('../assets/photos/p06.webp');
   background-position: center 38%;
 }
 
 .bodega-card__photo--rugby {
-  background-image: url('../assets/photos/p05.png');
+  background-image: url('../assets/photos/p05.webp');
   background-position: center 32%;
 }
 
 .bodega-card__photo--ancien {
   overflow: hidden;
   background-color: #1f3f9e;
-  background-image: url('../assets/fabric-blue.png');
+  background-image: url('../assets/fabric-blue.webp');
   background-size: cover;
   display: flex;
   align-items: center;
