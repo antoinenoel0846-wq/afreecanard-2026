@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mentions légales — Afreecanard</title>
+  <meta name="description" content="Mentions légales du site afreecanard.fr — éditeur, hébergeur, propriété intellectuelle et données personnelles.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://afreecanard.fr/mentions-legales.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ── Mentions légales — styles propres à la page ── */
+
+    .ml-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ml-main {
+      flex: 1;
+      padding-bottom: clamp(64px, 8vw, 100px);
+    }
+
+    /* Hero / en-tête de page */
+    .ml-hero {
+      padding: clamp(110px, 14vw, 160px) clamp(24px, 6vw, 80px) clamp(48px, 6vw, 72px);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .ml-hero__eyebrow {
+      font-size: clamp(14px, 1.8vw, 18px);
+      color: #ffd11e;
+      letter-spacing: 0.02em;
+      margin: 0 0 10px;
+    }
+
+    .ml-hero__title {
+      font-family: 'Heavitas', sans-serif;
+      font-size: clamp(38px, 7vw, 86px);
+      color: #ffffff;
+      line-height: 0.95;
+      margin: 0 0 22px;
+      letter-spacing: -0.01em;
+    }
+
+    .ml-hero__sub {
+      font-family: 'Archivo', sans-serif;
+      color: #7f8fc8;
+      font-size: clamp(13px, 1.2vw, 15px);
+      line-height: 1.6;
+      margin: 0;
+      max-width: 60ch;
+    }
+
+    /* Séparateur décoratif */
+    .ml-divider {
+      max-width: 860px;
+      margin: 0 auto clamp(32px, 4vw, 48px);
+      padding: 0 clamp(24px, 6vw, 80px);
+    }
+
+    .ml-divider__line {
+      border: none;
+      border-top: 1px solid rgba(255, 209, 30, 0.22);
+    }
+
+    /* Container des blocs */
+    .ml-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 6vw, 80px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Bloc légal */
+    .ml-block {
+      border-left: 3px solid #ffd11e;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 0 10px 10px 0;
+      padding: 24px 28px 26px 28px;
+    }
+
+    .ml-block__label {
+      font-family: 'Heavitas', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: #ffd11e;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 209, 30, 0.14);
+    }
+
+    .ml-block__body {
+      font-family: 'Archivo', sans-serif;
+      color: #cdd9ff;
+      font-size: clamp(14px, 1.3vw, 15.5px);
+      line-height: 1.75;
+    }
+
+    .ml-block__body p {
+      margin: 0 0 6px;
+    }
+
+    .ml-block__body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .ml-block__body strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .ml-block__body a {
+      color: #ffd11e;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255, 209, 30, 0.4);
+      transition: text-decoration-color 0.2s;
+    }
+
+    .ml-block__body a:hover {
+      text-decoration-color: #ffd11e;
+    }
+
+    /* Champs à compléter — visibles, impossibles à rater */
+    .ml-todo {
+      display: inline-block;
+      background: #ffd11e;
+      color: #0e1642;
+      font-family: 'Courier New', monospace;
+      font-size: 0.88em;
+      font-weight: 700;
+      padding: 1px 7px 2px;
+      border-radius: 4px;
+      font-style: normal;
+      white-space: nowrap;
+    }
+
+    /* Mention alcool dans footer — déjà gérée */
+
+    /* Lien retour accueil sous le contenu */
+    .ml-back {
+      max-width: 860px;
+      margin: 40px auto 0;
+      padding: 0 clamp(24px, 6vw, 80px);
+    }
+
+    .ml-back__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Archivo', sans-serif;
+      font-size: 14px;
+      color: #7f8fc8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .ml-back__link:hover {
+      color: #ffd11e;
+    }
+
+    .ml-back__arrow {
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* Mobile */
+    @media (max-width: 540px) {
+      .ml-block {
+        padding: 18px 18px 20px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page ml-page">
+
+    <!-- NAV (is-scrolled dès le chargement : pas de hero transparent) -->
+    <header class="header is-scrolled" id="header">
+      <nav class="nav">
+        <a href="index.html" class="nav__logo">
+          <img src="assets/logo-jaune.png" alt="Afreecanard">
+        </a>
+        <div class="nav__links" id="nav-links">
+          <a href="index.html#programme" class="nav__link">Programme</a>
+          <a href="bodegas.html" class="nav__link">Bodegas</a>
+          <a href="index.html#galerie" class="nav__link">Galerie</a>
+          <a href="index.html#infos" class="nav__link">Infos</a>
+          <a href="index.html#faq" class="nav__link">FAQ</a>
+          <a href="https://www.instagram.com/afreecanard/" target="_blank" rel="noopener" class="btn btn--yellow btn--nav">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#18286e" stroke-width="2.4" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#18286e" stroke="none"/></svg>
+            Suivre
+          </a>
+        </div>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span class="nav__burger" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Overlay mobile -->
+    <div class="nav__overlay" id="nav-overlay" aria-hidden="true">
+      <div class="nav__overlay-content">
+        <nav class="nav__overlay-nav" aria-label="Menu principal">
+          <a href="index.html#programme" class="nav__overlay-link">Programme</a>
+          <a href="bodegas.html" class="nav__overlay-link">Bodegas</a>
+          <a href="index.html#galerie" class="nav__overlay-link">Galerie</a>
+          <a href="index.html#infos" class="nav__overlay-link">Infos</a>
+          <a href="index.html#faq" class="nav__overlay-link">FAQ</a>
+        </nav>
+        <div class="nav__overlay-bottom">
+          <a href="https://www.instagram.com/afreecanard/" target="_blank" rel="noopener" class="btn btn--yellow nav__overlay-ig">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#18286e" stroke-width="2.4" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#18286e" stroke="none"/></svg>
+            @afreecanard
+          </a>
+          <p class="nav__overlay-date font-heavitas">14 · 15 · 16 AOÛT · LACAPELLE-MARIVAL</p>
+        </div>
+      </div>
+    </div>
+
+    <main class="ml-main">
+
+      <!-- En-tête -->
+      <div class="ml-hero">
+        <p class="font-superboom ml-hero__eyebrow">informations légales</p>
+        <h1 class="ml-hero__title">MENTIONS<br>LÉGALES</h1>
+        <p class="ml-hero__sub">Conformément à la loi n°&thinsp;2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN).</p>
+      </div>
+
+      <div class="ml-divider"><hr class="ml-divider__line"></div>
+
+      <!-- Blocs légaux -->
+      <div class="ml-container">
+
+        <!-- 1. Éditeur -->
+        <div class="ml-block">
+          <div class="ml-block__label">01 — ÉDITEUR DU SITE</div>
+          <div class="ml-block__body">
+            <p><strong>Association COMPTE COMMUN</strong> &mdash; association loi 1901</p>
+            <p>Objet déclaré&nbsp;: faciliter la gestion des fêtes Marivaloise (Afreecanard)</p>
+            <p>Numéro RNA&nbsp;: <strong>W462006436</strong> &mdash; déclarée le 26 mai 2023</p>
+            <p>Siège social&nbsp;: 1 rue des Remparts, 46120 Lacapelle-Marival, Lot, Occitanie</p>
+            <p>Responsable de la publication&nbsp;: <mark class="ml-todo">[NOM À COMPLÉTER]</mark></p>
+            <p>Contact&nbsp;: <mark class="ml-todo">[EMAIL À COMPLÉTER]</mark></p>
+          </div>
+        </div>
+
+        <!-- 2. Hébergeur -->
+        <div class="ml-block">
+          <div class="ml-block__label">02 — HÉBERGEUR</div>
+          <div class="ml-block__body">
+            <p><strong>GitHub, Inc.</strong></p>
+            <p>88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis</p>
+            <p><a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a></p>
+            <p>Le site est servi via <strong>GitHub Pages</strong>, service d'hébergement statique de GitHub.</p>
+          </div>
+        </div>
+
+        <!-- 3. Nom de domaine -->
+        <div class="ml-block">
+          <div class="ml-block__label">03 — NOM DE DOMAINE</div>
+          <div class="ml-block__body">
+            <p>Le domaine <strong>afreecanard.fr</strong> est enregistré auprès de <strong>Hostinger International Ltd</strong>.</p>
+            <p>Hostinger assure le rôle de bureau d'enregistrement (registrar) et de gestionnaire DNS. Il n'héberge pas le contenu du site.</p>
+          </div>
+        </div>
+
+        <!-- 4. Propriété intellectuelle -->
+        <div class="ml-block">
+          <div class="ml-block__label">04 — PROPRIÉTÉ INTELLECTUELLE</div>
+          <div class="ml-block__body">
+            <p>L'ensemble des contenus présents sur ce site &mdash; textes, visuels, logo Afreecanard, photographies &mdash; sont la propriété de l'association Compte Commun ou de leurs auteurs respectifs et sont protégés par le droit d'auteur.</p>
+            <p>Toute reproduction, représentation, modification ou exploitation, totale ou partielle, de ces contenus sans autorisation préalable écrite est interdite et constitue une contrefaçon.</p>
+          </div>
+        </div>
+
+        <!-- 5. Données personnelles -->
+        <div class="ml-block">
+          <div class="ml-block__label">05 — DONNÉES PERSONNELLES</div>
+          <div class="ml-block__body">
+            <p>Ce site est statique et ne collecte aucune donnée personnelle. Aucun formulaire, aucun cookie de traçage ni outil de statistiques n'est actuellement en place.</p>
+            <p>Si des outils de ce type venaient à être ajoutés, cette page sera mise à jour en conséquence.</p>
+            <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant. Pour l'exercer&nbsp;: <mark class="ml-todo">[EMAIL À COMPLÉTER]</mark></p>
+          </div>
+        </div>
+
+        <!-- 6. Mention alcool -->
+        <div class="ml-block">
+          <div class="ml-block__label">06 — MISE EN GARDE</div>
+          <div class="ml-block__body">
+            <p>L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Lien retour -->
+      <div class="ml-back">
+        <a href="index.html" class="ml-back__link">
+          <span class="ml-back__arrow">←</span>
+          Retour à l'accueil
+        </a>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <img src="assets/canard-batterie.png" alt="" class="footer__duck" aria-hidden="true">
+      <div class="footer__grid">
+        <div>
+          <img src="assets/logo-jaune.png" alt="Afreecanard" class="footer__logo">
+          <p class="footer__about">Trois nuits de bodegas et de concerts à Lacapelle-Marival (Lot), organisées chaque année par les bénévoles des amicales du foot et du rugby. L'esprit d'une vraie fête populaire, rien d'autre.</p>
+        </div>
+        <div>
+          <div class="footer__heading">NAVIGUER</div>
+          <a href="index.html#programme" class="footer__link">Programme</a>
+          <a href="bodegas.html" class="footer__link">Les bodegas</a>
+          <a href="index.html#galerie" class="footer__link">Galerie</a>
+          <a href="index.html#infos" class="footer__link">Infos pratiques</a>
+          <a href="index.html#faq" class="footer__link">FAQ</a>
+          <a href="mentions-legales.html" class="footer__link">Mentions légales</a>
+        </div>
+        <div>
+          <div class="footer__heading">SUIVRE</div>
+          <a href="https://www.instagram.com/afreecanard/" target="_blank" rel="noopener" class="btn btn--yellow footer__ig">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16265f" stroke-width="2.4" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#16265f" stroke="none"/></svg>
+            @afreecanard
+          </a>
+          <p class="footer__social">@elan_marivalois<br>Amicale rugby marivaldois</p>
+        </div>
+      </div>
+      <p class="footer__legal">L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
+      <div class="footer__bottom">
+        <span class="footer__copy">© Afreecanard · Lacapelle-Marival</span>
+        <span class="footer__copy">Fait au village, avec le sourire 🦆</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var header  = document.getElementById('header');
+      var toggle  = document.getElementById('nav-toggle');
+      var overlay = document.getElementById('nav-overlay');
+
+      function openMenu() {
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.classList.add('is-open');
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', function () {
+        toggle.classList.contains('is-open') ? closeMenu() : openMenu();
+      });
+
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeMenu();
+      });
+
+      overlay.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    }());
+  </script>
+
+</body>
+</html>
