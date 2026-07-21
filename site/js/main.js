@@ -776,41 +776,6 @@
     });
   }
 
-  function initManifesteFill() {
-    if (!window.gsap || !window.ScrollTrigger) return;
-    var el = document.querySelector('.js-manifeste-fill');
-    if (!el) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var rawText = el.textContent.trim();
-
-    function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-    el.innerHTML = rawText.split(/\s+/).filter(Boolean).map(function (w) {
-      return '<span class="manifeste-word">' + esc(w) + '</span>';
-    }).join(' ');
-
-    /* Active l'état contour (-webkit-text-stroke + color transparent) */
-    el.classList.add('is-split');
-
-    var words = el.querySelectorAll('.manifeste-word');
-    /* Couleur de départ : jaune totalement transparent (même RVB que la cible → seul l'alpha s'anime) */
-    gsap.set(words, { color: 'rgba(255, 209, 30, 0)' });
-
-    var tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.section-manifeste',
-        start: 'top 75%',
-        end: 'bottom 25%',
-        scrub: 1.4,
-      }
-    });
-
-    Array.prototype.forEach.call(words, function (w, i) {
-      tl.to(w, { color: '#ffd11e', ease: 'none', duration: 0.4 }, i * 0.2);
-    });
-  }
-
   function initIntroFill() {
     if (!window.gsap || !window.ScrollTrigger) return;
     var el = document.querySelector('.js-text-fill');
@@ -855,7 +820,6 @@
     initCountdown();
     initGallery();
     initReveal();
-    initManifesteFill();
     initIntroFill();
     initNav();
     initProgramme();

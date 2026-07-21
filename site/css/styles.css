@@ -1058,69 +1058,6 @@ section[id] {
   .intro-word { color: #ffffff !important; }
 }
 
-/* ── Section Manifeste — texte plein écran, fill au scroll ── */
-.section-manifeste {
-  background-color: #16265f;
-  background-image:
-    linear-gradient(rgba(13, 20, 56, 0.38), rgba(13, 20, 56, 0.56)),
-    url('../assets/fabric-blue.webp');
-  background-size: cover, cover;
-  background-position: center, center;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(80px, 12vh, 140px) clamp(28px, 7vw, 130px);
-}
-
-.manifeste__inner {
-  max-width: 1140px;
-  width: 100%;
-  text-align: center;
-}
-
-.manifeste__text {
-  font-family: 'Heavitas', sans-serif;
-  font-size: clamp(20px, 3.8vw, 58px);
-  line-height: 1.18;
-  letter-spacing: 0.01em;
-  margin: 0;
-  color: #ffffff;
-}
-
-/* État appliqué par JS une fois le texte splitté — active le contour */
-.manifeste__text.is-split {
-  color: rgba(255, 209, 30, 0);
-  -webkit-text-stroke: 1.5px rgba(255, 209, 30, 0.55);
-}
-
-.manifeste-word {
-  display: inline;
-  will-change: color;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .manifeste__text,
-  .manifeste__text.is-split,
-  .manifeste-word {
-    -webkit-text-stroke: 0 !important;
-    color: #ffffff !important;
-  }
-}
-
-@media (max-width: 540px) {
-  .section-manifeste {
-    padding: 80px 24px;
-  }
-  .manifeste__text {
-    font-size: clamp(22px, 6.8vw, 34px);
-    line-height: 1.22;
-  }
-  .manifeste__text.is-split {
-    -webkit-text-stroke-width: 1px;
-  }
-}
-
 /* ── Ambiance ── */
 .ambiance {
   position: relative;
