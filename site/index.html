@@ -410,7 +410,7 @@
         <div class="prog-section__hd" data-reveal="up">
           <p class="prog-section__eyebrow font-superboom">la programmation <span class="prog-year">2026</span></p>
           <h2 class="prog-section__title font-heavitas">PROGRAMME</h2>
-          <p class="prog-section__sub">14 · 15 · 16 août — Lacapelle-Marival</p>
+          <p class="prog-section__sub">13 · 14 · 15 · 16 août — Lacapelle-Marival</p>
         </div>
 
         <!-- Onglets -->
@@ -419,14 +419,23 @@
                   role="tab" aria-selected="true" aria-controls="prog-panel-0" id="prog-tab-0"
                   data-idx="0">
             <span class="prog-tab__duck" aria-hidden="true"><img loading="lazy" src="assets/canard-micro.webp" alt="" class="prog-tab__duck-img"></span>
+            <span class="prog-tab__day">Jeudi</span>
+            <span class="prog-tab__num">13</span>
+            <span class="prog-tab__mth">août</span>
+            <span class="prog-tab__badge prog-tab__badge--free">Entrée libre</span>
+          </button>
+          <button class="prog-tab"
+                  role="tab" aria-selected="false" aria-controls="prog-panel-1" id="prog-tab-1"
+                  data-idx="1">
+            <span class="prog-tab__duck" aria-hidden="true"><img loading="lazy" src="assets/canard-micro.webp" alt="" class="prog-tab__duck-img"></span>
             <span class="prog-tab__day">Vendredi</span>
             <span class="prog-tab__num">14</span>
             <span class="prog-tab__mth">août</span>
             <span class="prog-tab__badge">5&thinsp;€ dès 20h</span>
           </button>
           <button class="prog-tab"
-                  role="tab" aria-selected="false" aria-controls="prog-panel-1" id="prog-tab-1"
-                  data-idx="1">
+                  role="tab" aria-selected="false" aria-controls="prog-panel-2" id="prog-tab-2"
+                  data-idx="2">
             <span class="prog-tab__duck" aria-hidden="true"><img loading="lazy" src="assets/canard-micro.webp" alt="" class="prog-tab__duck-img"></span>
             <span class="prog-tab__day">Samedi</span>
             <span class="prog-tab__num">15</span>
@@ -434,8 +443,8 @@
             <span class="prog-tab__badge">10&thinsp;€ dès 20h</span>
           </button>
           <button class="prog-tab"
-                  role="tab" aria-selected="false" aria-controls="prog-panel-2" id="prog-tab-2"
-                  data-idx="2">
+                  role="tab" aria-selected="false" aria-controls="prog-panel-3" id="prog-tab-3"
+                  data-idx="3">
             <span class="prog-tab__duck" aria-hidden="true"><img loading="lazy" src="assets/canard-micro.webp" alt="" class="prog-tab__duck-img"></span>
             <span class="prog-tab__day">Dimanche</span>
             <span class="prog-tab__num">16</span>
@@ -447,9 +456,55 @@
         <!-- Panneaux -->
         <div class="prog-panels" aria-live="polite">
 
-          <!-- Vendredi 14 -->
+          <!-- Jeudi 13 -->
           <div class="prog-panel prog-panel--active"
                role="tabpanel" id="prog-panel-0" aria-labelledby="prog-tab-0">
+            <h3 class="sr-only">Jeudi 13 août</h3>
+            <div class="prog-blocks prog-blocks--solo" data-reveal="up">
+              <div class="prog-block prog-block--soir">
+                <div class="prog-block__head">
+                  <span class="prog-block__icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="10" cy="10" r="4.5" fill="#ffd11e"/>
+                      <line x1="10" y1="1.5" x2="10" y2="3.5"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="10" y1="16.5" x2="10" y2="18.5" stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="1.5" y1="10" x2="3.5" y2="10"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="16.5" y1="10" x2="18.5" y2="10" stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="3.64" y1="3.64" x2="5.05" y2="5.05"     stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="14.95" y1="14.95" x2="16.36" y2="16.36" stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="16.36" y1="3.64" x2="14.95" y2="5.05"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="5.05" y1="14.95" x2="3.64" y2="16.36"   stroke="#ffd11e" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <span class="prog-block__label">Soirée · animation</span>
+                  <span class="prog-block__hours">À partir de 19h</span>
+                </div>
+                <div class="prog-block__body">
+                  <p class="prog-block__desc">Sous la halle — Lacapelle-Marival.</p>
+                  <div class="prog-highlight prog-highlight--star">
+                    <span class="prog-highlight__icon" aria-hidden="true">🎵</span>
+                    <div class="prog-highlight__copy">
+                      <strong class="prog-highlight__title">Cours de rock débutant</strong>
+                      <span class="prog-highlight__sub">sous la halle · 19h · inscriptions : <a href="tel:0630574963">06 30 57 49 63</a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="prog-prix">
+              <div class="prog-prix__main">
+                <span class="prog-prix__eur prog-prix__eur--free">Gratuit</span>
+                <span class="prog-prix__sep" aria-hidden="true"></span>
+                <div class="prog-prix__detail">
+                  <span class="prog-prix__txt">Entrée libre</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vendredi 14 -->
+          <div class="prog-panel"
+               role="tabpanel" id="prog-panel-1" aria-labelledby="prog-tab-1" hidden>
             <h3 class="sr-only">Vendredi 14 août</h3>
             <div class="prog-blocks prog-blocks--solo" data-reveal="up">
               <div class="prog-block prog-block--soir">
@@ -461,14 +516,28 @@
                       <circle cx="17"   cy="8"   r="0.7" fill="#c8d8ff" opacity="0.45"/>
                     </svg>
                   </span>
-                  <span class="prog-block__label">Soirée · concerts</span>
-                  <span class="prog-block__hours">20h → 3h du matin</span>
+                  <span class="prog-block__label">Soirée · animations &amp; concert</span>
+                  <span class="prog-block__hours">18h30 → 3h du matin</span>
                 </div>
                 <div class="prog-block__body">
-                  <p class="prog-block__desc">Concert à la Prairie du Château — Lacapelle-Marival.</p>
+                  <p class="prog-block__desc">Sous la halle puis Prairie du Château — Lacapelle-Marival.</p>
+                  <div class="prog-highlight">
+                    <span class="prog-highlight__icon" aria-hidden="true">🕺</span>
+                    <div class="prog-highlight__copy">
+                      <strong class="prog-highlight__title">Cours de salsa débutant</strong>
+                      <span class="prog-highlight__sub">sous la halle · 18h30 · inscriptions : <a href="tel:0686129652">06 86 12 96 52</a></span>
+                    </div>
+                  </div>
+                  <div class="prog-highlight">
+                    <span class="prog-highlight__icon" aria-hidden="true">🍽</span>
+                    <div class="prog-highlight__copy">
+                      <strong class="prog-highlight__title">Amicanes &amp; restauration</strong>
+                      <span class="prog-highlight__sub">à partir de 19h</span>
+                    </div>
+                  </div>
                   <div class="prog-lineup" data-photo="assets/photos/p01.webp">
-                    <span class="prog-lineup__label">Concert du soir</span>
-                    <strong class="prog-lineup__artist">TNT</strong>
+                    <span class="prog-lineup__label">Concert · 21h</span>
+                    <strong class="prog-lineup__artist">ORCHESTRE TNT</strong>
                     <span class="prog-lineup__genre">Variété · Pop-rock · Ultra festif</span>
                   </div>
                   <div class="prog-theme">
@@ -497,7 +566,7 @@
 
           <!-- Samedi 15 -->
           <div class="prog-panel"
-               role="tabpanel" id="prog-panel-1" aria-labelledby="prog-tab-1" hidden>
+               role="tabpanel" id="prog-panel-2" aria-labelledby="prog-tab-2" hidden>
             <h3 class="sr-only">Samedi 15 août</h3>
             <div class="prog-blocks prog-blocks--jour-heavy">
               <div class="prog-block prog-block--jour">
@@ -524,14 +593,14 @@
                     <span class="prog-highlight__icon" aria-hidden="true">🎺</span>
                     <div class="prog-highlight__copy">
                       <strong class="prog-highlight__title">LA CLIQUE</strong>
-                      <span class="prog-highlight__sub">sous la halle, à midi · restauration sur place</span>
+                      <span class="prog-highlight__sub">repas sous la halle · 12h · restauration sur place</span>
                     </div>
                   </div>
                   <div class="prog-highlight" data-photo="assets/photos/petanque-marivaloise.webp">
                     <span class="prog-highlight__icon" aria-hidden="true">🎳</span>
                     <div class="prog-highlight__copy">
-                      <strong class="prog-highlight__title">Concours de pétanque</strong>
-                      <span class="prog-highlight__sub">l'après-midi</span>
+                      <strong class="prog-highlight__title">Pétanque — doublette</strong>
+                      <span class="prog-highlight__sub">à partir de 14h</span>
                     </div>
                   </div>
                 </div>
@@ -545,14 +614,22 @@
                       <circle cx="17"   cy="8"   r="0.7" fill="#c8d8ff" opacity="0.45"/>
                     </svg>
                   </span>
-                  <span class="prog-block__label">Soirée · concerts</span>
-                  <span class="prog-block__hours">20h → 3h du matin</span>
+                  <span class="prog-block__label">Soirée · concert événement</span>
+                  <span class="prog-block__hours">19h → 3h du matin</span>
                 </div>
                 <div class="prog-block__body">
-                  <p class="prog-block__desc">Concert à la Prairie du Château.</p>
+                  <p class="prog-block__desc">Prairie du Château — Lacapelle-Marival.</p>
+                  <div class="prog-highlight">
+                    <span class="prog-highlight__icon" aria-hidden="true">🍽</span>
+                    <div class="prog-highlight__copy">
+                      <strong class="prog-highlight__title">Amicanes &amp; restauration</strong>
+                      <span class="prog-highlight__sub">à partir de 19h</span>
+                    </div>
+                  </div>
                   <div class="prog-lineup" data-photo="assets/photos/massbeat.webp">
-                    <span class="prog-lineup__label">Concert du soir</span>
+                    <span class="prog-lineup__label">Concert événement · 22h</span>
                     <strong class="prog-lineup__artist">MASSBEAT</strong>
+                    <span class="prog-lineup__genre">Première partie : DAFRA MUSIC</span>
                   </div>
                   <div class="prog-theme">
                     <span class="prog-theme__icon" aria-hidden="true">👕</span>
@@ -581,7 +658,7 @@
 
           <!-- Dimanche 16 -->
           <div class="prog-panel"
-               role="tabpanel" id="prog-panel-2" aria-labelledby="prog-tab-2" hidden>
+               role="tabpanel" id="prog-panel-3" aria-labelledby="prog-tab-3" hidden>
             <h3 class="sr-only">Dimanche 16 août</h3>
             <div class="prog-blocks prog-blocks--jour-heavy">
               <div class="prog-block prog-block--jour">
@@ -608,14 +685,14 @@
                     <span class="prog-highlight__icon" aria-hidden="true">🎺</span>
                     <div class="prog-highlight__copy">
                       <strong class="prog-highlight__title">LA BAND'ACAPELLA</strong>
-                      <span class="prog-highlight__sub">sous la halle, à midi · restauration sur place</span>
+                      <span class="prog-highlight__sub">repas sous la halle · 12h · restauration sur place</span>
                     </div>
                   </div>
                   <div class="prog-highlight" data-photo="assets/photos/defile-en-char-2.webp">
                     <span class="prog-highlight__icon" aria-hidden="true">🥁</span>
                     <div class="prog-highlight__copy">
-                      <strong class="prog-highlight__title">Défilé dans Lacapelle</strong>
-                      <span class="prog-highlight__sub">dans les rues du village, l'après-midi</span>
+                      <strong class="prog-highlight__title">Défilé en char</strong>
+                      <span class="prog-highlight__sub">dans les rues du village · 14h</span>
                     </div>
                   </div>
                 </div>
@@ -630,12 +707,19 @@
                     </svg>
                   </span>
                   <span class="prog-block__label">Soirée · concerts</span>
-                  <span class="prog-block__hours">20h → 3h du matin</span>
+                  <span class="prog-block__hours">19h → 3h du matin</span>
                 </div>
                 <div class="prog-block__body">
-                  <p class="prog-block__desc">Concert à la Prairie du Château.</p>
+                  <p class="prog-block__desc">Prairie du Château — Lacapelle-Marival.</p>
+                  <div class="prog-highlight">
+                    <span class="prog-highlight__icon" aria-hidden="true">🍽</span>
+                    <div class="prog-highlight__copy">
+                      <strong class="prog-highlight__title">Amicanes &amp; restauration</strong>
+                      <span class="prog-highlight__sub">à partir de 19h</span>
+                    </div>
+                  </div>
                   <div class="prog-lineup" data-photo="assets/photos/p02.webp">
-                    <span class="prog-lineup__label">Concert du soir</span>
+                    <span class="prog-lineup__label">Concert · 20h30</span>
                     <strong class="prog-lineup__artist">MATRONOME</strong>
                     <span class="prog-lineup__local">Groupe du Lot · de chez nous</span>
                   </div>
@@ -677,7 +761,7 @@
     <!-- MARQUEE -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee__inner">
-        <span class="marquee__text">AFREECANARD&nbsp;&nbsp;🦆&nbsp;&nbsp;LACAPELLE-MARIVAL&nbsp;&nbsp;🦆&nbsp;&nbsp;14·15·16 AOÛT&nbsp;&nbsp;🦆&nbsp;&nbsp;BODEGAS JUSQU'À 3H DU MATIN&nbsp;&nbsp;🦆&nbsp;&nbsp;SANGRIA · CONCERTS · SUD-OUEST&nbsp;&nbsp;🦆&nbsp;&nbsp;AFREECANARD&nbsp;&nbsp;🦆&nbsp;&nbsp;LACAPELLE-MARIVAL&nbsp;&nbsp;🦆&nbsp;&nbsp;14·15·16 AOÛT&nbsp;&nbsp;🦆&nbsp;&nbsp;BODEGAS JUSQU'À 3H DU MATIN&nbsp;&nbsp;🦆&nbsp;&nbsp;SANGRIA · CONCERTS · SUD-OUEST&nbsp;&nbsp;🦆&nbsp;&nbsp;</span>
+        <span class="marquee__text">AFREECANARD&nbsp;&nbsp;🦆&nbsp;&nbsp;LACAPELLE-MARIVAL&nbsp;&nbsp;🦆&nbsp;&nbsp;13·14·15·16 AOÛT&nbsp;&nbsp;🦆&nbsp;&nbsp;BODEGAS JUSQU'À 3H DU MATIN&nbsp;&nbsp;🦆&nbsp;&nbsp;SANGRIA · CONCERTS · SUD-OUEST&nbsp;&nbsp;🦆&nbsp;&nbsp;AFREECANARD&nbsp;&nbsp;🦆&nbsp;&nbsp;LACAPELLE-MARIVAL&nbsp;&nbsp;🦆&nbsp;&nbsp;13·14·15·16 AOÛT&nbsp;&nbsp;🦆&nbsp;&nbsp;BODEGAS JUSQU'À 3H DU MATIN&nbsp;&nbsp;🦆&nbsp;&nbsp;SANGRIA · CONCERTS · SUD-OUEST&nbsp;&nbsp;🦆&nbsp;&nbsp;</span>
       </div>
     </div>
 
