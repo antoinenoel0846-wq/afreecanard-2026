@@ -216,7 +216,7 @@
             "name": "C'est quoi une bodega ?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Un bar festif animé, ouvert toute la soirée. Afreecanard en propose trois : Ô Baracana (le foot), La Cantina De Paquito (le rugby) et Les Amigrateurs (le mélange des deux). Chacune a sa vibe, ses chants et sa sangria."
+              "text": "Un bar festif animé, ouvert toute la soirée. Afreecanard en propose trois : Ô Baracana (le foot), La Cantina de Paquito (le rugby) et Les Amigrateurs (le mélange des deux). Chacune a sa vibe, ses chants et sa sangria."
             }
           },
           {
@@ -836,6 +836,20 @@
       </div>
     </section>
 
+    <!-- CITATION -->
+    <div class="citation-canard" data-reveal="up" aria-label="Citation de l'Afreecanard">
+      <div class="citation-canard__inner">
+        <blockquote class="citation-canard__block">
+          <p class="citation-canard__text">
+            <span class="citation-canard__guillemet">&laquo;</span>
+            Un écrivain qui se livre,<br>
+            c'est comme un canard qui se confit&hellip;
+            <span class="citation-canard__guillemet">&raquo;</span>
+          </p>
+        </blockquote>
+      </div>
+    </div>
+
     <!-- BODEGAS -->
     <section id="bodegas" class="section bg-paper">
       <div class="section__container--wide">
@@ -1294,7 +1308,7 @@
             </button>
             <div class="faq__body" id="faq-5" role="region">
               <div class="faq__body-inner">
-                <p class="faq__answer">Un bar festif animé, ouvert toute la soirée. Afreecanard en propose trois : Ô Baracana (le foot), La Cantina De Paquito (le rugby) et Les Amigrateurs (le mélange des deux). Chacune a sa vibe, ses chants et sa sangria.</p>
+                <p class="faq__answer">Un bar festif animé, ouvert toute la soirée. Afreecanard en propose trois : Ô Baracana (le foot), La Cantina de Paquito (le rugby) et Les Amigrateurs (le mélange des deux). Chacune a sa vibe, ses chants et sa sangria.</p>
               </div>
             </div>
           </div>
@@ -1335,6 +1349,34 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ILS NOUS SOUTIENNENT -->
+    <!--
+      SECTION PARTENAIRES
+      Pour ajouter un logo :
+        1. Déposer le fichier dans site/assets/partenaires/ (formats .webp recommandé, .png accepté)
+        2. Remplacer un élément <div class="partner-placeholder"> par :
+              <a href="https://URL-DU-PARTENAIRE" class="partner-logo" target="_blank" rel="noopener sponsored" aria-label="Nom du partenaire">
+                <img src="assets/partenaires/nom-logo.webp" alt="Nom du partenaire" loading="lazy" width="160" height="80">
+              </a>
+        3. Créez autant de .partner-logo qu'il y a de sponsors — la grille s'adapte automatiquement.
+    -->
+    <section id="partenaires" class="section partenaires-section bg-paper" aria-label="Ils nous soutiennent">
+      <div class="section__container--wide">
+        <div class="partenaires__hd" data-reveal="up">
+          <p class="section__eyebrow font-superboom">avec leur soutien</p>
+          <h2 class="partenaires__title font-heavitas">ILS NOUS SOUTIENNENT</h2>
+        </div>
+        <div class="partenaires__grid" data-reveal="up" data-reveal-delay="80">
+          <!-- Remplacer chaque placeholder par un .partner-logo une fois les logos reçus -->
+          <div class="partner-placeholder" aria-hidden="true"></div>
+          <div class="partner-placeholder" aria-hidden="true"></div>
+          <div class="partner-placeholder" aria-hidden="true"></div>
+          <div class="partner-placeholder" aria-hidden="true"></div>
+          <div class="partner-placeholder" aria-hidden="true"></div>
         </div>
       </div>
     </section>

@@ -3762,6 +3762,145 @@ section[id] {
   }
 }
 
+/* ── CITATION CANARD ─────────────────────────────────────── */
+
+.citation-canard {
+  background: #0c1840;
+  padding: 56px 24px 64px;
+  text-align: center;
+}
+
+.citation-canard__inner {
+  max-width: 740px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.citation-canard__inner::before,
+.citation-canard__inner::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: #ffd11e;
+  margin: 0 auto 28px;
+}
+
+.citation-canard__inner::after {
+  margin: 28px auto 0;
+}
+
+.citation-canard__block {
+  margin: 0;
+  padding: 0;
+}
+
+.citation-canard__guillemet {
+  font-family: 'Heavitas', sans-serif;
+  font-size: 1.2em;
+  color: #ffd11e;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.citation-canard__text {
+  font-family: 'Archivo', sans-serif;
+  font-style: italic;
+  font-size: clamp(18px, 2.6vw, 26px);
+  line-height: 1.55;
+  color: #f4eedb;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 600px) {
+  .citation-canard {
+    padding: 44px 20px 52px;
+  }
+}
+
+/* ── ILS NOUS SOUTIENNENT ────────────────────────────────── */
+
+.partenaires-section {
+  padding: 80px 24px 96px;
+}
+
+.partenaires__hd {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.partenaires__title {
+  font-family: 'Heavitas', sans-serif;
+  color: #18286e;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 0.96;
+  margin: 0;
+}
+
+.partenaires__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Slot vide — sera remplacé par .partner-logo */
+.partner-placeholder {
+  width: 160px;
+  height: 80px;
+  background: rgba(24, 40, 110, 0.06);
+  border: 2px dashed rgba(24, 40, 110, 0.2);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* Logo réel une fois ajouté */
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 80px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: opacity 0.25s ease;
+  flex-shrink: 0;
+}
+
+.partner-logo:hover {
+  opacity: 0.7;
+}
+
+.partner-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(1);
+  transition: filter 0.3s ease;
+}
+
+.partner-logo:hover img {
+  filter: grayscale(0);
+}
+
+@media (max-width: 600px) {
+  .partenaires-section {
+    padding: 60px 16px 72px;
+  }
+
+  .partner-placeholder,
+  .partner-logo {
+    width: 130px;
+    height: 65px;
+  }
+}
+
 /* ── PRÉVENTE / PASS WEEK-END ─────────────────────────────── */
 
 .prevente-section {
