@@ -3335,6 +3335,15 @@ section[id] {
   }
 }
 
+@media (max-width: 1080px) and (min-width: 769px) {
+  .nav__links {
+    gap: 16px;
+  }
+  .nav__link {
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 768px) {
   .nav__toggle {
     display: block;
