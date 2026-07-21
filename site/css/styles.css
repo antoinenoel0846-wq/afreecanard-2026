@@ -3753,6 +3753,211 @@ section[id] {
   }
 }
 
+/* ── PRÉVENTE / PASS WEEK-END ─────────────────────────────── */
+
+.prevente-section {
+  background: #16265f;
+  padding: 80px 24px 96px;
+}
+
+.prevente__eyebrow {
+  color: #ffd11e;
+  font-size: 22px;
+  margin: 0 0 28px;
+  text-align: center;
+}
+
+.prevente-card {
+  display: grid;
+  grid-template-columns: minmax(190px, 38%) 28px 1fr;
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 880px;
+  margin: 0 auto;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.52);
+}
+
+/* Stub gauche — jaune */
+.prevente-card__stub {
+  background: #ffd11e;
+  padding: 48px 28px 48px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.prevente-card__stub-label {
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(20px, 2.6vw, 28px);
+  color: #18286e;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.prevente-card__stub-price {
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(82px, 10.5vw, 116px);
+  color: #18286e;
+  line-height: 0.86;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.prevente-card__stub-currency {
+  font-size: 0.44em;
+  vertical-align: super;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.prevente-card__stub-nights {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #18286e;
+  opacity: 0.65;
+  margin: 4px 0 0;
+}
+
+/* Perforation */
+.prevente-card__tear {
+  background:
+    radial-gradient(circle at center, #16265f 10px, transparent 11px)
+    0 0 / 28px 28px repeat-y,
+    linear-gradient(to right, #ffd11e 50%, #f4eedb 50%);
+}
+
+/* Détail droit — crème */
+.prevente-card__detail {
+  background: #f4eedb;
+  padding: 44px 44px 44px 42px;
+  display: flex;
+  align-items: center;
+}
+
+.prevente-card__detail-inner {
+  width: 100%;
+}
+
+.prevente-card__where-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #18286e;
+  opacity: 0.55;
+  margin: 0 0 4px;
+}
+
+.prevente-card__where-name {
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(22px, 3vw, 34px);
+  color: #18286e;
+  line-height: 1.05;
+  margin: 0 0 6px;
+}
+
+.prevente-card__where-sub {
+  font-size: 13px;
+  color: #18286e;
+  opacity: 0.55;
+  margin: 0 0 24px;
+  font-style: italic;
+}
+
+.prevente-card__bonplan {
+  background: #fff;
+  border: 1.5px solid rgba(24, 40, 110, 0.18);
+  border-radius: 8px;
+  padding: 14px 18px 16px;
+}
+
+.prevente-card__bonplan-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #18286e;
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin-bottom: 11px;
+}
+
+.prevente-card__bonplan-calc {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.prevente-card__bonplan-old {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 13px;
+  color: #18286e;
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+.prevente-card__bonplan-new {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #18286e;
+}
+
+.prevente-card__bonplan-new strong {
+  font-size: 16px;
+}
+
+.prevente-card__bonplan-saving {
+  font-size: 12px;
+  color: #18286e;
+  opacity: 0.6;
+  margin: 0;
+  font-style: italic;
+  border-top: 1px solid rgba(24, 40, 110, 0.1);
+  padding-top: 10px;
+}
+
+@media (max-width: 680px) {
+  .prevente-section {
+    padding: 60px 16px 80px;
+  }
+
+  .prevente-card {
+    grid-template-columns: 1fr;
+  }
+
+  .prevente-card__stub {
+    padding: 36px 28px 40px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .prevente-card__tear {
+    height: 28px;
+    background:
+      radial-gradient(circle at center, #16265f 10px, transparent 11px)
+      0 0 / 28px 28px repeat-x,
+      linear-gradient(to bottom, #ffd11e 50%, #f4eedb 50%);
+  }
+
+  .prevente-card__detail {
+    padding: 32px 24px 36px;
+  }
+
+  .prevente-card__where-name {
+    font-size: 28px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────── */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
