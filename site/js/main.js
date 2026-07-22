@@ -72,8 +72,7 @@
   function initNav() {
     var header = document.getElementById('header');
     var toggle = document.getElementById('nav-toggle');
-    var overlay = document.getElementById('nav-overlay');
-    var navLinks = document.querySelectorAll('.nav__link[href^="#"]');
+    var panel  = document.getElementById('nav-panel');
 
     // Transparent → frosted glass on scroll
     function updateScrollState() {
@@ -82,20 +81,19 @@
     window.addEventListener('scroll', updateScrollState, { passive: true });
     updateScrollState();
 
-    // Mobile overlay toggle
-    if (toggle && overlay) {
+    if (toggle && panel) {
       function openMenu() {
         toggle.classList.add('is-open');
         toggle.setAttribute('aria-expanded', 'true');
-        overlay.classList.add('is-open');
-        overlay.setAttribute('aria-hidden', 'false');
+        panel.classList.add('is-open');
+        panel.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
       }
       function closeMenu() {
         toggle.classList.remove('is-open');
         toggle.setAttribute('aria-expanded', 'false');
-        overlay.classList.remove('is-open');
-        overlay.setAttribute('aria-hidden', 'true');
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
       }
 
@@ -103,29 +101,13 @@
         toggle.classList.contains('is-open') ? closeMenu() : openMenu();
       });
 
-      overlay.querySelectorAll('a').forEach(function (a) {
+      panel.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', closeMenu);
       });
 
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeMenu();
       });
-    }
-
-    // Active section highlight
-    var sections = document.querySelectorAll('main section[id]');
-    if (sections.length && navLinks.length) {
-      var sectionObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          var id = entry.target.id;
-          navLinks.forEach(function (link) {
-            link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
-          });
-        });
-      }, { threshold: 0.3, rootMargin: '-15% 0px -55% 0px' });
-
-      sections.forEach(function (s) { sectionObserver.observe(s); });
     }
   }
 
