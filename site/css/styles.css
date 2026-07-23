@@ -1109,7 +1109,7 @@ section[id] { scroll-margin-top: 80px; }
   overflow: hidden;
   background-image:
     linear-gradient(rgba(16, 26, 70, 0.62), rgba(16, 26, 70, 0.72)),
-    url('../assets/photos/p07.webp');
+    url('../assets/photos/ambiance-fumigenes-afreecanard.webp');
   background-size: cover;
   background-position: center 30%;
   background-attachment: fixed;
@@ -1309,12 +1309,12 @@ section[id] { scroll-margin-top: 80px; }
 }
 
 .bodega-card__photo--foot {
-  background-image: url('../assets/photos/p06.webp');
+  background-image: url('../assets/photos/logo-bodega-obaracana.webp');
   background-position: center 38%;
 }
 
 .bodega-card__photo--rugby {
-  background-image: url('../assets/photos/p05.webp');
+  background-image: url('../assets/photos/logo-amicale-rugby-marivaldois.webp');
   background-position: center 32%;
 }
 

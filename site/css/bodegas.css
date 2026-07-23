@@ -134,8 +134,8 @@
   opacity: 0.16;
   mix-blend-mode: luminosity;
 }
-.bod-section__head--foot  .bod-section__head-photo { background-image: url('../assets/photos/p06.png'); }
-.bod-section__head--rugby .bod-section__head-photo { background-image: url('../assets/photos/p05.png'); }
+.bod-section__head--foot  .bod-section__head-photo { background-image: url('../assets/photos/logo-bodega-obaracana.png'); }
+.bod-section__head--rugby .bod-section__head-photo { background-image: url('../assets/photos/logo-amicale-rugby-marivaldois.png'); }
 .bod-section__head--ancien .bod-section__head-photo { background-image: url('../assets/fabric-blue.png'); opacity: 0.22; }
 
 .bod-section__head-content {
