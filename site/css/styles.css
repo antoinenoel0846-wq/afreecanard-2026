@@ -900,11 +900,21 @@ section[id] { scroll-margin-top: 80px; }
 
 /* Paper texture background */
 .bg-paper {
-  background: #f4eedb;
+  background-color: #f4eedb;
+  background-image:
+    linear-gradient(rgba(244, 238, 219, 0.88), rgba(244, 238, 219, 0.88)),
+    url('../assets/fabric-blue.webp');
+  background-size: cover;
+  background-position: center;
 }
 
 .bg-paper--yellow {
-  background: #ffd11e;
+  background-color: #ffd11e;
+  background-image:
+    linear-gradient(rgba(255, 209, 30, 0.86), rgba(255, 209, 30, 0.86)),
+    url('../assets/fabric-blue.webp');
+  background-size: cover;
+  background-position: center;
 }
 
 .bg-blue-fabric {
@@ -3922,10 +3932,37 @@ section[id] { scroll-margin-top: 80px; }
   }
 }
 
+/* ── Cashless sur fond clair (crème) ────────────────────── */
+.cashless--on-light .section__eyebrow--yellow   { color: #0c1840; }
+.cashless--on-light .section__title--white      { color: #0c1840; }
+.cashless--on-light .cashless__intro            { color: rgba(12, 24, 64, 0.72); }
+.cashless--on-light .cashless__step             { background: rgba(12, 24, 64, 0.04); border-color: rgba(12, 24, 64, 0.12); }
+.cashless--on-light .cashless__step-num         { color: rgba(12, 24, 64, 0.14); }
+.cashless--on-light .cashless__step-title       { color: #0c1840; }
+.cashless--on-light .cashless__step-desc        { color: rgba(12, 24, 64, 0.65); }
+.cashless--on-light .cashless__tbd              { color: #0c1840; background: rgba(12, 24, 64, 0.06); border-color: rgba(12, 24, 64, 0.18); }
+.cashless--on-light .cashless__tbd strong       { color: #0c1840; }
+.cashless--on-light .cashless__step-arrow       { color: rgba(12, 24, 64, 0.32); }
+.cashless--on-light .cashless__benefit          { background: rgba(12, 24, 64, 0.04); border-color: rgba(12, 24, 64, 0.12); }
+.cashless--on-light .cashless__benefit-icon     { color: #0c1840; }
+.cashless--on-light .cashless__benefit-title    { color: #0c1840; }
+.cashless--on-light .cashless__benefit-desc     { color: rgba(12, 24, 64, 0.58); }
+.cashless--on-light .cashless__pending          { background: rgba(12, 24, 64, 0.04); border-color: rgba(12, 24, 64, 0.2); }
+.cashless--on-light .cashless__pending-label    { color: rgba(12, 24, 64, 0.55); }
+.cashless--on-light .cashless__pending-item strong { color: rgba(12, 24, 64, 0.85); }
+.cashless--on-light .cashless__pending-item span   { color: rgba(12, 24, 64, 0.55); }
+.cashless--on-light .cashless__pending-follow      { color: rgba(12, 24, 64, 0.55); border-color: rgba(12, 24, 64, 0.1); }
+.cashless--on-light .cashless__pending-follow strong { color: rgba(12, 24, 64, 0.82); }
+
 /* ── CITATION CANARD ─────────────────────────────────────── */
 
 .citation-canard {
-  background: #0c1840;
+  background-color: #ffd11e;
+  background-image:
+    linear-gradient(rgba(255, 209, 30, 0.86), rgba(255, 209, 30, 0.86)),
+    url('../assets/fabric-blue.webp');
+  background-size: cover;
+  background-position: center;
   padding: 56px 24px 64px;
   text-align: center;
 }
@@ -3942,7 +3979,7 @@ section[id] { scroll-margin-top: 80px; }
   display: block;
   width: 48px;
   height: 2px;
-  background: #ffd11e;
+  background: rgba(12, 24, 64, 0.32); /* foncé sur fond jaune */
   margin: 0 auto 28px;
 }
 
@@ -3958,7 +3995,7 @@ section[id] { scroll-margin-top: 80px; }
 .citation-canard__guillemet {
   font-family: 'Heavitas', sans-serif;
   font-size: 1.2em;
-  color: #ffd11e;
+  color: #0c1840; /* foncé sur fond jaune */
   line-height: 1;
   vertical-align: middle;
 }
@@ -3968,7 +4005,7 @@ section[id] { scroll-margin-top: 80px; }
   font-style: italic;
   font-size: clamp(18px, 2.6vw, 26px);
   line-height: 1.55;
-  color: #f4eedb;
+  color: #0c1840; /* foncé sur fond jaune */
   margin: 0;
   letter-spacing: 0.01em;
 }
@@ -4064,12 +4101,17 @@ section[id] { scroll-margin-top: 80px; }
 /* ── PRÉVENTE / PASS WEEK-END ─────────────────────────────── */
 
 .prevente-section {
-  background: #16265f;
+  background-color: #f4eedb;
+  background-image:
+    linear-gradient(rgba(244, 238, 219, 0.88), rgba(244, 238, 219, 0.88)),
+    url('../assets/fabric-blue.webp');
+  background-size: cover;
+  background-position: center;
   padding: 80px 24px 96px;
 }
 
 .prevente__eyebrow {
-  color: #ffd11e;
+  color: #0c1840; /* sombre sur fond crème */
   font-size: 22px;
   margin: 0 0 28px;
   text-align: center;
@@ -4209,10 +4251,10 @@ section[id] { scroll-margin-top: 80px; }
   margin: 4px 0 0;
 }
 
-/* Perforation */
+/* Perforation — les cercles imitent des trous : couleur = section bg */
 .prevente-card__tear {
   background:
-    radial-gradient(circle at center, #16265f 10px, transparent 11px)
+    radial-gradient(circle at center, #f4eedb 10px, transparent 11px)
     0 0 / 28px 28px repeat-y,
     linear-gradient(to right, #ffd11e 50%, #f4eedb 50%);
 }
