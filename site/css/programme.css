@@ -663,6 +663,16 @@
 
 /* la galerie de dimanche gère son propre padding-bottom */
 
+/* ── Tablette + grand mobile (header = 64px) ─────────────────── */
+@media (max-width: 768px) {
+  .pp-daynav {
+    top: 64px; /* header .nav2 fait 64px sur ≤768px */
+  }
+  .pp-day {
+    scroll-margin-top: 112px; /* 64 header + ~48 daynav */
+  }
+}
+
 /* ── Mobile ──────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .pp-hero { padding-top: clamp(90px, 18vw, 128px); padding-left: 20px; padding-right: 20px; }
@@ -671,7 +681,6 @@
   .page-back { display: none; }
 
   .pp-daynav {
-    top: 52px;
     padding: 0 8px;
   }
   .pp-daynav__item { padding: 8px 14px; min-width: 58px; }
@@ -720,6 +729,12 @@
     grid-column: 1 / -1;
     aspect-ratio: 16/7;
   }
+
+  /* Slider : 2 photos visibles sur mobile (le JS lit 2 aussi) */
+  .pp-slider__slide {
+    flex: 0 0 calc(50% - 5px); /* 2 × (50%-5px) + 1 gap 10px = 100% */
+  }
+  .pp-slider__slide img { border-radius: 8px; }
 
   .pp-concert {
     min-height: 300px;
