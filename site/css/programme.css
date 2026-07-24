@@ -327,6 +327,120 @@
   border-color: rgba(255, 209, 30, 0.22);
 }
 
+/* ── Thème de soirée ─────────────────────────────────────────── */
+.pp-day__theme {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 5px 14px 5px 10px;
+  background: rgba(255, 209, 30, 0.07);
+  border: 1px solid rgba(255, 209, 30, 0.22);
+  border-radius: 30px;
+  width: fit-content;
+}
+
+.pp-day__theme-eyebrow {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 209, 30, 0.42);
+  white-space: nowrap;
+}
+
+.pp-day__theme-name {
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(12px, 1.4vw, 15px);
+  color: #ffd11e;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* ── Slider photos ─────────────────────────────────────────── */
+.pp-slider {
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.pp-slider__viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.pp-slider__track {
+  display: flex;
+  transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.pp-slider__slide {
+  flex: 0 0 100%;
+  flex-shrink: 0;
+}
+
+.pp-slider__slide img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  opacity: 0.85;
+}
+
+.pp-slider__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: rgba(8, 16, 50, 0.52);
+  border: 1.5px solid rgba(255, 209, 30, 0.28);
+  color: rgba(255, 209, 30, 0.82);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.pp-slider__btn--prev { left: 12px; }
+.pp-slider__btn--next { right: 12px; }
+
+.pp-slider__btn:hover {
+  background: rgba(255, 209, 30, 0.16);
+  border-color: #ffd11e;
+  color: #ffd11e;
+}
+
+.pp-slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 0 0;
+}
+
+.pp-slider__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(244, 238, 219, 0.18);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.pp-slider__dot.is-active {
+  background: #ffd11e;
+  transform: scale(1.45);
+}
+
 /* ── Bande photo sous la timeline ──────────────────────────── */
 .pp-photo-strip {
   display: grid;
