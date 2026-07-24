@@ -14,6 +14,14 @@
   font-display: swap;
 }
 
+:root {
+  --eyebrow-size: clamp(13px, 1.6vw, 17px);
+  --eyebrow-ls:   0.14em;
+  --title-lg:     clamp(44px, 6.5vw, 80px);
+  --body-size:    17px;
+  --body-lh:      1.55;
+}
+
 *,
 *::before,
 *::after {
@@ -840,21 +848,25 @@ section[id] { scroll-margin-top: 80px; }
 }
 
 .section__eyebrow {
+  font-family: 'SuperBoom', cursive;
   color: #1f3f9e;
-  font-size: 22px;
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-ls);
+  text-transform: uppercase;
   margin: 0 0 6px;
 }
 
 .section__eyebrow--yellow {
   color: #ffd11e;
-  font-size: 22px;
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-ls);
   margin: 0 0 4px;
 }
 
 .section__title {
   font-family: 'Heavitas', sans-serif;
   color: #18286e;
-  font-size: clamp(44px, 6.5vw, 80px);
+  font-size: var(--title-lg);
   line-height: 0.94;
   margin: 0;
 }
@@ -892,10 +904,10 @@ section[id] { scroll-margin-top: 80px; }
 .section__desc {
   font-family: 'Archivo', sans-serif;
   color: #5b543a;
-  font-size: 17px;
+  font-size: var(--body-size);
   max-width: 54ch;
   margin: 14px auto 0;
-  line-height: 1.5;
+  line-height: var(--body-lh);
 }
 
 /* Paper texture background */
@@ -2115,9 +2127,9 @@ section[id] { scroll-margin-top: 80px; }
 .prog-section__eyebrow {
   display: block;
   font-family: 'SuperBoom', sans-serif;
-  font-size: clamp(13px, 1.8vw, 17px);
+  font-size: var(--eyebrow-size);
   color: #ffd11e;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--eyebrow-ls);
   text-transform: uppercase;
   margin: 0 0 clamp(28px, 3.5vw, 42px);
   line-height: 1.5;
@@ -2923,9 +2935,9 @@ section[id] { scroll-margin-top: 80px; }
 .recap-section__eyebrow {
   display: block;
   font-family: 'SuperBoom', sans-serif;
-  font-size: clamp(12px, 1.6vw, 15px);
+  font-size: var(--eyebrow-size);
   color: rgba(255, 180, 60, 0.85);
-  letter-spacing: 0.14em;
+  letter-spacing: var(--eyebrow-ls);
   text-transform: uppercase;
   margin: 0 0 8px;
 }
@@ -4111,8 +4123,11 @@ section[id] { scroll-margin-top: 80px; }
 }
 
 .prevente__eyebrow {
-  color: #0c1840; /* sombre sur fond crème */
-  font-size: 22px;
+  font-family: 'SuperBoom', cursive;
+  color: #0c1840;
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-ls);
+  text-transform: uppercase;
   margin: 0 0 28px;
   text-align: center;
 }
@@ -4155,8 +4170,8 @@ section[id] { scroll-margin-top: 80px; }
 
 .part-hero__eyebrow {
   font-family: 'SuperBoom', sans-serif;
-  font-size: clamp(13px, 2.2vw, 18px);
-  letter-spacing: 0.22em;
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-ls);
   color: rgba(255, 209, 30, 0.75);
   text-transform: uppercase;
   margin: 0 0 12px;
