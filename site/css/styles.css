@@ -1465,6 +1465,58 @@ section[id] { scroll-margin-top: 80px; }
   border-top: none;
 }
 
+/* ── Preview variant (accueil) : carte épurée sans info/menu/prog ── */
+.bodega-card--preview .bodega-card__body {
+  grid-template-columns: 1fr;
+}
+
+.bodega-card--preview .bodega-card__identity {
+  border-right: none;
+  max-width: 640px;
+}
+
+.bodega-card--preview .bodega-card__photo {
+  min-height: 160px;
+}
+
+/* Mini lien "Voir la bodega →" */
+.bodega-card__goto {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 18px;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: gap 0.2s ease;
+}
+.bodega-card--foot  .bodega-card__goto { color: #2f6b2c; }
+.bodega-card--rugby .bodega-card__goto { color: #c4302b; }
+.bodega-card--ancien .bodega-card__goto { color: #b6800f; }
+.bodega-card__goto:hover { gap: 10px; }
+
+/* CTA section bodegas */
+.bodegas__cta-wrap {
+  text-align: center;
+  margin-top: 44px;
+}
+
+/* Bouton sombre pour fonds clairs (crème, blanc) */
+.btn--blue {
+  background: #0c1840;
+  color: #ffd11e;
+  padding: 15px 30px;
+  font-size: 15px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.28);
+}
+.btn--blue:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.28);
+}
+
 /* Mobile : retour carte verticale */
 @media (max-width: 760px) {
   .bodega-card {
@@ -1481,6 +1533,10 @@ section[id] { scroll-margin-top: 80px; }
     border-right: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.07);
     padding: 18px 18px 16px;
+  }
+  .bodega-card--preview .bodega-card__identity {
+    border-bottom: none;
+    padding-bottom: 22px;
   }
   .bodega-card__info {
     padding: 14px 18px 18px;
