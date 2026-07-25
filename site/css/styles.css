@@ -4110,14 +4110,30 @@ section[id] { scroll-margin-top: 80px; }
 }
 
 .citation-canard__inner {
-  max-width: 900px;
+  max-width: 540px;
   margin: 0 auto;
   position: relative;
+}
+
+/* Guillemet fantôme — ancre visuelle typographique */
+.citation-canard__inner::before {
+  content: '\AB';
+  font-family: 'Heavitas', sans-serif;
+  font-size: clamp(100px, 16vw, 180px);
+  color: rgba(12, 24, 64, 0.07);
+  position: absolute;
+  top: -24px;
+  left: -12px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
 }
 
 .citation-canard__block {
   margin: 0;
   padding: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .citation-canard__preamble,
@@ -4125,28 +4141,33 @@ section[id] { scroll-margin-top: 80px; }
   font-family: 'Archivo', sans-serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(17px, 2.2vw, 24px);
-  line-height: 1.5;
-  color: rgba(12, 24, 64, 0.72);
+  font-size: clamp(19px, 2.6vw, 26px);
+  line-height: 1.38;
+  color: rgba(12, 24, 64, 0.82);
   margin: 0;
   letter-spacing: 0.01em;
 }
 
 .citation-canard__hero {
   font-family: 'Heavitas', sans-serif;
-  font-size: clamp(82px, 10.5vw, 150px);
-  line-height: 0.88;
+  font-size: clamp(66px, 8.5vw, 108px);
+  line-height: 0.9;
   color: #0c1840;
-  letter-spacing: 0.07em;
-  margin: 12px 0 10px;
+  letter-spacing: 0.06em;
+  margin: 6px 0 4px;
 }
 
 @media (max-width: 600px) {
   .citation-canard {
     padding: 56px 20px 64px;
   }
+  .citation-canard__inner::before {
+    font-size: 84px;
+    top: -14px;
+    left: 0;
+  }
   .citation-canard__hero {
-    font-size: min(82px, 20vw);
+    font-size: min(66px, 16vw);
   }
 }
 
