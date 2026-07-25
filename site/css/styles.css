@@ -4283,10 +4283,10 @@ section[id] { scroll-margin-top: 80px; }
 .prevente__eyebrow {
   font-family: 'SuperBoom', cursive;
   color: #0c1840;
-  font-size: var(--eyebrow-size);
-  letter-spacing: var(--eyebrow-ls);
+  font-size: var(--title-lg);
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin: 0 0 28px;
+  margin: 0 0 32px;
   text-align: center;
 }
 
@@ -4445,13 +4445,13 @@ section[id] { scroll-margin-top: 80px; }
 }
 
 .prevente-card__where-label {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #18286e;
   opacity: 0.55;
-  margin: 0 0 4px;
+  margin: 0 0 6px;
 }
 
 .prevente-card__where-name {
