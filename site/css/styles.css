@@ -1471,6 +1471,14 @@ section[id] { scroll-margin-top: 80px; }
 /* Carte verticale : photo en haut, contenu en bas */
 .bodega-card--preview {
   flex-direction: column;
+  transition: transform 0.26s ease, box-shadow 0.26s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .bodega-card--preview:hover { transform: translateY(-5px); }
+  .bodega-card--foot.bodega-card--preview:hover   { box-shadow: 0 16px 48px rgba(47, 107, 44, 0.22); }
+  .bodega-card--rugby.bodega-card--preview:hover  { box-shadow: 0 16px 48px rgba(196, 48, 43, 0.22); }
+  .bodega-card--ancien.bodega-card--preview:hover { box-shadow: 0 16px 48px rgba(200, 147, 15, 0.22); }
 }
 
 /* Bordure top colorée par club */
