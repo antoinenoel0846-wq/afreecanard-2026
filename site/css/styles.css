@@ -2069,6 +2069,13 @@ section[id] { scroll-margin-top: 80px; }
   max-width: 600px;
   margin: 0;
 }
+.faq__link {
+  color: #ffd11e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.18s;
+}
+.faq__link:hover { opacity: 0.78; }
 
 /* ── Premium interactions ── */
 
@@ -4459,9 +4466,27 @@ section[id] { scroll-margin-top: 80px; }
   font-size: 13px;
   color: #18286e;
   opacity: 0.55;
-  margin: 0 0 24px;
+  margin: 0 0 14px;
   font-style: italic;
 }
+.prevente-card__itineraire {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #16265f;
+  background: #ffd11e;
+  border-radius: 999px;
+  padding: 7px 16px;
+  margin-bottom: 20px;
+  transition: background 0.18s, color 0.18s;
+  text-decoration: none;
+}
+.prevente-card__itineraire:hover { background: #0c1840; color: #ffd11e; }
 
 .prevente-card__bonplan {
   background: #fff;
