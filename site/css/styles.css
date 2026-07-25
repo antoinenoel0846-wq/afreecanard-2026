@@ -1331,13 +1331,23 @@ section[id] { scroll-margin-top: 80px; }
 }
 
 .bodega-card__photo--foot {
-  background-image: url('../assets/photos/bodega-foot-obarcana.webp');
-  background-position: center 40%;
+  background-color: #2f6b2c;
+  background-image: url('../assets/fabric-blue.webp');
+  background-size: cover;
+  background-blend-mode: multiply;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bodega-card__photo--rugby {
-  background-image: url('../assets/photos/bodega-rugby-cantina.webp');
-  background-position: center top;
+  background-color: #c4302b;
+  background-image: url('../assets/fabric-blue.webp');
+  background-size: cover;
+  background-blend-mode: multiply;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bodega-card__photo--ancien {
@@ -1379,6 +1389,12 @@ section[id] { scroll-margin-top: 80px; }
   width: 130px;
   filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.45));
   animation: acBob 4.5s ease-in-out infinite;
+}
+.bodega-card__club-logo {
+  width: 100px;
+  max-width: 55%;
+  filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+  opacity: 0.9;
 }
 
 /* Corps : 2 colonnes — identité | programme */
