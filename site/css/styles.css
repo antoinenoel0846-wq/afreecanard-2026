@@ -1331,21 +1331,15 @@ section[id] { scroll-margin-top: 80px; }
 }
 
 .bodega-card__photo--foot {
-  background-color: #0c1840;
-  background-image: url('../assets/fabric-blue.webp');
+  background-image: url('../assets/photos/logo-bodega-obaracana.webp');
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-position: center;
 }
 
 .bodega-card__photo--rugby {
-  background-color: #0c1840;
-  background-image: url('../assets/fabric-blue.webp');
+  background-image: url('../assets/photos/logo-amicale-rugby-marivaldois.webp');
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-position: center;
 }
 
 .bodega-card__photo--ancien {
