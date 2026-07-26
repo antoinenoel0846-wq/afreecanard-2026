@@ -793,7 +793,7 @@ section[id] { scroll-margin-top: 80px; }
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: #cdd9ff;
-  font-size: 11px;
+  font-size: 14px;
   margin-top: 6px;
 }
 
@@ -1123,10 +1123,11 @@ section[id] { scroll-margin-top: 80px; }
   position: relative;
   min-height: 480px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 90px 24px;
+  padding: 90px 24px 0;
   overflow: hidden;
   background-image:
     linear-gradient(rgba(16, 26, 70, 0.62), rgba(16, 26, 70, 0.72)),
@@ -1156,6 +1157,14 @@ section[id] { scroll-margin-top: 80px; }
 .ambiance__content {
   position: relative;
   max-width: 840px;
+  align-self: center;
+  width: 100%;
+}
+
+.ambiance .recap-section {
+  align-self: stretch;
+  width: 100%;
+  margin-top: 40px;
 }
 
 .ambiance__text {
@@ -4534,7 +4543,7 @@ section[id] { scroll-margin-top: 80px; }
   font-family: 'Archivo Narrow', sans-serif;
   font-size: 13px;
   color: #18286e;
-  opacity: 0.4;
+  opacity: 0.6;
   text-decoration: line-through;
 }
 
@@ -4552,10 +4561,10 @@ section[id] { scroll-margin-top: 80px; }
 .prevente-card__bonplan-saving {
   font-size: 12px;
   color: #18286e;
-  opacity: 0.6;
+  opacity: 0.78;
   margin: 0;
   font-style: italic;
-  border-top: 1px solid rgba(24, 40, 110, 0.1);
+  border-top: 1px solid rgba(24, 40, 110, 0.15);
   padding-top: 10px;
 }
 
