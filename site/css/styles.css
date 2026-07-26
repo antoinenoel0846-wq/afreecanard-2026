@@ -867,18 +867,18 @@ section[id] { scroll-margin-top: 80px; }
   font-family: 'Heavitas', sans-serif;
   color: #18286e;
   font-size: var(--title-lg);
-  line-height: 0.94;
+  line-height: 1.1;
   margin: 0;
 }
 
 .section__title--white {
   color: #fff;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .section__title--large {
   font-size: clamp(52px, 8.5vw, 110px);
-  line-height: 0.92;
+  line-height: 1.1;
   text-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
 }
 
@@ -1081,7 +1081,7 @@ section[id] { scroll-margin-top: 80px; }
 }
 .section--intro .section__title {
   font-size: clamp(30px, 4vw, 52px);
-  line-height: 0.96;
+  line-height: 1.1;
   color: #ffffff;
 }
 .section--intro .intro__text {
@@ -1261,7 +1261,7 @@ section[id] { scroll-margin-top: 80px; }
   font-family: 'Heavitas', sans-serif;
   color: #1f3f9e;
   font-size: clamp(36px, 4.8vw, 58px);
-  line-height: 0.92;
+  line-height: 1.1;
   letter-spacing: 0.01em;
   margin: 6px 0 0;
 }
@@ -1423,7 +1423,7 @@ section[id] { scroll-margin-top: 80px; }
   font-family: 'Heavitas', sans-serif;
   font-size: clamp(24px, 2.8vw, 34px);
   margin: 0;
-  line-height: 0.92;
+  line-height: 1.1;
 }
 
 .bodega-card__name--foot   { color: #2f6b2c; }
@@ -1538,7 +1538,7 @@ section[id] { scroll-margin-top: 80px; }
 /* Textes agrandis */
 .bodega-card--preview .bodega-card__name {
   font-size: clamp(26px, 2.8vw, 36px);
-  line-height: 0.92;
+  line-height: 1.1;
 }
 
 .bodega-card--preview .bodega-card__name--ancien {
@@ -2300,7 +2300,7 @@ section[id] { scroll-margin-top: 80px; }
 .prog-section__title {
   font-family: 'Heavitas', sans-serif;
   font-size: clamp(52px, 10vw, 100px);
-  line-height: 0.88;
+  line-height: 1.1;
   color: #fff;
   margin: 0 0 14px;
   letter-spacing: 0.02em;
@@ -3099,7 +3099,7 @@ section[id] { scroll-margin-top: 80px; }
 .recap-section__title {
   font-family: 'Heavitas', sans-serif;
   font-size: clamp(42px, 8vw, 80px);
-  line-height: 0.9;
+  line-height: 1.1;
   color: #fff;
   margin: 0 0 10px;
   letter-spacing: 0.02em;
@@ -3222,7 +3222,7 @@ section[id] { scroll-margin-top: 80px; }
   font-size: clamp(30px, 4.5vw, 46px);
   color: #fff;
   letter-spacing: 0.02em;
-  line-height: 0.94;
+  line-height: 1.1;
 }
 .prog-lineup__genre {
   display: block;
@@ -4210,7 +4210,7 @@ section[id] { scroll-margin-top: 80px; }
   font-family: 'Heavitas', sans-serif;
   color: #18286e;
   font-size: clamp(32px, 5vw, 56px);
-  line-height: 0.96;
+  line-height: 1.1;
   margin: 0;
 }
 
@@ -4348,7 +4348,7 @@ section[id] { scroll-margin-top: 80px; }
   font-family: 'Heavitas', sans-serif;
   font-size: clamp(42px, 9vw, 96px);
   color: #f4eedb;
-  line-height: 0.95;
+  line-height: 1.1;
   margin: 0 0 20px;
 }
 
