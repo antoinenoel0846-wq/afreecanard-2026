@@ -325,7 +325,7 @@
   background-color: #16265f;
   background-image:
     linear-gradient(rgba(13, 20, 56, 0.42), rgba(13, 20, 56, 0.64)),
-    url('../assets/fabric-blue.png');
+    url('../assets/fabric-blue.webp');
   background-size: cover, cover;
   background-position: center, center;
   padding: clamp(60px, 10vh, 100px) 24px;
