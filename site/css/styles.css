@@ -2214,7 +2214,7 @@ section[id] { scroll-margin-top: 80px; }
 
 .prog-dc {
   display: grid;
-  grid-template-columns: 110px 1fr auto auto;
+  grid-template-columns: 110px 1fr auto;
   align-items: center;
   background: rgba(255, 255, 255, 0.04);
   border-left: 4px solid rgba(255, 209, 30, 0.28);
@@ -2311,7 +2311,15 @@ section[id] { scroll-margin-top: 80px; }
 }
 
 .prog-dc__main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   padding: 0 20px;
+  min-width: 0;
+}
+
+.prog-dc__main-text {
+  flex: 1;
   min-width: 0;
 }
 
@@ -2339,12 +2347,10 @@ section[id] { scroll-margin-top: 80px; }
   font-size: clamp(22px, 3.8vw, 42px);
 }
 
-/* Canard thème — colonne entre artiste et prix */
+/* Canard thème — dans .prog-dc__main, entre texte et prix */
 .prog-dc__duck {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 10px;
   flex-shrink: 0;
 }
 .prog-dc__duck img {
@@ -2404,12 +2410,11 @@ section[id] { scroll-margin-top: 80px; }
 
 @media (max-width: 600px) {
   .prog-dc {
-    grid-template-columns: 76px 1fr auto auto;
+    grid-template-columns: 76px 1fr auto;
     padding: 12px 14px;
     border-left-width: 3px;
   }
   .prog-dc__duck img { height: 38px; }
-  .prog-dc__duck { padding: 0 6px; }
 
   .prog-dc__date { padding-right: 12px; }
 
