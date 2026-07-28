@@ -32,17 +32,70 @@
     setInterval(updateCountdown, 1000);
   }
 
-  function scrollGallery(mult) {
-    var track = document.getElementById('ac-gallery-track');
-    if (!track) return;
-    track.scrollBy({ left: Math.round(track.clientWidth * 0.85) * mult, behavior: 'smooth' });
-  }
-
   function initGallery() {
-    var prev = document.getElementById('gal-prev');
-    var next = document.getElementById('gal-next');
-    if (prev) prev.addEventListener('click', function () { scrollGallery(-1); });
-    if (next) next.addEventListener('click', function () { scrollGallery(1); });
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var marquee = document.querySelector('.galerie__marquee');
+    if (!marquee) return;
+
+    if (prefersReduced) {
+      marquee.classList.add('galerie__marquee--static');
+      [].forEach.call(marquee.querySelectorAll('.galerie__photo--dup'), function (el) { el.hidden = true; });
+      return;
+    }
+
+    [].forEach.call(marquee.querySelectorAll('.galerie__band'), function (band) {
+      var strip = band.querySelector('.galerie__strip');
+      if (!strip) return;
+
+      var dir    = band.getAttribute('data-direction');
+      var speed  = 1.1; /* px/frame @60fps ≈ 66px/s */
+      var totalW = 0;
+      var x      = 0;
+      var paused = false, dragging = false;
+      var dragStartCX = 0, dragStartX = 0;
+
+      function computeW() {
+        totalW = strip.scrollWidth / 2;
+        if (dir === 'right') x = -totalW;
+      }
+      computeW();
+      if (!totalW) window.addEventListener('load', computeW, { once: true });
+
+      (function tick() {
+        requestAnimationFrame(tick);
+        if (!totalW || paused || dragging) return;
+        if (dir === 'left') {
+          x -= speed;
+          if (x <= -totalW) x += totalW;
+        } else {
+          x += speed;
+          if (x >= 0) x -= totalW;
+        }
+        strip.style.transform = 'translateX(' + x.toFixed(2) + 'px)';
+      }());
+
+      band.addEventListener('mouseenter', function () { paused = true; },  { passive: true });
+      band.addEventListener('mouseleave', function () { paused = false; }, { passive: true });
+
+      band.addEventListener('pointerdown', function (e) {
+        dragging = true;
+        dragStartCX = e.clientX;
+        dragStartX  = x;
+        band.setPointerCapture(e.pointerId);
+      }, { passive: true });
+
+      band.addEventListener('pointermove', function (e) {
+        if (!dragging || !totalW) return;
+        var dx = e.clientX - dragStartCX;
+        x = dragStartX + dx;
+        while (x < -totalW) x += totalW;
+        while (x > 0)       x -= totalW;
+        strip.style.transform = 'translateX(' + x.toFixed(2) + 'px)';
+      }, { passive: true });
+
+      band.addEventListener('pointerup',     function () { dragging = false; }, { passive: true });
+      band.addEventListener('pointercancel', function () { dragging = false; }, { passive: true });
+    });
   }
 
   function initReveal() {
