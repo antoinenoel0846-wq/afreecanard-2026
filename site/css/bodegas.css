@@ -407,16 +407,15 @@
 }
 
 .bod-nights__eyebrow {
-  font-family: 'Archivo Narrow', sans-serif;
-  font-weight: 800;
+  font-family: 'Heavitas', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 13px;
+  letter-spacing: 0.08em;
+  font-size: clamp(18px, 2.2vw, 26px);
   color: #18286e;
-  margin: 0 0 20px;
+  margin: 0 0 24px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 .bod-nights__eyebrow::after {
   content: '';
