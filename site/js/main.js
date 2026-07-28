@@ -205,7 +205,28 @@
       });
 
       panel.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', closeMenu);
+        a.addEventListener('click', function (e) {
+          var href = a.getAttribute('href') || '';
+          if (href.charAt(0) === '#') {
+            /* Ancre : vérifier si la section existe sur la page courante */
+            var target = document.querySelector(href);
+            e.preventDefault();
+            closeMenu();
+            if (target) {
+              /* Section présente → scroll après fermeture du panneau */
+              setTimeout(function () {
+                target.scrollIntoView({ behavior: 'smooth' });
+              }, 420);
+            } else {
+              /* Section absente (autre page) → naviguer vers l'accueil + ancre */
+              setTimeout(function () {
+                window.location.href = '/' + href;
+              }, 80);
+            }
+          } else {
+            closeMenu();
+          }
+        });
       });
 
       document.addEventListener('keydown', function (e) {
