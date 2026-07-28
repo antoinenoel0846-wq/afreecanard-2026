@@ -1538,6 +1538,27 @@ section[id] { scroll-margin-top: 80px; }
   top: 1px;
 }
 
+.info-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-family: 'Heavitas', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #18286e;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(24,40,110,0.25);
+  padding-bottom: 1px;
+  transition: border-color 0.18s, color 0.18s;
+}
+.info-card__cta:hover {
+  color: #0c1840;
+  border-color: #ffd11e;
+}
+.info-card__cta svg { flex-shrink: 0; }
+
 /* ══════════════════════════════════════════════════════
    FOOTER — style Déferlantes, charte Afreecanard
    ══════════════════════════════════════════════════════ */
