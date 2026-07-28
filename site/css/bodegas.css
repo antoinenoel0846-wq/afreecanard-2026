@@ -588,6 +588,15 @@
   color: #b0a080;
 }
 
+.bod-night-duck {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+}
+
 /* ── Responsive ── */
 @media (max-width: 700px) {
   .bod-menu-grid {
