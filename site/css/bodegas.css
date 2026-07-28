@@ -144,6 +144,14 @@
   max-width: 680px;
 }
 
+.bod-section__title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
 .bod-section__badge {
   font-family: 'Archivo Narrow', sans-serif;
   font-weight: 700;
@@ -155,7 +163,7 @@
   border-radius: 999px;
   padding: 5px 14px;
   display: inline-block;
-  margin-bottom: 14px;
+  flex-shrink: 0;
 }
 
 .bod-section__name {
