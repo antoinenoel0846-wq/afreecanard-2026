@@ -53,7 +53,9 @@
       var x      = 0;
       var velX   = 0;
       var paused = false, dragging = false;
+      var startClientX = 0, startClientY = 0;
       var dragStartCX = 0, dragStartX = 0;
+      var intentKnown = false;
 
       (function tick() {
         requestAnimationFrame(tick);
@@ -97,16 +99,35 @@
         if (e.pointerType === 'mouse') paused = false;
       }, { passive: true });
 
+      /* pointerdown : on enregistre le point de départ sans bloquer le scroll */
       band.addEventListener('pointerdown', function (e) {
-        dragging    = true;
-        velX        = 0;
-        dragStartCX = e.clientX;
-        dragStartX  = x;
-        band.setPointerCapture(e.pointerId);
+        startClientX = e.clientX;
+        startClientY = e.clientY;
+        dragStartX   = x;
+        intentKnown  = false;
       }, { passive: true });
 
+      /* pointermove : on détermine l'intention au 1er mouvement significatif */
       band.addEventListener('pointermove', function (e) {
-        if (!dragging || !totalW) return;
+        if (!totalW) return;
+
+        if (!intentKnown) {
+          var dx = Math.abs(e.clientX - startClientX);
+          var dy = Math.abs(e.clientY - startClientY);
+          if (dx + dy < 6) return; /* seuil — trop petit pour décider */
+          intentKnown = true;
+          if (dx > dy) { /* geste horizontal → drag marquee */
+            dragging    = true;
+            velX        = 0;
+            dragStartCX = startClientX;
+            dragStartX  = x;
+            band.setPointerCapture(e.pointerId);
+          }
+          /* geste vertical → scroll natif, marquee continue */
+        }
+
+        if (!dragging) return;
+
         var newX = dragStartX + (e.clientX - dragStartCX);
         velX     = newX - x;
         x        = newX;
@@ -115,8 +136,15 @@
         strip.style.transform = 'translateX(' + x.toFixed(2) + 'px)';
       }, { passive: true });
 
-      band.addEventListener('pointerup',     function () { dragging = false; }, { passive: true });
-      band.addEventListener('pointercancel', function () { dragging = false; paused = false; }, { passive: true });
+      band.addEventListener('pointerup', function () {
+        dragging    = false;
+        intentKnown = false;
+      }, { passive: true });
+      band.addEventListener('pointercancel', function () {
+        dragging    = false;
+        intentKnown = false;
+        paused      = false;
+      }, { passive: true });
     });
   }
 
