@@ -1375,6 +1375,7 @@ section[id] { scroll-margin-top: 80px; }
   user-select: none;
   -webkit-user-select: none;
   cursor: grab;
+  transform: translateZ(0); /* couche GPU : corrige le clipping iOS overflow+composite */
 }
 .galerie__band:active { cursor: grabbing; }
 
@@ -1383,6 +1384,8 @@ section[id] { scroll-margin-top: 80px; }
   gap: 14px;
   width: max-content;
   will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .galerie__photo {

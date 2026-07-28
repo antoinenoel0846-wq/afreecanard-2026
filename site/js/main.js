@@ -47,104 +47,108 @@
       var strip = band.querySelector('.galerie__strip');
       if (!strip) return;
 
-      var dir    = band.getAttribute('data-direction');
-      var speed  = 1.2;
-      var totalW = 0;
-      var x      = 0;
-      var velX   = 0;
-      var paused = false, dragging = false;
-      var startClientX = 0, startClientY = 0;
-      var dragStartCX = 0, dragStartX = 0;
-      var intentKnown = false;
+      var dir   = band.getAttribute('data-direction');
+      var speed = 1.2;
 
-      (function tick() {
-        requestAnimationFrame(tick);
+      /* Attend que le layout soit rendu avant de démarrer — évite un totalW=0 sur mobile */
+      function boot() {
+        var firstDup = strip.querySelector('.galerie__photo--dup');
+        var w = firstDup ? firstDup.offsetLeft : 0;
+        if (!w) { requestAnimationFrame(boot); return; }
+        launch(w);
+      }
 
-        /* Calcul de totalW via offsetLeft du 1er duplicat (CSS fixe → pas besoin d'attendre les images) */
-        if (!totalW) {
-          var firstDup = strip.querySelector('.galerie__photo--dup');
-          if (firstDup && firstDup.offsetLeft > 0) {
-            totalW = firstDup.offsetLeft;
-            if (dir === 'right') {
-              x = -totalW;
-              strip.style.transform = 'translateX(' + x.toFixed(2) + 'px)';
+      function launch(totalW) {
+        var x             = dir === 'right' ? -totalW : 0;
+        var velX          = 0;
+        var paused        = false;
+        var dragging      = false;
+        var isPointerDown = false; /* garde-fou : évite le faux-drag au simple survol souris */
+        var intentKnown   = false;
+        var startCX = 0, startCY = 0;
+        var dragBaseX = 0, dragBaseCX = 0;
+
+        strip.style.transform = 'translate3d(' + Math.round(x) + 'px,0,0)';
+
+        (function tick() {
+          requestAnimationFrame(tick);
+          if (dragging) return;
+
+          /* !paused ajouté : la pause stoppe aussi l'inertie résiduelle */
+          if (Math.abs(velX) > speed && !paused) {
+            velX *= 0.95;
+            x   += velX;
+          } else if (!paused) {
+            velX  = dir === 'left' ? -speed : speed;
+            x    += velX;
+          } else {
+            return;
+          }
+
+          while (x <= -totalW) x += totalW;
+          while (x > 0)        x -= totalW;
+          /* translate3d + Math.round : GPU compositing, élimine le tremblement sub-pixel mobile */
+          strip.style.transform = 'translate3d(' + Math.round(x) + 'px,0,0)';
+        }());
+
+        band.addEventListener('pointerenter', function (e) {
+          if (e.pointerType === 'mouse') paused = true;
+        }, { passive: true });
+        band.addEventListener('pointerleave', function (e) {
+          if (e.pointerType === 'mouse') paused = false;
+        }, { passive: true });
+
+        band.addEventListener('pointerdown', function (e) {
+          isPointerDown = true;
+          startCX       = e.clientX;
+          startCY       = e.clientY;
+          intentKnown   = false;
+        }, { passive: true });
+
+        band.addEventListener('pointermove', function (e) {
+          /* Sans pointerdown préalable : simple survol → ne rien faire */
+          if (!isPointerDown) return;
+
+          if (!intentKnown) {
+            var dx = Math.abs(e.clientX - startCX);
+            var dy = Math.abs(e.clientY - startCY);
+            if (dx + dy < 6) return;
+            if (dx > dy) {
+              intentKnown = true;
+              dragging    = true;
+              velX        = 0;
+              dragBaseCX  = e.clientX;
+              dragBaseX   = x;
+              band.setPointerCapture(e.pointerId);
             }
+            /* geste vertical : on continue à checker au prochain move */
+            return;
           }
-          return;
-        }
 
-        if (dragging) return;
+          if (!dragging) return;
 
-        /* Inertie après swipe, puis retour défilement auto */
-        if (Math.abs(velX) > speed) {
-          velX *= 0.95;
-          x   += velX;
-        } else if (!paused) {
-          velX  = dir === 'left' ? -speed : speed;
-          x    += velX;
-        } else {
-          return;
-        }
+          var newX = dragBaseX + (e.clientX - dragBaseCX);
+          velX = newX - x;
+          x    = newX;
+          while (x <= -totalW) x += totalW;
+          while (x > 0)        x -= totalW;
+          strip.style.transform = 'translate3d(' + Math.round(x) + 'px,0,0)';
+        }, { passive: true });
 
-        while (x <= -totalW) x += totalW;
-        while (x > 0)        x -= totalW;
-        strip.style.transform = 'translateX(' + x.toFixed(2) + 'px)';
-      }());
+        band.addEventListener('pointerup', function () {
+          isPointerDown = false;
+          dragging      = false;
+          intentKnown   = false;
+        }, { passive: true });
+        band.addEventListener('pointercancel', function () {
+          isPointerDown = false;
+          dragging      = false;
+          intentKnown   = false;
+          paused        = false;
+        }, { passive: true });
+      }
 
-      /* Pause uniquement pour souris — pas de faux pause sur touch iOS */
-      band.addEventListener('pointerenter', function (e) {
-        if (e.pointerType === 'mouse') paused = true;
-      }, { passive: true });
-      band.addEventListener('pointerleave', function (e) {
-        if (e.pointerType === 'mouse') paused = false;
-      }, { passive: true });
-
-      /* pointerdown : on enregistre le point de départ sans bloquer le scroll */
-      band.addEventListener('pointerdown', function (e) {
-        startClientX = e.clientX;
-        startClientY = e.clientY;
-        dragStartX   = x;
-        intentKnown  = false;
-      }, { passive: true });
-
-      /* pointermove : on détermine l'intention au 1er mouvement significatif */
-      band.addEventListener('pointermove', function (e) {
-        if (!totalW) return;
-
-        if (!intentKnown) {
-          var dx = Math.abs(e.clientX - startClientX);
-          var dy = Math.abs(e.clientY - startClientY);
-          if (dx + dy < 6) return; /* seuil — trop petit pour décider */
-          intentKnown = true;
-          if (dx > dy) { /* geste horizontal → drag marquee */
-            dragging    = true;
-            velX        = 0;
-            dragStartCX = startClientX;
-            dragStartX  = x;
-            band.setPointerCapture(e.pointerId);
-          }
-          /* geste vertical → scroll natif, marquee continue */
-        }
-
-        if (!dragging) return;
-
-        var newX = dragStartX + (e.clientX - dragStartCX);
-        velX     = newX - x;
-        x        = newX;
-        while (x <= -totalW) x += totalW;
-        while (x > 0)        x -= totalW;
-        strip.style.transform = 'translateX(' + x.toFixed(2) + 'px)';
-      }, { passive: true });
-
-      band.addEventListener('pointerup', function () {
-        dragging    = false;
-        intentKnown = false;
-      }, { passive: true });
-      band.addEventListener('pointercancel', function () {
-        dragging    = false;
-        intentKnown = false;
-        paused      = false;
-      }, { passive: true });
+      requestAnimationFrame(boot);
     });
   }
 
