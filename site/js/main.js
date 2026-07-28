@@ -48,37 +48,58 @@
       if (!strip) return;
 
       var dir    = band.getAttribute('data-direction');
-      var speed  = 1.1; /* px/frame @60fps ≈ 66px/s */
+      var speed  = 1.2;
       var totalW = 0;
       var x      = 0;
+      var velX   = 0;
       var paused = false, dragging = false;
       var dragStartCX = 0, dragStartX = 0;
 
-      function computeW() {
-        totalW = strip.scrollWidth / 2;
-        if (dir === 'right') x = -totalW;
-      }
-      computeW();
-      if (!totalW) window.addEventListener('load', computeW, { once: true });
-
       (function tick() {
         requestAnimationFrame(tick);
-        if (!totalW || paused || dragging) return;
-        if (dir === 'left') {
-          x -= speed;
-          if (x <= -totalW) x += totalW;
-        } else {
-          x += speed;
-          if (x >= 0) x -= totalW;
+
+        /* Calcul de totalW via offsetLeft du 1er duplicat (CSS fixe → pas besoin d'attendre les images) */
+        if (!totalW) {
+          var firstDup = strip.querySelector('.galerie__photo--dup');
+          if (firstDup && firstDup.offsetLeft > 0) {
+            totalW = firstDup.offsetLeft;
+            if (dir === 'right') {
+              x = -totalW;
+              strip.style.transform = 'translateX(' + x.toFixed(2) + 'px)';
+            }
+          }
+          return;
         }
+
+        if (dragging) return;
+
+        /* Inertie après swipe, puis retour défilement auto */
+        if (Math.abs(velX) > speed) {
+          velX *= 0.95;
+          x   += velX;
+        } else if (!paused) {
+          velX  = dir === 'left' ? -speed : speed;
+          x    += velX;
+        } else {
+          return;
+        }
+
+        while (x <= -totalW) x += totalW;
+        while (x > 0)        x -= totalW;
         strip.style.transform = 'translateX(' + x.toFixed(2) + 'px)';
       }());
 
-      band.addEventListener('mouseenter', function () { paused = true; },  { passive: true });
-      band.addEventListener('mouseleave', function () { paused = false; }, { passive: true });
+      /* Pause uniquement pour souris — pas de faux pause sur touch iOS */
+      band.addEventListener('pointerenter', function (e) {
+        if (e.pointerType === 'mouse') paused = true;
+      }, { passive: true });
+      band.addEventListener('pointerleave', function (e) {
+        if (e.pointerType === 'mouse') paused = false;
+      }, { passive: true });
 
       band.addEventListener('pointerdown', function (e) {
-        dragging = true;
+        dragging    = true;
+        velX        = 0;
         dragStartCX = e.clientX;
         dragStartX  = x;
         band.setPointerCapture(e.pointerId);
@@ -86,15 +107,16 @@
 
       band.addEventListener('pointermove', function (e) {
         if (!dragging || !totalW) return;
-        var dx = e.clientX - dragStartCX;
-        x = dragStartX + dx;
-        while (x < -totalW) x += totalW;
-        while (x > 0)       x -= totalW;
+        var newX = dragStartX + (e.clientX - dragStartCX);
+        velX     = newX - x;
+        x        = newX;
+        while (x <= -totalW) x += totalW;
+        while (x > 0)        x -= totalW;
         strip.style.transform = 'translateX(' + x.toFixed(2) + 'px)';
       }, { passive: true });
 
       band.addEventListener('pointerup',     function () { dragging = false; }, { passive: true });
-      band.addEventListener('pointercancel', function () { dragging = false; }, { passive: true });
+      band.addEventListener('pointercancel', function () { dragging = false; paused = false; }, { passive: true });
     });
   }
 
