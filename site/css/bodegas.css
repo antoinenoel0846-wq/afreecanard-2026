@@ -401,10 +401,10 @@
   font-family: 'Archivo Narrow', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 9px;
-  color: #9a8a6a;
-  margin: 0 0 16px;
+  letter-spacing: 0.15em;
+  font-size: 13px;
+  color: #18286e;
+  margin: 0 0 20px;
   display: flex;
   align-items: center;
   gap: 12px;
