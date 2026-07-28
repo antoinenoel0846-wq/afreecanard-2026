@@ -147,9 +147,9 @@
 .bod-section__title-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 28px;
   flex-wrap: wrap;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .bod-section__badge {
