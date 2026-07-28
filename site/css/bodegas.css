@@ -168,10 +168,11 @@
 
 .bod-section__name {
   font-family: 'Heavitas', sans-serif;
-  font-size: clamp(44px, 9vw, 96px);
+  font-size: clamp(32px, 7vw, 96px);
   color: #ffffff;
   margin: 0;
   line-height: 0.88;
+  white-space: nowrap;
 }
 
 .bod-section__org {
