@@ -34,9 +34,7 @@
   <meta name="twitter:description" content="3 jours de fête — 3 bodegas et concerts jusqu'à 3h du matin, restauration à base de canard. Prairie du Château, Lacapelle-Marival (Lot), 14-16 août 2026. 5 € vendredi · 10 € samedi · gratuit dimanche.">
   <meta name="twitter:image" content="https://afreecanard.fr/assets/photos/ambiance-fumigenes-afreecanard.png">
 
-  <!-- ── Fonts ── -->  <link rel="preload" as="image" href="assets/photos/photo-hero.webp"
-        imagesrcset="assets/photos/photo-hero-700.webp 700w, assets/photos/photo-hero.webp 1620w"
-        imagesizes="100vw" type="image/webp">
+  <!-- ── Fonts ── -->  <link rel="preload" as="image" href="assets/photos/photo-hero.webp" type="image/webp">
   <link rel="preload" as="image" href="assets/logo-jaune.webp" type="image/webp">
   <link rel="preload" as="font" href="fonts/Heavitas.woff2" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
@@ -328,14 +326,15 @@
     <div id="top" class="hero-pin">
       <div class="hero-pin__stage">
 
-        <!-- Photo révélée derrière les rideaux -->
+        <!-- Vidéo révélée derrière les rideaux — poster = photo hero pendant le chargement -->
         <div class="hero-pin__photo" aria-hidden="true">
-          <picture>
-          <source type="image/webp"
-            srcset="assets/photos/photo-hero-700.webp 700w, assets/photos/photo-hero.webp 1620w"
-            sizes="100vw">
-          <img src="assets/photos/photo-hero.webp" alt="" loading="eager" fetchpriority="high">
-        </picture>
+          <video class="hero-pin__video"
+                 autoplay muted loop playsinline
+                 poster="assets/photos/photo-hero.webp"
+                 preload="auto">
+            <source src="assets/videos/hero-clip.webm" type="video/webm">
+            <source src="assets/videos/hero-clip.mp4" type="video/mp4">
+          </video>
           <div class="hero-pin__photo-overlay"></div>
         </div>
 
