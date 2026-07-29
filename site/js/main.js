@@ -627,7 +627,7 @@
     container.addEventListener('click', function () {
       var iframe = document.createElement('iframe');
       iframe.className    = 'recap-video__iframe';
-      iframe.src          = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1&rel=0&modestbranding=1';
+      iframe.src          = 'https://www.youtube-nocookie.com/embed/' + ytId + '?autoplay=1&rel=0&modestbranding=1';
       iframe.allow        = 'autoplay; encrypted-media; picture-in-picture';
       iframe.allowFullscreen = true;
       iframe.title        = 'Récap Afreecanard 2024';
