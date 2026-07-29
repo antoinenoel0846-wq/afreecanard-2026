@@ -765,6 +765,13 @@
   .pp-ticket__price { font-size: 22px; }
 }
 
+/* ── TNT : recadrage desktop pour montrer la scène ──────────── */
+@media (min-width: 769px) {
+  .pp-concert--tnt .pp-concert__bg {
+    background-position: center 38%;
+  }
+}
+
 /* ── Reduced motion ──────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
