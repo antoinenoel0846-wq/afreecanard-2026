@@ -37,6 +37,7 @@
   <!-- ── Fonts ── -->  <link rel="preload" as="image" href="assets/photos/photo-hero.webp"
         imagesrcset="assets/photos/photo-hero-700.webp 700w, assets/photos/photo-hero.webp 1620w"
         imagesizes="100vw" type="image/webp">
+  <link rel="preload" as="image" href="assets/logo-jaune.webp" type="image/webp">
   <link rel="preload" as="font" href="fonts/Heavitas.woff2" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
 
@@ -340,12 +341,12 @@
 
         <!-- Porte GAUCHE — moitié gauche du logo unique -->
         <div class="hero-pin__door hero-pin__door--left" aria-hidden="true">
-          <img src="assets/logo-jaune.webp" alt="" class="hero-pin__door-logo">
+          <img src="assets/logo-jaune.webp" alt="" class="hero-pin__door-logo" fetchpriority="high">
         </div>
 
         <!-- Porte DROITE — moitié droite du logo unique -->
         <div class="hero-pin__door hero-pin__door--right" aria-hidden="true">
-          <img src="assets/logo-jaune.webp" alt="" class="hero-pin__door-logo">
+          <img src="assets/logo-jaune.webp" alt="" class="hero-pin__door-logo" fetchpriority="high">
         </div>
 
         <!-- Notes musicales décoratives -->
