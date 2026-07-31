@@ -250,6 +250,14 @@
   flex: 1;
 }
 
+.bod-item__note {
+  display: block;
+  font-size: 11px;
+  color: rgba(58, 52, 32, 0.45);
+  font-style: italic;
+  margin-top: 2px;
+}
+
 .bod-item__price {
   font-family: 'Heavitas', sans-serif;
   font-size: 15px;
