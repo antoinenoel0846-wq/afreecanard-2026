@@ -15,7 +15,7 @@
     updateScrollState();
 
     var toggle  = document.getElementById('nav-toggle');
-    var overlay = document.getElementById('nav-overlay');
+    var overlay = document.getElementById('nav-panel');
     if (!toggle || !overlay) return;
 
     function openMenu() {
