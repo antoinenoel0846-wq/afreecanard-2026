@@ -575,6 +575,27 @@
   font-style: italic;
 }
 
+/* Instagram link */
+.bod-night-row__ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+  padding: 3px 9px 3px 7px;
+  border-radius: 999px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid currentColor;
+  opacity: 0.55;
+  transition: opacity 0.18s ease;
+}
+.bod-night-row__ig:hover { opacity: 1; }
+.bod-section--foot  .bod-night-row__ig { color: #2f6b2c; }
+.bod-section--rugby .bod-night-row__ig { color: #c4302b; }
+.bod-section--ancien .bod-night-row__ig { color: #b6800f; }
+
 /* Thème : pill colorée avec icône */
 .bod-night-row__theme {
   display: flex;
